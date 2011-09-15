@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="UTF-8" />
+    <title>Halo Word</title>
+    <link rel="stylesheet" type="text/css" href="/include/style.css" />
+    <script type="text/javascript" src="/include/jquery.min.js"></script>
+    <script type="text/javascript" src="/include/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/include/jquery-hashchange.js"></script>
+    <script type="text/javascript" src="/include/pron.js"></script>
+    <script type="text/javascript" src="/include/meaning.js"></script>
+    <script type="text/javascript" src="/include/app.js"></script>
+</head>
+<body class="index">
+    <section id="side">
+        <ul>
+            <li id="title" class="current">Halo Word</li>
+            <li id="search"><form id="search_form">
+                <input id="search_field" type="search" placeholder="Enter a word..." results="0" autofocus />
+            </form></li>
+            <section id="wordlist">
+            </section>
+        </ul>
+    </section>
+    <section id="main">
+        <header><span id="wordtitle"></span><div id="button_remove" class="button" title="Remove from word list"></div><div id="button_add" class="button" title="Add to word list"></div><br style="clear: both"/ ></header>
+        <hr />
+        <section id="worddef">
+        </section>
+    </section>
+    <div id="bubble"></div>
+</body>
+</html>

@@ -1,0 +1,110 @@
+#haloword-lookup {
+	display: none;
+	position: absolute;
+	border: 2px solid #95CBF9;
+	padding: 3px 3px 5px 3px;
+	width: 240px;
+	background-color: #fff;
+
+	/* avoid affections */
+	text-align: left;
+	z-index: 10000;
+}
+#haloword-lookup * {
+	/* avoid affections */
+	text-indent: 0;
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+#haloword-title {
+	border-bottom: 1px solid #ABD3F5;
+	background-color: #E9F5FF;
+	color: #3482C7;
+	font-size: 16px;
+	line-height: 16px;
+	padding: 2px 3px 2px 5px;
+	cursor: move;
+}
+#haloword-word {
+	float: left;
+
+	/* avoid affections */
+	line-height: 16px;
+}
+#haloword-pron {
+	display: none;
+	margin-left: 4px;
+}
+#haloword-pron.available {
+	display: block;
+}
+#haloword-control-container {
+	float: right;
+}
+.haloword-button {
+	float: left;
+	margin: 2px;
+	height: 16px;
+	width: 16px;
+	background-color: #5A86AB;
+	cursor: pointer;
+}
+
+#haloword-content {
+	padding: 0 6px;
+	margin: 2px 2px 0 0;
+	max-height: 300px;
+	overflow: auto;
+	color: #000;
+	font-size: 13px;
+	line-height: 17px;
+}
+#haloword-content::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    background-color: #aaa;
+    -webkit-border-radius: 1ex;
+}
+#haloword-content::-webkit-scrollbar-thumb {
+    background: #ccc -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(240, 240, 240)), to(rgb(210, 210, 210)));
+    -webkit-border-radius: 1ex;
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, .4);
+}
+#haloword-content::-webkit-scrollbar-thumb:hover {
+    background: #ccc -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(245, 245, 245)), to(rgb(215, 215, 215)));
+}
+
+#haloword-content .part-of-speech {
+	margin: 5px 2px 3px 2px;
+	color: #555;
+	font-weight: bold;
+}
+#haloword-content .part-of-speech span {
+	background: #f9f9f9;
+	border-radius: 3px;
+	padding: 1px 3px;
+}
+#haloword-content ol {
+	padding-left: 30px;
+	margin: 3px 0;
+}
+#haloword-content ol li {
+	margin: 4px 0;
+
+	/* avoid affections */
+	list-style-type: decimal;
+	list-style-position: outside;
+}
+#haloword-content p {
+	margin: 4px 0;
+
+	/* avoid affections */
+	color: #000;
+	font-size: 13px;
+	line-height: 17px;
+}
+#haloword-content p.loading,
+#haloword-content p.notfound {
+	margin: 6px 0 2px 6px;
+}

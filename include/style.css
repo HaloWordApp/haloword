@@ -1,0 +1,390 @@
+/* Reset */
+
+html,body,div,ul,ol,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,pre,form,p,blockquote,fieldset,input,textarea,button {
+    margin: 0;
+    padding: 0;
+}
+
+h1,h2,h3,h4,h5,h6,pre,code,address,caption,cite,code,th {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1em;
+}
+
+ul {
+    list-style: none;
+}
+
+fieldset,img {
+    border: none;
+}
+
+caption,th {
+    text-align: left;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* Font */
+
+@font-face {
+    font-family: DejaVuSans;
+    src: url("/include/font/DejaVuSans.ttf") format("truetype");
+}
+@font-face {
+    font-family: PTSerif;
+    src: url("/include/font/PTSerif.ttf") format("truetype");
+}
+@font-face {
+    font-family: PTSans;
+    src: url("/include/font/PTSans.ttf") format("truetype");
+}
+@font-face {
+    font-family: DroidSans;
+    src: url("/include/font/DroidSans.ttf") format("truetype");
+}
+@font-face {
+    font-family: DroidSansBold;
+    src: url("/include/font/DroidSans-Bold.ttf") format("truetype");
+}
+
+/* Universal */
+
+html {
+    height: 100%;
+    overflow-y: hidden;
+}
+
+body {
+    position: relative;
+    width: 960px;
+    height: 100%;
+    margin: 0 auto;
+    font: 24px/36px DroidSans, sans-serif;
+}
+
+hr {
+    background-color: #dbdbdb;
+    border: 0;
+    height: 1px;
+    width: 100%;
+    clear: both;
+}
+
+a {
+    color: #1F3C77;
+    text-decoration: none;
+}
+
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    background-color: #aaa;
+    -webkit-border-radius: 1ex;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #ccc -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(240, 240, 240)), to(rgb(210, 210, 210)));
+    -webkit-border-radius: 1ex;
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, .4);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #ccc -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(245, 245, 245)), to(rgb(215, 215, 215)));
+}
+
+#side ::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: none;
+}
+
+button {
+    border-radius: 2px;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+    -webkit-user-select: none;
+    background: -webkit-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
+    border: 1px solid #AAA;
+    color: #444;
+    margin: 5px;
+    padding: 3px 12px 3px 12px;
+}
+button:hover {
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
+    background: #ebebeb -webkit-linear-gradient(#fefefe, #f8f8f8 40%, #e9e9e9);
+    border-color: #999;
+    color: #222;
+}
+button:active {
+    box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.2);
+    background: #ebebeb -webkit-linear-gradient(#f4f4f4, #efefef 40%, #dcdcdc);
+    color: #333;
+}
+
+.align-right {
+    text-align: right;
+}
+
+#side {
+    width: 290px;
+    height: 100%;
+    border-right: 1px solid #C6C9CE;
+    background: -webkit-linear-gradient(rgba(234, 238, 243, 0.2), #EAEEF3), -webkit-linear-gradient(left, #EAEEF3, #EAEEF3 97%, #D3D7DB);
+    text-align: right;
+    float: left;
+}
+
+#side li {
+    padding: 0px 26px 0px 0;
+    font: 24px/48px DroidSans;
+    color: #3D65BB;
+    border: 1px solid transparent;
+    vertical-align: middle
+}
+
+#side li.current {
+    font-family: DroidSansBold;
+    border-right-color: #AABEDC;
+    background: -webkit-linear-gradient(left, #BBCEE9, #BBCEE9 97%, #AABEDC);
+}
+
+#side li:hover {
+    background-color: #D3DFEE;
+    border: 1px solid #BBCEE9;
+    cursor: pointer;
+}
+#side li.current:hover {
+    border-color: #AABEDC;
+}
+
+#side #title {
+    margin-top: 18px;
+    font: 29px/54px DroidSans;
+}
+
+#side #title.current {
+    font-family: DroidSansBold;
+}
+
+#side #search {
+    padding: 0px 22px;
+    line-height: 0;
+    margin: 28px 0 10px 0;
+}
+
+#side #search_field {
+    width: 100%;
+    outline: none;
+    border: 0;
+    padding: 6px 10px;
+    font-size: 16px;
+    font-family: DroidSans;
+    border-radius: 15px;
+}
+
+#side #wordlist {
+    height: 100%;
+    overflow: auto;
+}
+
+#side #wordlist .delete {
+    display: none;
+    float: left;
+    margin-top: 14px;
+    margin-left: 24px;
+    width: 20px;
+    height: 20px;
+    background: url('/img/icon.svg') -90px -60px;
+}
+#side #wordlist .delete:hover {
+    background: url('/img/icon.svg') -90px -82px;
+}
+
+#bubble:before {
+    content: "";
+    position: absolute;
+    top: -15px;
+    left: 40px;
+    height: 15px;
+    width: 30px;
+    background: url('/img/icon.svg') -95px -105px;
+}
+#bubble {
+    display: none;
+    position: absolute;
+    top: 80px;
+    left: 95px;
+    width: 200px;
+    border: 1px solid #7BB3E0;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+
+    padding: 10px;
+    font-size: 14px;
+    line-height: 19px;
+    color: #555;
+}
+
+#main {
+    width: 619px;
+    height: 100%;
+    float: left;
+    padding: 0 20px 0 30px;
+    overflow: auto;
+}
+
+#main header {
+    margin-top: 26px;
+    font: 36px/40px PTSerif;
+    color: #53637D;
+}
+
+#main header #wordtitle {
+    float: left;
+}
+
+#main header .button {
+    display: none;
+    width: 30px;
+    height: 30px;
+    margin-top: 10px;
+    float: right;
+    cursor: pointer;
+}
+
+#main header #button_add {
+    background: url('/img/icon.svg') 0 0;
+}
+
+#main header #button_add:hover {
+    background: url('/img/icon.svg') -30px 0;
+}
+
+#main header #button_remove {
+    background: url('/img/icon.svg') 0 -30px;
+}
+
+#main header #button_remove:hover {
+    background: url('/img/icon.svg') -30px -30px;
+}
+
+#main #worddef {
+    padding: 10px 0 24px 0;
+}
+
+#main #worddef .credits {
+    text-transform: uppercase;
+    text-align: right;
+    font-size: 13px;
+    color: #ccc;
+    padding-right: 30px;
+}
+
+#main #worddef .credits a {
+    color: #bbb;
+    font-family: DroidSansBold;
+}
+
+#main p {
+    padding-left: 12px;
+}
+
+#main p.text {
+    font: 24px/34px PTSerif, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312" serif;
+    margin-top: 20px;
+}
+
+#main #pronounce {
+    float: left;
+    height: 16px;
+    width: 16px;
+    margin: 17px 10px 14px 12px;
+    background: url('/img/icon.svg') -60px -30px;
+}
+
+#main #pronounce.available {
+    background: url('/img/icon.svg') -60px -14px;
+    cursor: pointer;
+}
+
+#main #phonetic {
+    margin: 16px 0 14px 0;
+    line-height: 0;
+}
+
+#main #pronounce.available:hover {
+    background: url('/img/icon.svg') -76px -14px;
+}
+
+#main #phonetic .phonetic_item {
+    font: 17px/18px DejaVuSans;
+    margin-right: 12px;
+    color: #3a3a3a;
+}
+
+#main #phonetic .phonetic_item.notfound {
+    color: #888;
+}
+
+#main #phonetic .phonetic_item .extra {
+    font-size: 12px;
+    color: #AAAAAA;
+    margin-left: 4px;
+}
+
+#main ol {
+    font: 24px/34px PTSerif, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312" serif !important;
+    padding-left: 46px;
+}
+
+#main ol.top {
+    margin-top: 24px;
+}
+
+#main ol li {
+    margin-top: 16px;
+}
+
+#main ol li p {
+    margin-top: 6px;
+    padding: 0;
+}
+
+#main ol li ul {
+    padding-left: 30px;
+}
+
+#main p.part-of-speech {
+    font: 20px/20px DroidSansBold;
+    margin-top: 24px;
+}
+#main p.part-of-speech span {
+    margin-right: 14px;
+}
+
+
+#main p.top {
+    font-size: 19px;
+    padding-left: 8px;
+}
+#main p.version {
+    color: #333;
+    font-size: 20px;
+    margin-top: 12px;
+}
+#main span.additional {
+    color: #999;
+    font-size: 18px;
+    margin-left: 5px;
+}
+#main ul {
+    font: 20px/30px PTSerif, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312" serif;
+    padding-left: 60px;
+    list-style-image: url('/img/bullet.svg');
+}
+#main ul li {
+    margin: 4px 0;
+}

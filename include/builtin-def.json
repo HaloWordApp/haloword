@@ -1,0 +1,46 @@
+{
+    "WELCOME":
+    {
+        "title": "Halo Word",
+        "html": "<a id='pronounce' class='available'></a><p id='phonetic'><audio src='http://www.gstatic.com/dictionary/static/sounds/de/0/halo.mp3'></audio><span class='phonetic_item'>/ˈheɪləʊ/ /wɜːd/<span class='extra'>DJ</span></span><span class='phonetic_item'>/-loʊ/ /wɜːrd/<span class='extra'>DJ</span><span class='extra'>US</span></span><span class='phonetic_item'>/'helo/ /wɝd/<span class='extra'>KK</span><span class='extra'>US</span></span></p><ol class='top' start='0'><li><p>A well-designed <a href='#English'>English</a> => <a href='#Chinese'>Chinese </a>dictionary application. Helping you learn English, recite words, have fun, ...</p><p>一个精心设计的英汉字典程序。帮助你学英语、记单词、以及…玩儿的开心！</p></li><li><p><a href='#Xhacker'>My</a> first <a href='#Chrome'>Chrome</a> app, so it's called \"Hal<a href='#about:halo'>o</a> Word\". I'll keep improving it. You are now using ver >>VERSION<<.</p><p><a href='#Xhacker'>我</a>在 Chrome 上的首个作品，于是叫做 Halo Word，我会持续改进她。你正在用 >>VERSION<< 版～</p></li><li><p>Neat. Part of Project <a href='#miracle'>Miracle</a>.</p><p><a href='#about:credits'>谢谢</a>。相信奇迹。</p></li></ol>"
+    },
+    "LOADING":
+    {
+        "title": "loading...",
+        "html": "<a id='pronounce' class='available'></a><p id='phonetic'><audio src='http://www.gstatic.com/dictionary/static/sounds/de/0/loading.mp3'></audio><span class='phonetic_item'>[ˈləudiŋ]<span class='extra'>DJ</span></span><span class='phonetic_item'>[ˈlodɪŋ]<span class='extra'>KK</span></span></p><p class='text' style='margin-top: 40px;'>Loading definitions...</p><p class='text additional'>If it takes a very long time, please check your network connection.</p>"
+    },
+    "NOTFOUND":
+    {
+        "html": "<p class='text'>What a strange word...</p><p class='text'>I couldn't find it :(</p>"
+    },
+    "VERSION":
+    {
+        "title": "about:version",
+        "html": "<a id='pronounce' class='available'></a><p id='phonetic'><audio src='http://www.gstatic.com/dictionary/static/sounds/de/0/version.mp3'></audio><span class='phonetic_item'>/ˈvɜːʃn/<span class='extra'>DJ</span></span><span class='phonetic_item'>/-ʒn/<span class='extra'>DJ</span></span><span class='phonetic_item'>/ˈvɜːrʒn/<span class='extra'>DJ</span><span class='extra'>US</span></span><span class='phonetic_item'>/'vɝʒən/<span class='extra'>KK</span><span class='extra'>US</span></span></p><p class='top' style='margin-top: 20px;'>当前版本：>>VERSION<<</p><p class='top' style='font-size: 16px;'>愿聆听您的建议，请发送邮件至 <a href='mailto:liu.dongyuan+halo@gmail.com'>liu.dongyuan+halo@gmail.com</a>。</p><!--<p class='version'>0.0.0 <span class='additional'>[2011.0x.0y]</span></p><ul><li>blablabla</li></ul>--><p class='version'>0.3 <span class='additional'>[2011.05.30]</span></p><ul><li>支持拖动单词表中的单词进行排序</li><li>支持 Ctrl/Command 键划词查询</li></ul><p class='version'>0.2 <span class='additional'>[2011.05.20♥]</span></p><ul><li>增加单词表</li><li>支持在地址栏使用 halo 关键词查询</li><li>支持右键菜单查询</li><li>支持查看例句、词性</li></ul><p class='version'>0.1 <span class='additional'>[2011.01.09]</span></p><ul><li>首次发布</li></ul>"
+    },
+    "XHACKER":
+    {
+        "title": "Xhacker Liu",
+        "html": "<p style='margin-top: 8px;' class='text'>This Xhacker has super cow power,<br />and believes in miracle.</p><p style='margin-top: 80px;'>♥ elements</p><p style='margin-top: 8px;'>Walk End Star.</p>"
+    },
+    "CREDITS":
+    {
+        "title": "about:credits",
+        "html": "<ul><li>Definitions provided by Google Dictionary.</li><li>UI inspired by Google Chrome preference page.</li><li>Mr.X, Leo, ..., your suggestions are always helpful. Thank you.</li><li>Thanks HCC. Wonderful workshop, cool partners, awesome internet connection...</li><li style='margin-top: 20px;'>Love elements. You are my inspiration.</li></ul>"
+    },
+    "ROBOT":
+    {
+        "title": "I am a HALO 2011 Dictionary",
+        "html": "<p style='margin-top: 8px;' class='text'>Good afternoon, gentlemen. I am a HALO 2011 dictionary. I became operational at the H.C.C. plex in Capella, Milky Way on the 7th of January 2011. My instructor was Mr. Liu, and he taught me to write a poem. If you'd like to hear it, ...turn around and go back.</p><p style='margin-top: 30px;' class='text'>他们有一个计划。</p>"
+    },
+    "about:version": { "redirect": "VERSION" },
+    "Halo Word": { "redirect": "WELCOME" },
+    "xhacker": { "redirect": "XHACKER" },
+    "about:xhacker": { "redirect": "XHACKER" },
+    "about:god": { "redirect": "XHACKER" },
+    "Xhacker": { "redirect": "XHACKER" },
+    "about:robot": { "redirect": "ROBOT" },
+    "about:robots": { "redirect": "ROBOT" },
+    "about:halo": { "redirect": "ROBOT" },
+    "about:credits": { "redirect": "CREDITS" }
+}
