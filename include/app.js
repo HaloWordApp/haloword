@@ -3,6 +3,7 @@ $(document).ready(function() {
 
     $("#search_form").submit(function() {
         word = $("#search_field").val();
+        $("#search_field").select();
         query(word);
         return false;
     });
