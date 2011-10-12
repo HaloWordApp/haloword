@@ -236,6 +236,9 @@ $(window).hashchange(function() {
 
 function show_def(word) {
     if (!word) { word = "WELCOME" };
+
+    window.word = word;
+
     $(".button").hide();
 
     if (word in BUILTIN) {
@@ -264,67 +267,68 @@ function show_def(word) {
         $("audio")[0].play();
     });
 
-    $.getJSON("http://www.google.com/dictionary/json?callback=?", {
-        q: word,
-        sl: "en",
-        tl: "zh-cn"
-    },
-    function(data) {
-        document.title = word + " ‹ Halo Word";
-        $("#wordtitle").html(word);
+    $.ajax({
+        cache: true,
+        url: "http://www.google.com/dictionary/json?callback=process_json&q=" + word + "&sl=en&tl=zh-cn",
+        dataType: "script"
+    });
+}
 
-        db.transaction(function (tx) {
-            tx.executeSql("SELECT COUNT(*) AS `exist` FROM `Word` WHERE `word` = ?", [word],
-            function(tx, result) {
-                if (result.rows.item(0)['exist']) {
-                    $("#button_remove").show();
-                }
-                else {
-                    $("#button_add").show();
-                }
-            }, null);
-        });
+function process_json(data) {
+    document.title = word + " ‹ Halo Word";
+    $("#wordtitle").html(word);
 
-        if (!data.primaries) {
-            $("#worddef").html(BUILTIN.NOTFOUND.html);
-            return;
-        }
-        $("#worddef").html('<a id="pronounce"></a><p id="phonetic"><audio></audio></p>');
-        has_pron = false;
-        $.each(data.primaries[0].terms, function(i, item) {
-            if (item.type == "phonetic") {
-                has_pron = true;
-                pron = '<span class="phonetic_item">' + item.text;
-                $.each(item.labels, function(j, method) {
-                    pron += '<span class="extra">' + method.text + '</span>';
-                });
-                pron += '</span>';
-                $("#phonetic").append(pron);
-            }
-        });
-        if (!has_pron) {
-            $("#phonetic").append('<span class="phonetic_item notfound">No phonetic notation.</span>');
-        }
-
-        meaning = get_meaning(data.primaries[0], false);
-        if (meaning) {
-            html = '<ol>' + meaning + '</ol>';
-            if (html.substring(0, 8) == '<ol></ol>') {
-                html = html.substring(9);
+    db.transaction(function (tx) {
+        tx.executeSql("SELECT COUNT(*) AS `exist` FROM `Word` WHERE `word` = ?", [word],
+        function(tx, result) {
+            if (result.rows.item(0)['exist']) {
+                $("#button_remove").show();
             }
             else {
-                html = '<ol class="top">' + html.substring(4);
+                $("#button_add").show();
             }
-            $("#worddef").append(html);
+        }, null);
+    });
+
+    if (!data.primaries) {
+        $("#worddef").html(BUILTIN.NOTFOUND.html);
+        return;
+    }
+    $("#worddef").html('<a id="pronounce"></a><p id="phonetic"><audio></audio></p>');
+    has_pron = false;
+    $.each(data.primaries[0].terms, function(i, item) {
+        if (item.type == "phonetic") {
+            has_pron = true;
+            pron = '<span class="phonetic_item">' + item.text;
+            $.each(item.labels, function(j, method) {
+                pron += '<span class="extra">' + method.text + '</span>';
+            });
+            pron += '</span>';
+            $("#phonetic").append(pron);
+        }
+    });
+    if (!has_pron) {
+        $("#phonetic").append('<span class="phonetic_item notfound">No phonetic notation.</span>');
+    }
+
+    meaning = get_meaning(data.primaries[0], false);
+    if (meaning) {
+        html = '<ol>' + meaning + '</ol>';
+        if (html.substring(0, 8) == '<ol></ol>') {
+            html = html.substring(9);
         }
         else {
-            $("#worddef").append('<p class="text">What a strange word...<br />I couldn\'t find it :(</p>');
+            html = '<ol class="top">' + html.substring(4);
         }
+        $("#worddef").append(html);
+    }
+    else {
+        $("#worddef").append('<p class="text">What a strange word...<br />I couldn\'t find it :(</p>');
+    }
 
-        pronounce_exist(word);
+    pronounce_exist(word);
 
-        $("#worddef").append('<p class="credits">Content provided by <a href="http://www.google.com/dictionary" target="_blank">Google Dictionary</a></p>');
-    });
+    $("#worddef").append('<p class="credits">Content provided by <a href="http://www.google.com/dictionary" target="_blank">Google Dictionary</a></p>');
 }
 
 function exist_action() {
