@@ -115,7 +115,7 @@ function get_version() {
 /* UI */
 
 function on_resize() {
-    $("#wordlist").height($(window).height() - 145);
+    $("#wordlist").height($(window).height() - 136);
 }
 
 $(window).load(on_resize);
@@ -135,7 +135,7 @@ function init_db() {
         /* no table, create them */
         function(tx, error) {
             tx.executeSql("CREATE TABLE `Word` (`id` REAL UNIQUE, `word` TEXT, `timestamp` REAL)", [], null, null);
-            var words = ["Capella", "Chrome", "daisy", "Iridium", "turf", "dysprosium", "caesium", "lithium", "magnesium", "copper"];
+            var words = ["Capella", "Chrome", "daisy", "Iridium", "turf", "dysprosium", "love", "caesium", "miaow", "喵"];
             /* word list: newest on top */
             stroage_words(words.reverse());
             update_db();
