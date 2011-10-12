@@ -159,6 +159,13 @@ button:active {
     border-color: #AABEDC;
 }
 
+#side li .delete {
+	display: none;
+}
+#side li:hover .delete {
+	display: block;
+}
+
 #side #title {
     margin-top: 18px;
     font: 29px/54px DroidSans;
@@ -190,7 +197,6 @@ button:active {
 }
 
 #side #wordlist .delete {
-    display: none;
     float: left;
     margin-top: 14px;
     margin-left: 24px;

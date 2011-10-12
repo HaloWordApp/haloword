@@ -71,11 +71,6 @@ function refresh_wordlist_trigger() {
         $(this).addClass("current");
         query(word);
     });
-    $("#wordlist li").hover(function() {
-        $(".delete", this).show();
-    }, function() {
-        $(".delete", this).hide();
-    });
     $("#wordlist .delete").click(function() {
         word = $(this).parent().text();
         remove_word(word);
