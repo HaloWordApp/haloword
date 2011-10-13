@@ -65,7 +65,11 @@ $(document).ready(function() {
 });
 
 function refresh_wordlist_trigger() {
-    $("#wordlist li, #title").click(function() {
+    $("#title").click(function() {
+        $("li.current").removeClass("current");
+        $(this).addClass("current");
+    });
+    $("#wordlist li").click(function() {
         word = $(this).text();
         $("li.current").removeClass("current");
         $(this).addClass("current");
@@ -81,18 +85,6 @@ function refresh_wordlist_trigger() {
         }
         return false;
     });
-}
-
-/* BUILTIN */
-
-BUILTIN = get_builtin();
-
-function get_builtin() {
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', chrome.extension.getURL('include/builtin-def.json'), false);
-    xhr.send(null);
-    var builtin = JSON.parse(xhr.responseText);
-    return builtin;
 }
 
 /* VERSION */
@@ -230,43 +222,61 @@ $(window).hashchange(function() {
 });
 
 function show_def(word) {
-    if (!word) { word = "WELCOME" };
+    if (!word) { word = "halo:welcome" };
 
+    /* fixing a refresh issue. */
     window.word = word;
 
     $(".button").hide();
 
-    if (word in BUILTIN) {
-        if ('redirect' in BUILTIN[word]) { word = BUILTIN[word].redirect; }
-        if (word == "WELCOME") {
-            document.title = "Halo Word";
-        }
-        else {
-            document.title = BUILTIN[word].title + " ‹ Halo Word";
-        }
-        $("#wordtitle").html(BUILTIN[word].title);
-        html = BUILTIN[word].html.replace(/>>VERSION<</g, '<a href="#about:version">' + VERSION + '</a>')
-        $("#worddef").html(html);
+    if (is_builtin(word)) {
+        show_builtin(is_builtin(word));
+        return;
+    }
+
+    show_builtin("loading");
+
+    $.ajax({
+        /* TODO */
+        /* not working properly, rolling back. */
+        /* cache: true, */
+        url: "http://www.google.com/dictionary/json?callback=process_json&q=" + word + "&sl=en&tl=zh-cn",
+        dataType: "script"
+    });
+}
+
+function is_builtin(word) {
+    if (word.substring(0, 5) == "halo:")
+        return word.substring(5);
+    else
+        return false;
+}
+
+function show_builtin(builtin) {
+    $.get("builtin/" + builtin + ".html", function(data) {
+        $("#worddef").html(process_builtin(data));
+        
+        /* FIXME */
         $("#pronounce").click(function() {
             $("audio").attr("src", $("audio").attr("src"));
             $("audio")[0].play();
         });
-        return;
-    }
 
-    document.title = BUILTIN.LOADING.title + " ‹ Halo Word";
-    $("#wordtitle").html(BUILTIN.LOADING.title);
-    $("#worddef").html(BUILTIN.LOADING.html);
-    $("#pronounce").click(function() {
-        $("audio").attr("src", $("audio").attr("src"));
-        $("audio")[0].play();
+        title = $("#builtin-title").html();
+        if (title) {
+            document.title = title + " ‹ Halo Word";
+            $("#wordtitle").html(title);
+        }
+        else {
+            document.title = "Halo Word";
+            $("#wordtitle").html("Halo Word");
+        }
     });
+}
 
-    $.ajax({
-        cache: true,
-        url: "http://www.google.com/dictionary/json?callback=process_json&q=" + word + "&sl=en&tl=zh-cn",
-        dataType: "script"
-    });
+function process_builtin(data) {
+    data = data.replace(/__VERSION__/g, '<a href="#halo:version">' + VERSION + '</a>');
+    return data;
 }
 
 function process_json(data) {
@@ -286,7 +296,7 @@ function process_json(data) {
     });
 
     if (!data.primaries) {
-        $("#worddef").html(BUILTIN.NOTFOUND.html);
+        show_builtin("notfound");
         return;
     }
     $("#worddef").html('<a id="pronounce"></a><p id="phonetic"><audio></audio></p>');

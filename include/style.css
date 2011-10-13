@@ -127,6 +127,10 @@ button:active {
     text-align: right;
 }
 
+.hidden {
+    display: none;
+}
+
 #side {
     width: 290px;
     height: 100%;
