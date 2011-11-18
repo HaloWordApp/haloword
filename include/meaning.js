@@ -1,70 +1,62 @@
-function get_meaning(node, simplify, lang) {
-    var meaning = '';
-    if (node.type == "meaning") {
-        /* fetch a meaning */
-        var meaning_text = '';
-        $.each(node.terms, function(i, text_item) {
-            if (simplify) {
-                if (lang == "English") {
-                    if (text_item.language != "en") {
-                        meaning_text += '<p>' + text_item.text + '</p>';
-                    }
-                }
-                else {
-                    meaning_text += '<p>' + text_item.text + '</p>';
-                }
-            }
-            else {
-                meaning_text += '<p>' + text_item.text + '</p>';
-            }
-        });
-        if (!simplify && node.entries) {
-            /* fetch examples */
-            var example = '';
-            $.each(node.entries, function(i, entry_item) {
-                if (entry_item.type == "example" && entry_item.terms) {
-                    example += '<li><p>';
-                    $.each(entry_item.terms, function(i, example_item) {
-                        if (i > 0) {
-                            example += '</p><p>';
-                        }
-                        example += example_item.text;
-                    });
-                    example += '</p></li>';
-                }
-            });
-            if (example) {
-                meaning_text += '<ul class="example">' + example + '</ul>';
-            }
-        }
-        if (meaning_text)
-            meaning += '<li>' + meaning_text + '</li>';
-    }
-    else if (!simplify && node.type == "related" && node.labels && node.labels[0].text == "See also:") {
-        meaning += '<li>See also: <a href="#' + node.terms[0].text + '">' + node.terms[0].text + '</a></li>';
-    }
-    else if (node.entries) {
-        if (node.type == "container" && node.labels[0].title == "Part-of-Speech") {
-            meaning += '</ol><p class="part-of-speech">';
-            $.each(node.labels, function(i, label_item) {
-                if (label_item.title == "Part-of-Speech") {
-                    meaning += '<span>' + label_item.text + '</span>';
-                }
-            });
-            meaning += '</p><ol>';
-        }
+function process_primary(node) {
+    var primary = node;
+    var html = "";
 
-        var meaning_count = 0;
-        $.each(node.entries, function(i, entry_item) {
-            var meaning_item = get_meaning(entry_item, simplify, lang);
-            if (meaning_item) {
-                meaning += meaning_item;
-                meaning_count += 1;
-            }
-            if (simplify && meaning_count >= 2) {
-                return false;
-            }
-        });
+    if (primary instanceof Array) {
+        html += '<div class="entries">';
+        for (var i in primary) {
+            html += process_primary(primary[i]);
+        }
+        html += "</div>";
     }
-    return meaning;
+    else if (typeof(primary) == "object") {
+        if (primary.type != undefined) {
+            html += process_labels(primary.labels);
+
+            html += '<div class="'+ primary.type + '">' + process_terms(primary.terms, primary.type);
+            if (primary.entries != undefined) {
+                html += process_primary(primary.entries);
+            }
+
+            html += "</div>";
+        }
+    }
+    else {}
+    return html;
+}
+
+function process_labels(labels) {
+    var html = "";
+    for (var i in labels) {
+        var title = "";
+        if (labels[i].title) {
+            title = labels[i].title;
+        }
+        html += ' <span class="label" title="' + title + '">' + labels[i].text + "</span>";
+    }
+
+    return html;
+}
+
+function process_terms(terms, type) {
+	var html = "";
+	if (terms instanceof Array) {
+	    html += '<div class="terms">';
+        for (var i in terms) {
+            html += process_terms(terms[i], type);
+        }
+        html += '</div>';
+    }
+    else if (typeof(terms) == "object") {
+        if (terms.type == "sound") {
+            html += "<a class='pronounce' onclick='$(\"audio\", this)[0].play();'><audio src='" + terms.text + "'></audio></a>"
+        }
+        else if (terms.type != undefined) {
+            html += '<p class="'+ terms.type + '">';
+           	html += terms.text;
+            html += process_labels(terms.labels);
+            html += "</p>";
+        }
+    }
+    return html;
 }

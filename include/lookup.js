@@ -96,7 +96,7 @@ $("body").mouseup(function(e) {
             $("#haloword-content").html("<p class=\"notfound\">What a strange word...<br />I couldn't find it :(</p>");
             return;
         }
-        meaning = get_meaning(data.primaries[0], true, lang);
+        meaning = process_primary(data.primaries);
         if (meaning) {
             $("#haloword-content").html('<ol>' + meaning + '</ol>');
         }

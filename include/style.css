@@ -282,11 +282,10 @@ button:active {
 }
 
 #main #worddef {
-    padding: 10px 0 24px 0;
+    padding: 8px 0 24px 0;
 }
 
 #main #worddef .credits {
-    text-transform: uppercase;
     text-align: right;
     font-size: 13px;
     color: #ccc;
@@ -297,89 +296,98 @@ button:active {
     color: #bbb;
     font-family: DroidSansBold;
 }
+#main #worddef .credits a:hover {
+    color: #aaa;
+}
 
 #main p {
+    margin-top: 20px;
     padding-left: 12px;
 }
-
 #main p.text {
     font: 24px/34px PTSerif, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312" serif;
-    margin-top: 20px;
 }
 
-#main #pronounce {
-    float: left;
-    height: 16px;
-    width: 16px;
-    margin: 17px 10px 14px 12px;
-    background: url('/img/icon.svg') -60px -30px;
+/* word */
+#main .headword > .terms > p.text:first-child {
+    display: none;
 }
-
-#main #pronounce.available {
-    background: url('/img/icon.svg') -60px -14px;
+/* phonetic */
+#main .headword > .terms {
+    margin: 0 0 10px 12px;
+}
+#main .pronounce {
+    display: inline-block;
+    height: 13px;
+    width: 13px;
+    margin: 0 3px 0 5px;
+    background: url('/img/icon-neue.svg') 0px 0px;
+}
+#main .pronounce:hover {
+    background: url('/img/icon-neue.svg') 0px -13px;
     cursor: pointer;
 }
-
-#main #phonetic {
-    margin: 16px 0 14px 0;
-    line-height: 0;
-}
-
-#main #pronounce.available:hover {
-    background: url('/img/icon.svg') -76px -14px;
-}
-
-#main #phonetic .phonetic_item {
-    font: 17px/18px DejaVuSans;
+#main .phonetic {
+    display: inline-block;
+    font: 17px/18px Helvetica, Arial;
     margin-right: 12px;
     color: #3a3a3a;
 }
-
-#main #phonetic .phonetic_item.notfound {
-    color: #888;
+#main .label {
+    font: 16px/16px Helvetica, Arial;
+    color: #666;
 }
-
-#main #phonetic .phonetic_item .extra {
+#main .label[title^="Phonetic"], #main .phonetic .label {
+    font-family: Helvetica, Arial;
     font-size: 12px;
     color: #AAAAAA;
-    margin-left: 4px;
+}
+#main .entries > .label[title^="Part-of"] {
+    font: 20px/20px DroidSansBold;
+    color: #000;
+    margin: 24px 0 10px -32px;
+}
+#main .entries > .label[title^="Part-of"] + .label[title^="Part-of"]{
+    margin-left: 8px;
+}
+#main .sound {
+    display: none;
 }
 
-#main ol {
-    font: 24px/34px PTSerif, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312" serif !important;
+#main .headword > .entries {
+    font: 24px/34px PTSerif, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312" serif;
     padding-left: 46px;
 }
-
-#main ol.top {
-    margin-top: 24px;
-}
-
-#main ol li {
-    margin-top: 16px;
-}
-
-#main ol li p {
+#main .headword p {
     margin-top: 6px;
     padding: 0;
 }
-
-#main ol li ul {
+#main .meaning {
+    display: list-item;
+    list-style-type: decimal;
+    margin-top: 10px;
+}
+#main .meaning > .entries {
     padding-left: 30px;
 }
-
-#main p.part-of-speech {
-    font: 20px/20px DroidSansBold;
-    margin-top: 24px;
-}
-#main p.part-of-speech span {
-    margin-right: 14px;
+#main .meaning > .entries .example {
+    font: 20px/30px PTSerif, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312" serif;
+    display: list-item;
+    list-style-image: url('/img/bullet.svg');
 }
 
-
-#main p.top {
-    font-size: 19px;
-    padding-left: 8px;
+#main .related {
+    margin-bottom: 14px;
 }
+#main .related .text {
+    font: 19px/24px PTSerif, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312" serif;
+    color: #222;
+}
+#main .related .meaning {
+    font: 19px/24px PTSerif, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312" serif;
+    margin-left: 24px;
+}
+
 #main p.version {
     color: #333;
     font-size: 20px;
@@ -398,3 +406,4 @@ button:active {
 #main ul li {
     margin: 4px 0;
 }
+

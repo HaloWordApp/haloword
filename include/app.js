@@ -51,7 +51,7 @@ $(document).ready(function() {
         $("#bubble").hide();
     });
     $("#button-go-version").click(function() {
-        query("VERSION");
+        query("halo:version");
     });
 
     /* Special fixes */
@@ -237,9 +237,6 @@ function show_def(word) {
     show_builtin("loading");
 
     $.ajax({
-        /* TODO */
-        /* not working properly, rolling back. */
-        /* cache: true, */
         url: "http://www.google.com/dictionary/json?callback=process_json&q=" + word + "&sl=en&tl=zh-cn",
         dataType: "script"
     });
@@ -299,48 +296,17 @@ function process_json(data) {
         show_builtin("notfound");
         return;
     }
-    $("#worddef").html('<a id="pronounce"></a><p id="phonetic"><audio></audio></p>');
-    has_pron = false;
-    $.each(data.primaries[0].terms, function(i, item) {
-        if (item.type == "phonetic") {
-            has_pron = true;
-            pron = '<span class="phonetic_item">' + item.text;
-            $.each(item.labels, function(j, method) {
-                pron += '<span class="extra">' + method.text + '</span>';
-            });
-            pron += '</span>';
-            $("#phonetic").append(pron);
-        }
-    });
-    if (!has_pron) {
-        $("#phonetic").append('<span class="phonetic_item notfound">No phonetic notation.</span>');
-    }
 
-    meaning = get_meaning(data.primaries[0], false);
+    meaning = process_primary(data.primaries);
     if (meaning) {
-        html = '<ol>' + meaning + '</ol>';
-        if (html.substring(0, 8) == '<ol></ol>') {
-            html = html.substring(9);
-        }
-        else {
-            html = '<ol class="top">' + html.substring(4);
-        }
-        $("#worddef").append(html);
+        $("#worddef").html(meaning);
     }
     else {
-        $("#worddef").append('<p class="text">What a strange word...<br />I couldn\'t find it :(</p>');
+        show_builtin("notfound");
+        return;
     }
 
-    pronounce_exist(word);
+    //pronounce_exist(word);
 
     $("#worddef").append('<p class="credits">Content provided by <a href="http://www.google.com/dictionary" target="_blank">Google Dictionary</a></p>');
-}
-
-function exist_action() {
-    $("a#pronounce").addClass("available");
-    $("audio").attr("src", pron_url);
-    $("#pronounce").click(function() {
-        $("audio").attr("src", pron_url);
-        $("audio")[0].play();
-    });
 }
