@@ -1,13 +1,14 @@
 {
   "name": "Halo Word Dictionary",
-  "version": "0.3.1.90",
+  "version": "0.3.1.91",
 
   "description": "精巧易用的英汉字典，界面简洁舒适。包含单词表、划词查询、右键查询等功能。Enjoy!",
   "icons": {
     "16": "icon16.png",
     "32": "icon32.png",
     "48": "icon48.png",
-    "128": "icon128.png"
+    "128": "icon128.png",
+    "256": "icon256.png"
   },
 
   "app": {
