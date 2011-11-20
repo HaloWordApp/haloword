@@ -6,19 +6,10 @@
 
 <script>
 function onRequest(request, sender, callback) {
-	if (request.action == "getPron") {
-		pron_callback = callback;
-		pronounce_exist(request.word);
-	}
 	if (request.action == 'getJSON') {
 		$.getJSON(request.url, request.args, callback);
 	}
 };
-
-function exist_action() {
-	pron_url = pron_url + " "; // HACK: fix unexpected cut on pron_url
-	pron_callback(pron_url); 
-}
 
 chrome.extension.onRequest.addListener(onRequest);
 </script>

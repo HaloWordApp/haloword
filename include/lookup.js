@@ -25,12 +25,10 @@ function valid_word(word) {
 
 haloword_opened = false;
 $("body").append('<div id="haloword-lookup" class="ui-widget-content">\
-<audio id="haloword-audio"></audio>\
 <div id="haloword-title">\
 <span id="haloword-word"></span>\
-<a herf="#" id="haloword-pron" class="haloword-button" title="发音"></a>\
 <div id="haloword-control-container">\
-<a href="#" id="haloword-open" class="haloword-button" title="查看单词详细解释" target="_blank"></a>\
+<a href="#" id="haloword-open" class="haloword-button" title="查看单词详细释义" target="_blank"></a>\
 <a herf="#" id="haloword-close" class="haloword-button" title="关闭查询窗"></a>\
 </div>\
 <br style="clear: both;" />\
@@ -80,9 +78,6 @@ $("body").mouseup(function(e) {
         return false;
     });
 
-    $("#haloword-pron").removeClass("available");
-    chrome.extension.sendRequest({'action': 'getPron', 'word': selection}, onPronBack);
-
     $("#haloword-content").html("<p class=\"loading\">Loading definitions...</p>");
     $("#haloword-lookup").show();
 
@@ -93,27 +88,24 @@ $("body").mouseup(function(e) {
     },
     function(data) {
         if (!data.primaries) {
-            $("#haloword-content").html("<p class=\"notfound\">What a strange word...<br />I couldn't find it :(</p>");
+            $("#haloword-content").html("<p class=\"notfound\">I'm sorry, Dave.<br />I'm afraid I can't find that.</p>");
             return;
         }
         meaning = process_primary(data.primaries);
         if (meaning) {
-            $("#haloword-content").html('<ol>' + meaning + '</ol>');
+            $("#haloword-content").hide();
+            $("#haloword-content").html(meaning);
+            format_content();
+            $("#haloword-content").show();
         }
         else {
-            $("#haloword-content").html("<p class=\"notfound\">What a strange word...<br />I couldn't find it :(</p>");
+            $("#haloword-content").html("<p class=\"notfound\">I'm sorry, Dave.<br />I'm afraid I can't find that.</p>");
         }
     });
 
     setTimeout(function() { haloword_opened = true; }, 100); // HACK: fix dict window not openable
 });
 
-function onPronBack(pron_url) {
-    pron_url = $.trim(pron_url); // HACK: fix unexpected cut on pron_url
-    $("#haloword-pron").addClass("available");
-    $("#haloword-audio").attr("src", pron_url);
-    $("#haloword-pron").click(function() {
-        $("#haloword-audio").attr("src", pron_url);
-        $("#haloword-audio")[0].play();
-    });
+function format_content() {
+    
 }

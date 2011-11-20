@@ -55,14 +55,26 @@ $(document).ready(function() {
     });
 
     /* Special fixes */
-    var ua = navigator.userAgent.toLowerCase();
-    if (ua.indexOf("windows") > 0) {
+    if (get_OS() == "Windows") {
         /* Special fixes for Windows */
         $("#search_field").css("-webkit-appearance", "none");
     }
 
     show_def(location.hash.substring(1));
 });
+
+function get_OS() {
+    var ua = navigator.userAgent;
+    if (ua.indexOf("windows") > 0) {
+        return "Windows";
+    }
+    else if (ua.indexOf("Mac OS X") > 0) {
+        return "Mac OS X";
+    }
+    else {
+        return "miaow~";
+    }
+}
 
 function refresh_wordlist_trigger() {
     $("#title").click(function() {
@@ -102,7 +114,13 @@ function get_version() {
 /* UI */
 
 function on_resize() {
-    $("#wordlist").height($(window).height() - 136);
+    if (get_OS() == "Mac OS X") {
+        $("#wordlist").height($(window).height() - 136);
+    }
+    else {
+        $("#wordlist").height($(window).height() - 141);
+    }
+    console.log(get_OS());
 }
 
 $(window).load(on_resize);
@@ -305,8 +323,6 @@ function process_json(data) {
         show_builtin("notfound");
         return;
     }
-
-    //pronounce_exist(word);
 
     $("#worddef").append('<p class="credits">Content provided by <a href="http://www.google.com/dictionary" target="_blank">Google Dictionary</a></p>');
 }

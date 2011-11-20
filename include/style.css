@@ -350,9 +350,6 @@ button:active {
 #main .entries > .label[title^="Part-of"] + .label[title^="Part-of"]{
     margin-left: 8px;
 }
-#main .sound {
-    display: none;
-}
 
 #main .headword > .entries {
     font: 24px/34px PTSerif, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312" serif;

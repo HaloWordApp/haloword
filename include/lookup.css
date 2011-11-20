@@ -32,13 +32,6 @@
 	/* avoid affections */
 	line-height: 16px;
 }
-#haloword-pron {
-	display: none;
-	margin-left: 4px;
-}
-#haloword-pron.available {
-	display: block;
-}
 #haloword-control-container {
 	float: right;
 }
@@ -75,6 +68,9 @@
     background: #ccc -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(245, 245, 245)), to(rgb(215, 215, 215)));
 }
 
+#haloword-content .headword > .terms > p.text:first-child {
+    display: none;
+}
 #haloword-content .part-of-speech {
 	margin: 5px 2px 3px 2px;
 	color: #555;
