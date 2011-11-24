@@ -211,6 +211,13 @@ a {
     line-height: 19px;
     color: #555;
 }
+#bubble a {
+    background-color: #f3f3f3;
+    border-radius: 3px;
+    padding: 1px 5px;
+    margin: 0 2px;
+    border-bottom: 1px solid #ccc;
+}
 
 #main {
     width: 619px;

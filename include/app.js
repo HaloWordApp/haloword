@@ -38,12 +38,12 @@ $(document).ready(function() {
     });
 
     /* Update notification */
-    cur_version = 2;
+    cur_version = 3;
     if (!localStorage['prev_version']) {
         localStorage['prev_version'] = 0;
     }
     if (cur_version > localStorage['prev_version']) {
-        $("#bubble").html('<p>恭喜！您的 Halo Word 已更新至最新版本，支持<strong>拖动左侧单词进行排序</strong>和<strong>划词查询</strong>等功能。</p><p style="margin-top: 4px;">愿聆听您的建议，请发邮件至 <a href="mailto:liu.dongyuan+halo@gmail.com">liu.dongyuan+halo@gmail.com</a>。</p><p class="align-right"><button  id="button-go-version">查看版本信息</button><button id="button-close-bubble">关闭</button></p>');
+        $("#bubble").html('<p>恭喜！您的 Halo Word 已更新至最新版本，支持<strong>导入导出单词表</strong>等功能。</p><p style="margin-top: 4px;">如果您喜欢这个应用，不妨考虑<a href="https://chrome.google.com/webstore/detail/bhkcehpnnlgncpnefpanachijmhikocj" target="_blank">打个五星</a>或者<a href="https://me.alipay.com/xhacker" target="_blank">捐赠</a>。</p><p class="align-right"><button  id="button-go-version">查看版本信息</button><button id="button-close-bubble">关闭</button></p>');
         $("#bubble").show();
     }
     $("#button-close-bubble").click(function() {
