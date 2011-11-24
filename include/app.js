@@ -115,10 +115,10 @@ function get_version() {
 
 function on_resize() {
     if (get_OS() == "Mac OS X") {
-        $("#wordlist").height($(window).height() - 136);
+        $("#wordlist").height($(window).height() - 146);
     }
     else {
-        $("#wordlist").height($(window).height() - 141);
+        $("#wordlist").height($(window).height() - 151);
     }
     console.log(get_OS());
 }
@@ -127,6 +127,8 @@ $(window).load(on_resize);
 $(window).resize(on_resize);
 
 /* STROAGE */
+
+var default_words = ["Capella", "Chrome", "daisy", "Iridium", "turf", "dysprosium", "love", "caesium", "miaow", "喵"];
 
 function init_db() {
     db = openDatabase("HaloWord", "0.1", "Database for Halo Word", 200000);
@@ -140,9 +142,9 @@ function init_db() {
         /* no table, create them */
         function(tx, error) {
             tx.executeSql("CREATE TABLE `Word` (`id` REAL UNIQUE, `word` TEXT, `timestamp` REAL)", [], null, null);
-            var words = ["Capella", "Chrome", "daisy", "Iridium", "turf", "dysprosium", "love", "caesium", "miaow", "喵"];
+            
             /* word list: newest on top */
-            stroage_words(words.reverse());
+            stroage_words(default_words.reverse());
             update_db();
             init_wordlist();
         });
@@ -204,17 +206,24 @@ function remove_word(word) {
     });
 }
 
-function init_wordlist() {
+function get_wordlist(process_func) {
     db.transaction(function(tx) {
         tx.executeSql("SELECT * FROM `Word` ORDER BY `sequence` DESC, `timestamp` ASC", [],
         function(tx, result) {
-            for (var i = 0; i < result.rows.length; i++) {
-                wordlist_add(result.rows.item(i)['word']);
-            }
-            refresh_wordlist_trigger();
+            process_func(result);
         }, null);
     });
+}
 
+function init_wordlist() {
+    get_wordlist(process_wordlist);
+}
+
+function process_wordlist(result) {
+    for (var i = 0; i < result.rows.length; i++) {
+        wordlist_add(result.rows.item(i)['word']);
+    }
+    refresh_wordlist_trigger();
 }
 
 function escape4id(word) {
@@ -246,6 +255,7 @@ function show_def(word) {
     window.word = word;
 
     $(".button").hide();
+    $("#toolbar").hide();
 
     if (is_builtin(word)) {
         show_builtin(is_builtin(word));
@@ -270,12 +280,6 @@ function is_builtin(word) {
 function show_builtin(builtin) {
     $.get("builtin/" + builtin + ".html", function(data) {
         $("#worddef").html(process_builtin(data));
-        
-        /* FIXME */
-        $("#pronounce").click(function() {
-            $("audio").attr("src", $("audio").attr("src"));
-            $("audio")[0].play();
-        });
 
         title = $("#builtin-title").html();
         if (title) {
@@ -285,6 +289,10 @@ function show_builtin(builtin) {
         else {
             document.title = "Halo Word";
             $("#wordtitle").html("Halo Word");
+        }
+
+        if (builtin == "welcome") {
+            $("#toolbar").show();
         }
     });
 }

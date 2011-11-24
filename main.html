@@ -3,6 +3,8 @@
     <meta charset="UTF-8" />
     <title>Halo Word</title>
     <link rel="stylesheet" type="text/css" href="/include/style.css" />
+    <link rel="stylesheet" type="text/css" href="/include/select.css" />
+    <link rel="stylesheet" type="text/css" href="/include/button.css" />
     <script type="text/javascript" src="/include/jquery.min.js"></script>
     <script type="text/javascript" src="/include/jquery-ui.min.js"></script>
     <script type="text/javascript" src="/include/jquery-hashchange.js"></script>
@@ -13,15 +15,23 @@
     <section id="side">
         <ul>
             <a href="#halo:welcome"><li id="title" class="current">Halo Word</li></a>
-            <li id="search"><form id="search_form">
+            <li id="search">
+            <form id="search_form">
                 <input id="search_field" type="search" placeholder="Enter a word..." results="0" autofocus />
-            </form></li>
+            </form>
+            </li>
             <section id="wordlist">
             </section>
         </ul>
     </section>
     <section id="main">
-        <header><span id="wordtitle"></span><div id="button_remove" class="button" title="Remove from word list"></div><div id="button_add" class="button" title="Add to word list"></div><br style="clear: both"/ ></header>
+        <header>
+            <span id="wordtitle"></span>
+            <div id="button_remove" class="button" title="Remove from word list"></div>
+            <div id="button_add" class="button" title="Add to word list"></div>
+            <div id="toolbar"><button>Import/Export</button><button>Donate</button><button>Feedback</button></div>
+            <br style="clear: both"/ >
+        </header>
         <hr />
         <section id="worddef">
         </section>
