@@ -37,7 +37,7 @@ $(document).ready(function() {
         get_wordlist(export_wordlist);
     });
 
-    $("#import button").click(function() {
+    $("#import .import").click(function() {
         var separator = $("#import .separate-method").val();
         if (separator == "line") {
             separator = /[\n\r]+/;
@@ -62,6 +62,14 @@ $(document).ready(function() {
         storage_words(list_final.reverse());
         
         init_wordlist();
+    });
+
+    $("#import .reset").click(function() {
+        if (confirm("注意：将清空单词表并恢复默认的单词，确定继续吗？")) {
+            remove_all_word();
+            storage_words(default_words.reverse());
+            init_wordlist();
+        }
     });
 });
 
@@ -99,7 +107,8 @@ function export_wordlist(result) {
                 <option value="comma">逗号分隔</option>
                 <option value="space">空格分隔</option>
             </select>
-            <button>导入</button>
+            <button class="import">导入</button>
+            <button class="reset">恢复默认</button>
         </p>
     </div>
 

@@ -198,6 +198,13 @@ function update_word_seq() {
     });
 }
 
+function remove_all_word() {
+    db.transaction(function(tx) {
+        tx.executeSql("DELETE FROM `Word`",
+        null, null, null);
+    });
+}
+
 function remove_word(word) {
     db.transaction(function(tx) {
         tx.executeSql("DELETE FROM `Word` WHERE `word` = ?",
