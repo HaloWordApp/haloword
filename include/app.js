@@ -14,7 +14,7 @@ $(document).ready(function() {
 
     $("#button_add").click(function() {
         word = location.hash.substring(1);
-        stroage_word(word);
+        storage_word(word);
         wordlist_add(word);
         $("li.current").removeClass("current");
         $("#wordlist_" + escape4id(word)).addClass("current");
@@ -126,7 +126,7 @@ function on_resize() {
 $(window).load(on_resize);
 $(window).resize(on_resize);
 
-/* STROAGE */
+/* STORAGE */
 
 var default_words = ["Capella", "Chrome", "daisy", "Iridium", "turf", "dysprosium", "love", "caesium", "miaow", "喵"];
 
@@ -144,7 +144,7 @@ function init_db() {
             tx.executeSql("CREATE TABLE `Word` (`id` REAL UNIQUE, `word` TEXT, `timestamp` REAL)", [], null, null);
             
             /* word list: newest on top */
-            stroage_words(default_words.reverse());
+            storage_words(default_words.reverse());
             update_db();
             init_wordlist();
         });
@@ -169,18 +169,18 @@ function update_db() {
     }
 }
 
-function stroage_words(words) {
+function storage_words(words) {
     var time = new Date().getTime();
     db.transaction(function(tx) {
         for (var w in words) {
-            tx.executeSql("INSERT INTO Word (word, timestamp) values(?, ?)",
+            tx.executeSql("INSERT INTO `Word` (`word`, `timestamp`) values(?, ?)",
             [words[w], time],
             null, null);
         }
     });
 }
 
-function stroage_word(word) {
+function storage_word(word) {
     db.transaction(function(tx) {
         tx.executeSql("INSERT INTO `Word` (`word`, `timestamp`) values(?, ?)",
         [word, new Date().getTime()],
@@ -220,6 +220,7 @@ function init_wordlist() {
 }
 
 function process_wordlist(result) {
+    $("#wordlist").html("");
     for (var i = 0; i < result.rows.length; i++) {
         wordlist_add(result.rows.item(i)['word']);
     }

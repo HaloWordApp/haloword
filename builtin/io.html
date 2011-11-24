@@ -36,6 +36,33 @@ $(document).ready(function() {
     $("#export .separate-method").change(function() {
         get_wordlist(export_wordlist);
     });
+
+    $("#import button").click(function() {
+        var separator = $("#import .separate-method").val();
+        if (separator == "line") {
+            separator = /[\n\r]+/;
+        }
+        else if (separator == "comma") {
+            separator = ",";
+        }
+        else if (separator == "space") {
+            separator = /\s+/;
+        }
+
+        var text = $("#import textarea").val();
+        
+        var list = text.split(separator);
+        var list_final = [];
+        for (var li in list) {
+            var word = $.trim(list[li]);
+            if (word) {
+                list_final.push(word);
+            }
+        }
+        storage_words(list_final.reverse());
+        
+        init_wordlist();
+    });
 });
 
 function export_wordlist(result) {
