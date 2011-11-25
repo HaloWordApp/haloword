@@ -1,44 +1,48 @@
 <p class="hidden" id="builtin-title">halo:io</p>
 
 <style>
-#io-content p {
+#io p {
     padding: 0;
     margin: 0;
     line-height: 26px;
 }
-#io-content textarea {
+#io textarea {
     width: 220px;
     height: 340px;
     border: 1px solid #aaa;
     padding: 10px;
     font: 16px/24px PTSerif;
 }
-#io-content h2 {
+#io h2 {
     font: 18px/22px PTSerif;
-    margin: 10px 0 10px 0;
+    margin: 20px 0 10px 0;
 }
-#io-content #import {
+#io #import {
     float: left;
     padding: 0 30px;
     border-right: 1px dashed #eee;
 }
-#io-content #export {
+#io #export {
     float: left;
     padding: 0 30px;
 }
-#io-content button {
-    margin: 0 0 30px 0;
+#io button {
+}
+#io .info {
+    margin: 6px 0 30px 0;
+    font-size: 14px;
+    color: #666;
 }
 </style>
 <script>
 $(document).ready(function() {
     get_wordlist(export_wordlist);
-    $("#export .separate-method").change(function() {
+    $("#io #export .separate-method").change(function() {
         get_wordlist(export_wordlist);
     });
 
-    $("#import .import").click(function() {
-        var separator = $("#import .separate-method").val();
+    $("#io #import .import").click(function() {
+        var separator = $("#io #import .separate-method").val();
         if (separator == "line") {
             separator = /[\n\r]+/;
         }
@@ -49,7 +53,7 @@ $(document).ready(function() {
             separator = /\s+/;
         }
 
-        var text = $("#import textarea").val();
+        var text = $("#io #import textarea").val();
         
         var list = text.split(separator);
         var list_final = [];
@@ -59,15 +63,27 @@ $(document).ready(function() {
                 list_final.push(word);
             }
         }
+        var count = list_final.length;
         storage_words(list_final.reverse());
-        
+
         init_wordlist();
+
+        if (count > 0) {
+            $("#io #import .info").html("已成功导入 " + count + " 个单词。");
+        }
     });
 
-    $("#import .reset").click(function() {
-        if (confirm("注意：将清空单词表并恢复默认的单词，确定继续吗？")) {
+    $("#io .clear").click(function() {
+        if (confirm("注意：将清空单词表，确定继续吗？")) {
             remove_all_word();
-            storage_words(default_words.reverse());
+            init_wordlist();
+        }
+    });
+
+    $("#io .reset").click(function() {
+        if (confirm("注意：将清空单词表并恢复默认单词，确定继续吗？")) {
+            remove_all_word();
+            storage_words(default_words);
             init_wordlist();
         }
     });
@@ -76,7 +92,7 @@ $(document).ready(function() {
 function export_wordlist(result) {
     var list = "";
 
-    var separator = $("#export .separate-method").val();
+    var separator = $("#io #export .separate-method").val();
     if (separator == "line") {
         separator = "\n";
     }
@@ -93,10 +109,17 @@ function export_wordlist(result) {
             list += separator;
         }
     }
-    $("#export textarea").val(list);
+    $("#io #export textarea").val(list);
 }
 </script>
-<div id="io-content">
+<div id="io">
+
+    <div class="toolbar">
+        <button class="first clear">清空单词表</button>
+        <button class="last reset">恢复默认单词</button>
+    </div>
+    
+    <div style="clear: both"></div>
 
     <div id="import">
         <h2>Import Word List</h2>
@@ -108,8 +131,8 @@ function export_wordlist(result) {
                 <option value="space">空格分隔</option>
             </select>
             <button class="import">导入</button>
-            <button class="reset">恢复默认</button>
         </p>
+        <p class="info"></p>
     </div>
 
     <div id="export">

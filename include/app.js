@@ -128,7 +128,8 @@ $(window).resize(on_resize);
 
 /* STORAGE */
 
-var default_words = ["Capella", "Chrome", "daisy", "Iridium", "turf", "dysprosium", "love", "caesium", "miaow", "喵"];
+/* word list: newest on top */
+var default_words = ["喵", "miaow", "caesium", "love", "dysprosium", "turf", "Iridium", "daisy", "Chrome", "Capella"];
 
 function init_db() {
     db = openDatabase("HaloWord", "0.1", "Database for Halo Word", 200000);
@@ -142,9 +143,8 @@ function init_db() {
         /* no table, create them */
         function(tx, error) {
             tx.executeSql("CREATE TABLE `Word` (`id` REAL UNIQUE, `word` TEXT, `timestamp` REAL)", [], null, null);
-            
-            /* word list: newest on top */
-            storage_words(default_words.reverse());
+
+            storage_words(default_words);
             update_db();
             init_wordlist();
         });
@@ -173,6 +173,9 @@ function storage_words(words) {
     var time = new Date().getTime();
     db.transaction(function(tx) {
         for (var w in words) {
+            tx.executeSql("DELETE FROM `Word` WHERE `word` = ?",
+            [words[w]],
+            null, null);
             tx.executeSql("INSERT INTO `Word` (`word`, `timestamp`) values(?, ?)",
             [words[w], time],
             null, null);
@@ -182,6 +185,9 @@ function storage_words(words) {
 
 function storage_word(word) {
     db.transaction(function(tx) {
+        tx.executeSql("DELETE FROM `Word` WHERE `word` = ?",
+        [word],
+        null, null);
         tx.executeSql("INSERT INTO `Word` (`word`, `timestamp`) values(?, ?)",
         [word, new Date().getTime()],
         null, null);

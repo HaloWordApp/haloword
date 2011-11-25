@@ -241,25 +241,28 @@ a {
     margin: 0px 0 0 0;
 }
 #toolbar button {
-    margin: 0;
     padding: 5px 12px;
     font-size: 12px;
-    float: left;
 }
-#toolbar a:first-child button {
+
+.toolbar button {
+    float: left;
+    margin: 0;
+}
+.toolbar .first {
     border-right: 1px solid #ddd;
     border-radius: 4px 0 0 4px;
     padding-right: 8px;
 }
-#toolbar a:nth-child(2) button {
+.toolbar .middle {
     border-left: 0;
-    border-right: 0;
+    border-right: 1px solid #ddd;
     border-radius: 0;
     padding-left: 8px;
     padding-right: 8px;
 }
-#toolbar a:last-child button {
-    border-left: 1px solid #ddd;
+.toolbar .last {
+    border-left: 0;
     border-radius: 0 4px 4px 0;
     padding-left: 8px;
 }
