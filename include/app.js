@@ -118,7 +118,7 @@ function on_resize() {
         $("#wordlist").height($(window).height() - 146);
     }
     else {
-        $("#wordlist").height($(window).height() - 151);
+        $("#wordlist").height($(window).height() - 156);
     }
     console.log(get_OS());
 }
