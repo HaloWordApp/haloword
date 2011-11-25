@@ -65,7 +65,7 @@ $(document).ready(function() {
 
 function get_OS() {
     var ua = navigator.userAgent;
-    if (ua.indexOf("windows") > 0) {
+    if (ua.indexOf("Windows") > 0) {
         return "Windows";
     }
     else if (ua.indexOf("Mac OS X") > 0) {
