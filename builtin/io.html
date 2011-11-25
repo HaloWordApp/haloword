@@ -26,8 +26,8 @@
     float: left;
     padding: 0 30px;
 }
-#io-content button {
-    margin: 0 0 30px 0;
+#io-content button, #io-content select {
+    margin: 7px 0 30px 0;
 }
 </style>
 <script>
@@ -103,12 +103,12 @@ function export_wordlist(result) {
         <p><textarea></textarea></p>
         <p>
             <select class="separate-method">
-                <option value="line">每单词一行</option>
+                <option value="line">每词一行</option>
                 <option value="comma">逗号分隔</option>
                 <option value="space">空格分隔</option>
             </select>
             <button class="import">导入</button>
-            <button class="reset">恢复默认</button>
+            <button class="reset">重置</button>
         </p>
     </div>
 
@@ -117,7 +117,7 @@ function export_wordlist(result) {
         <p><textarea readonly></textarea></p>
         <p>
             <select class="separate-method">
-                <option value="line">每单词一行</option>
+                <option value="line">每词一行</option>
                 <option value="comma">逗号分隔</option>
                 <option value="space">空格分隔</option>
             </select>
