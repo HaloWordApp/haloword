@@ -41,6 +41,10 @@ $(document).ready(function() {
         get_wordlist(export_wordlist);
     });
 
+    $("#io #export .download").click(function() {
+        download_wordlist();
+    });
+
     $("#io #import .import").click(function() {
         var separator = $("#io #import .separate-method").val();
         if (separator == "line") {
@@ -111,6 +115,32 @@ function export_wordlist(result) {
     }
     $("#io #export textarea").val(list);
 }
+
+function fake_click(obj) {
+    var ev = document.createEvent("MouseEvents");
+    ev.initMouseEvent(
+        "click", true, false, window, 0, 0, 0, 0, 0
+        , false, false, false, false, 0, null
+        );
+    obj.dispatchEvent(ev);
+}
+
+function download_wordlist() {
+    if (!window.BlobBuilder) {
+        window.BlobBuilder = window.WebKitBlobBuilder;
+    }
+    var urlObject = window.URL || window.webkitURL || window;
+    var builder = new BlobBuilder(); 
+    builder.append($("#io #export textarea").val()); 
+    var export_blob = builder.getBlob(); 
+
+    var save_link = document.createElementNS("http://www.w3.org/1999/xhtml", "a")
+    save_link.href = urlObject.createObjectURL(export_blob);
+    save_link.download = "Halo Word dump.txt";
+    fake_click(save_link);
+
+    $("#io #export .info").html("文件已储存至下载文件夹。");
+}
 </script>
 <div id="io">
 
@@ -144,7 +174,9 @@ function export_wordlist(result) {
                 <option value="comma">逗号分隔</option>
                 <option value="space">空格分隔</option>
             </select>
+            <button class="download">下载</button>
         </p>
+        <p class="info"></p>
     </div>
 
 </div>

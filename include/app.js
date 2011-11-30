@@ -120,7 +120,6 @@ function on_resize() {
     else {
         $("#wordlist").height($(window).height() - 156);
     }
-    console.log(get_OS());
 }
 
 $(window).load(on_resize);
