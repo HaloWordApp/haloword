@@ -5,6 +5,7 @@
 	padding: 3px 3px 5px 3px;
 	width: 240px;
 	background-color: #fff;
+	font-family: "Helvetica Neue", Helvetica, "Liberation Sans", Arial, "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
 
 	/* avoid affections */
 	text-align: left;
@@ -45,7 +46,7 @@
 }
 
 #haloword-content {
-	padding: 0 6px;
+	padding: 4px 6px 0 6px;
 	margin: 2px 2px 0 0;
 	max-height: 300px;
 	overflow: auto;
@@ -71,36 +72,41 @@
 #haloword-content .headword > .terms > p.text:first-child {
     display: none;
 }
-#haloword-content .part-of-speech {
+#haloword-content .example {
+    display: none;
+}
+#haloword-content .label {
+    display: none;
+}
+#haloword-content .related {
+    display: none;
+}
+#haloword-content .phonetic {
+    display: none;
+}
+#haloword-content .entries > .label[title="Part-of-Speech"] {
+    display: inline-block;
 	margin: 5px 2px 3px 2px;
 	color: #555;
 	font-weight: bold;
-}
-#haloword-content .part-of-speech span {
 	background: #f9f9f9;
 	border-radius: 3px;
 	padding: 1px 3px;
 }
-#haloword-content ol {
-	padding-left: 30px;
-	margin: 3px 0;
+#haloword-content .entries > .label[title="Part-of-Speech"]:first-child {
+    margin-top: 2px;
 }
-#haloword-content ol li {
-	margin: 4px 0;
-
-	/* avoid affections */
-	list-style-type: decimal;
-	list-style-position: outside;
+#haloword-content .meaning {
+    display: list-item;
+    list-style-type: decimal;
+    margin: 2px 0 3px 26px;
 }
-#haloword-content p {
-	margin: 4px 0;
-
-	/* avoid affections */
-	color: #000;
-	font-size: 13px;
-	line-height: 17px;
+#haloword-content .meaning p {
+    margin-top: 2px;
 }
-#haloword-content p.loading,
-#haloword-content p.notfound {
-	margin: 6px 0 2px 6px;
+#haloword-content .meaning .text[data-language="en"] {
+    display: none;
+}
+#haloword-content .meaning:nth-of-type(n+4) {
+    display: none;
 }

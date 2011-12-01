@@ -27,6 +27,7 @@ haloword_opened = false;
 $("body").append('<div id="haloword-lookup" class="ui-widget-content">\
 <div id="haloword-title">\
 <span id="haloword-word"></span>\
+<a herf="#" id="haloword-pron" class="haloword-button" title="发音"></a>\
 <div id="haloword-control-container">\
 <a href="#" id="haloword-open" class="haloword-button" title="查看单词详细释义" target="_blank"></a>\
 <a herf="#" id="haloword-close" class="haloword-button" title="关闭查询窗"></a>\
@@ -78,6 +79,7 @@ $("body").mouseup(function(e) {
         return false;
     });
 
+    $("#haloword-pron").hide();
     $("#haloword-content").html("<p class=\"loading\">Loading definitions...</p>");
     $("#haloword-lookup").show();
 
@@ -93,10 +95,20 @@ $("body").mouseup(function(e) {
         }
         meaning = process_primary(data.primaries);
         if (meaning) {
-            $("#haloword-content").hide();
             $("#haloword-content").html(meaning);
-            format_content();
-            $("#haloword-content").show();
+
+            if ($("audio", $("#haloword-content"))[0] != undefined) {
+                $("#haloword-pron").show();
+                $("#haloword-pron").click(function() {
+                    $("audio", $("#haloword-content"))[0].play();
+                })
+            }
+            
+            // format content
+            $("#haloword-content .related").remove();
+            if (lang == "Chinese") {
+                $('#haloword-content .meaning .text[data-language="en"]').show();
+            }
         }
         else {
             $("#haloword-content").html("<p class=\"notfound\">I'm sorry, Dave.<br />I'm afraid I can't find that.</p>");
@@ -105,7 +117,3 @@ $("body").mouseup(function(e) {
 
     setTimeout(function() { haloword_opened = true; }, 100); // HACK: fix dict window not openable
 });
-
-function format_content() {
-    
-}

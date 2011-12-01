@@ -52,7 +52,11 @@ function process_terms(terms, type) {
             html += "<a class='pronounce' onclick='$(\"audio\", this)[0].play();'><audio src='" + terms.text + "'></audio></a>"
         }
         else if (terms.type != undefined) {
-            html += '<p class="'+ terms.type + '">';
+            var lang_str = "";
+            if (terms.language != undefined) {
+                lang_str = ' data-language="' + terms.language + '"';
+            }
+            html += '<p class="'+ terms.type + '"' + lang_str + '>';
            	html += terms.text;
             html += process_labels(terms.labels);
             html += "</p>";
