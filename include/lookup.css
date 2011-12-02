@@ -69,6 +69,11 @@
     background: #ccc -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(245, 245, 245)), to(rgb(215, 215, 215)));
 }
 
+#haloword-content .haloword-loading,
+#haloword-content .haloword-notfound {
+    padding: 4px;
+}
+
 #haloword-content .headword > .terms > p.text:first-child {
     display: none;
 }

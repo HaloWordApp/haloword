@@ -80,7 +80,7 @@ $("body").mouseup(function(e) {
     });
 
     $("#haloword-pron").hide();
-    $("#haloword-content").html("<p class=\"loading\">Loading definitions...</p>");
+    $("#haloword-content").html("<p class=\"haloword-loading\">Loading definitions...</p>");
     $("#haloword-lookup").show();
 
     chrome_getJSON("http://www.google.com/dictionary/json?callback=?", {
@@ -90,7 +90,7 @@ $("body").mouseup(function(e) {
     },
     function(data) {
         if (!data.primaries) {
-            $("#haloword-content").html("<p class=\"notfound\">I'm sorry, Dave.<br />I'm afraid I can't find that.</p>");
+            $("#haloword-content").html("<p class=\"haloword-notfound\">I'm sorry, Dave.<br />I'm afraid I can't find that.</p>");
             return;
         }
         meaning = process_primary(data.primaries);
