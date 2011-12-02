@@ -141,11 +141,13 @@ function init_db() {
         },
         /* no table, create them */
         function(tx, error) {
-            tx.executeSql("CREATE TABLE `Word` (`id` REAL UNIQUE, `word` TEXT, `timestamp` REAL)", [], null, null);
-
-            storage_words(default_words);
-            update_db();
-            init_wordlist();
+            tx.executeSql("CREATE TABLE `Word` (`id` REAL UNIQUE, `word` TEXT, `timestamp` REAL, `sequence` REAL, `status` REAL)", [],
+            function() {
+                localStorage['db_version'] = 2;
+                storage_words(default_words);
+                init_wordlist();
+            },
+            null);
         });
     });
 }
@@ -249,7 +251,7 @@ function wordlist_add(word) {
 
 function wordlist_append(word) {
     $("#wordlist").append('<li id="wordlist_' + escape4id(word) + '"><div class="delete" title="Remove from word list"></div>' + word + "</li>");
-}
+} 
 
 /* QUERY */
 
