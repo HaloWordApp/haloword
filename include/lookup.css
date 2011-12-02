@@ -112,6 +112,9 @@
 #haloword-content .meaning .text[data-language="en"] {
     display: none;
 }
+#haloword-content .meaning .text[data-language="en"]:last-child {
+    display: block;
+}
 #haloword-content .meaning:nth-of-type(n+4) {
     display: none;
 }
