@@ -59,7 +59,7 @@ body {
     width: 960px;
     height: 100%;
     margin: 0 auto;
-    font: 24px/36px DroidSans, sans-serif;
+    font: 24px/36px DroidSans, 'Hiragino Sans GB', 'WenQuanYi Micro Hei', 'Microsoft YaHei', sans-serif;
 }
 
 hr {
@@ -116,14 +116,15 @@ a {
 
 #side li {
     padding: 0px 26px 0px 0;
-    font: 24px/48px DroidSans;
+    font: 24px/48px DroidSans, 'Hiragino Sans GB', 'WenQuanYi Micro Hei', 'Microsoft YaHei', sans-serif;
     color: #3D65BB;
     border: 1px solid transparent;
-    vertical-align: middle
+    vertical-align: middle;
 }
 
 #side li.current {
-    font-family: DroidSansBold;
+    font-family: DroidSansBold, 'Hiragino Sans GB', 'WenQuanYi Micro Hei', 'Microsoft YaHei', sans-serif;
+    font-weight: bold;
     border-right-color: #AABEDC;
     background: -webkit-linear-gradient(left, #BBCEE9, #BBCEE9 97%, #AABEDC);
 }
@@ -146,11 +147,12 @@ a {
 
 #side #title {
     margin-top: 18px;
-    font: 29px/54px DroidSans;
+    font: 29px/54px DroidSans, 'Hiragino Sans GB', 'WenQuanYi Micro Hei', 'Microsoft YaHei', sans-serif;
 }
 
 #side #title.current {
-    font-family: DroidSansBold;
+    font-family: DroidSansBold, 'Hiragino Sans GB', 'WenQuanYi Micro Hei', 'Microsoft YaHei', sans-serif;
+    font-weight: bold;
 }
 
 #side #search {
@@ -165,7 +167,7 @@ a {
     border: 0;
     padding: 6px 10px;
     font-size: 16px;
-    font-family: DroidSans;
+    font-family: DroidSans, 'Hiragino Sans GB', 'WenQuanYi Micro Hei', 'Microsoft YaHei', sans-serif;
     border-radius: 15px;
 }
 
@@ -229,7 +231,7 @@ a {
 
 #main header {
     margin-top: 26px;
-    font: 36px/40px PTSerif;
+    font: 36px/40px PTSerif, 'Hiragino Sans GB', 'WenQuanYi Micro Hei', 'Microsoft YaHei', sans-serif;
     color: #53637D;
 }
 
