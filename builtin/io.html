@@ -94,11 +94,16 @@ $(document).ready(function() {
 });
 
 function export_wordlist(result) {
-    var list = "";
+    list = "";
 
     var separator = $("#io #export .separate-method").val();
     if (separator == "line") {
-        separator = "\n";
+        if (get_OS() == "Windows") {
+            separator = "\r\n";
+        }
+        else {
+            separator = "\n";
+        }
     }
     else if (separator == "comma") {
         separator = ", ";
@@ -131,7 +136,7 @@ function download_wordlist() {
     }
     var urlObject = window.URL || window.webkitURL || window;
     var builder = new BlobBuilder(); 
-    builder.append($("#io #export textarea").val()); 
+    builder.append(list); 
     var export_blob = builder.getBlob(); 
 
     var save_link = document.createElementNS("http://www.w3.org/1999/xhtml", "a")
