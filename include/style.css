@@ -62,6 +62,10 @@ body {
     font: 24px/36px DroidSans, 'Hiragino Sans GB', 'WenQuanYi Micro Hei', 'Microsoft YaHei', sans-serif;
 }
 
+button, select {
+    font-family: DroidSans, 'Hiragino Sans GB', 'WenQuanYi Micro Hei', 'Microsoft YaHei', sans-serif;
+}
+
 hr {
     background-color: #dbdbdb;
     border: 0;
