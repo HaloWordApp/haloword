@@ -35,10 +35,6 @@ table {
     src: url("/include/font/PTSerif.ttf") format("truetype");
 }
 @font-face {
-    font-family: PTSans;
-    src: url("/include/font/PTSans.ttf") format("truetype");
-}
-@font-face {
     font-family: DroidSans;
     src: url("/include/font/DroidSans.ttf") format("truetype");
 }
@@ -300,6 +296,31 @@ a {
 
 #main header #button_remove:hover {
     background: url('/img/icon.svg') -30px -30px;
+}
+
+#main #extradef {
+    background-color: #fafafa;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    margin: 20px 10px 0 10px;
+    padding: 10px;
+}
+
+#main #extradef p {
+    margin: 0px;
+    font-family: DroidSans, 'Hiragino Sans GB', 'WenQuanYi Micro Hei', 'Microsoft YaHei', sans-serif;
+}
+
+#main #extradef .from {
+    font-family: Helvetica, Arial;
+    font-size: 14px;
+    line-height: 30px;
+    color: #AAAAAA;
+}
+
+#main #extradef .content {
+    font-size: 16px;
+    line-height: 30px;
 }
 
 #main #worddef {

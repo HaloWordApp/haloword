@@ -38,12 +38,13 @@ $(document).ready(function() {
     });
 
     /* Update notification */
-    cur_version = 3;
+    cur_version = 4;
     if (!localStorage['prev_version']) {
         localStorage['prev_version'] = 0;
     }
     if (cur_version > localStorage['prev_version']) {
-        $("#bubble").html('<p>恭喜！您的 Halo Word 已更新至最新版本，支持<a href="#halo:io"><strong>导入导出单词表</strong></a>等功能。</p><p style="margin-top: 4px;">如果您喜欢这个应用，不妨考虑<a href="https://chrome.google.com/webstore/detail/bhkcehpnnlgncpnefpanachijmhikocj" target="_blank">打个五星</a>或者<a href="https://me.alipay.com/xhacker" target="_blank">捐赠</a>。</p><p class="align-right"><button  id="button-go-version">查看版本信息</button><button id="button-close-bubble">关闭</button></p>');
+        $("#bubble").html('<p>您好，最近有用户反馈 Halo Word 无法获得中文释义，似乎缘于 Google 字典 API 的一些变化。我们已核实此问题并在积极处理，请稍安毋躁，谢谢。</p><p class="align-right"><button id="button-close-bubble">关闭</button></p>');
+        //$("#bubble").html('<p>恭喜！您的 Halo Word 已更新至最新版本，支持<a href="#halo:io"><strong>导入导出单词表</strong></a>等功能。</p><p style="margin-top: 4px;">如果您喜欢这个应用，不妨考虑<a href="https://chrome.google.com/webstore/detail/bhkcehpnnlgncpnefpanachijmhikocj" target="_blank">打个五星</a>或者<a href="https://me.alipay.com/xhacker" target="_blank">捐赠</a>。</p><p class="align-right"><button  id="button-go-version">查看版本信息</button><button id="button-close-bubble">关闭</button></p>');
         $("#bubble").show();
     }
     $("#button-close-bubble").click(function() {
@@ -279,9 +280,40 @@ function show_def(word) {
 
     show_builtin("loading");
 
+    $("#extradef").show();
+    document.title = word + " ‹ Halo Word";
+    $("#wordtitle").html(word);
+
+    db.transaction(function (tx) {
+        tx.executeSql("SELECT COUNT(*) AS `exist` FROM `Word` WHERE `word` = ?", [word],
+        function(tx, result) {
+            if (result.rows.item(0)['exist']) {
+                $("#button_remove").show();
+            }
+            else {
+                $("#button_add").show();
+            }
+        }, null);
+    });
+
     $.ajax({
         url: "http://www.google.com/dictionary/json?callback=process_json&q=" + word + "&sl=en&tl=zh-cn",
         dataType: "script"
+    });
+
+    $("#extradef .content").html("loading...");
+    console.log("http://dict.cn/ws.php?utf8=true&q=" + word)
+    $.ajax({
+        url: "http://dict.cn/ws.php?utf8=true&q=" + word,
+        dataType: "xml",
+        success: function(data) {
+            console.log("miao")
+            $(data).find("dict").each(function(i) { 
+                var def = $(this).children("def").text();
+                def = def.replace('\n', '<br />');
+                $("#extradef .content").html(def);
+            });
+        }
     });
 }
 
@@ -298,12 +330,12 @@ function show_builtin(builtin) {
 
         title = $("#builtin-title").html();
         if (title) {
-            document.title = title + " ‹ Halo Word";
+            $("#extradef").hide();
+            if (title != "Halo Word") {
+                title = title + " ‹ Halo Word";
+            }
+            document.title = title;
             $("#wordtitle").html(title);
-        }
-        else {
-            document.title = "Halo Word";
-            $("#wordtitle").html("Halo Word");
         }
 
         if (builtin == "welcome") {
@@ -318,21 +350,6 @@ function process_builtin(data) {
 }
 
 function process_json(data) {
-    document.title = word + " ‹ Halo Word";
-    $("#wordtitle").html(word);
-
-    db.transaction(function (tx) {
-        tx.executeSql("SELECT COUNT(*) AS `exist` FROM `Word` WHERE `word` = ?", [word],
-        function(tx, result) {
-            if (result.rows.item(0)['exist']) {
-                $("#button_remove").show();
-            }
-            else {
-                $("#button_add").show();
-            }
-        }, null);
-    });
-
     if (!data.primaries) {
         show_builtin("notfound");
         return;
