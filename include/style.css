@@ -220,6 +220,10 @@ a {
     margin: 0 2px;
     border-bottom: 1px solid #ccc;
 }
+#bubble strong {
+    font-family: DroidSansBold, 'Hiragino Sans GB', 'WenQuanYi Micro Hei', 'Microsoft YaHei', sans-serif;
+    font-weight: bold;
+}
 
 #main {
     width: 619px;
