@@ -28,6 +28,7 @@ $("body").append('<div id="haloword-lookup" class="ui-widget-content">\
 <div id="haloword-title">\
 <span id="haloword-word"></span>\
 <a herf="#" id="haloword-pron" class="haloword-button" title="发音"></a>\
+<audio id="haloword-audio"></audio>\
 <div id="haloword-control-container">\
 <a href="#" id="haloword-open" class="haloword-button" title="查看单词详细释义" target="_blank"></a>\
 <a herf="#" id="haloword-close" class="haloword-button" title="关闭查询窗"></a>\
@@ -80,38 +81,32 @@ $("body").mouseup(function(e) {
     });
 
     $("#haloword-pron").hide();
-    $("#haloword-content").html("<p class=\"haloword-loading\">Loading definitions...</p>");
+    $("#haloword-content").html("<p>Loading definitions...</p>");
     $("#haloword-lookup").show();
 
-    chrome_getJSON("http://www.google.com/dictionary/json?callback=?", {
-        q: selection,
-        sl: "en",
-        tl: "zh-cn"
-    },
-    function(data) {
-        if (!data.primaries) {
-            $("#haloword-content").html("<p class=\"haloword-notfound\">I'm sorry, Dave.<br />I'm afraid I can't find that.</p>");
-            return;
-        }
-        meaning = process_primary(data.primaries);
-        if (meaning) {
-            $("#haloword-content").html(meaning);
-
-            if ($("audio", $("#haloword-content"))[0] != undefined) {
-                $("#haloword-pron").show();
-                $("#haloword-pron").click(function() {
-                    $("audio", $("#haloword-content"))[0].play();
-                })
-            }
-            
-            // format content
-            $("#haloword-content .related").remove();
-            if (lang == "Chinese") {
-                $('#haloword-content .meaning .text[data-language="en"]').show();
-            }
-        }
-        else {
-            $("#haloword-content").html("<p class=\"notfound\">I'm sorry, Dave.<br />I'm afraid I can't find that.</p>");
+    $.ajax({
+        url: "http://dict.cn/ws.php?utf8=true&q=" + selection,
+        dataType: "xml",
+        success: function(data) {
+            $(data).find("dict").each(function(i) { 
+                var def = $(this).children("def").text();
+                if (!def) {
+                    $("#haloword-content").html("<p>I'm sorry, Dave.</p><p>I'm afraid I can't find that.</p>");
+                }
+                else {
+                    def = def.replace('\n', '</p><p>');
+                    def = '<p>' + def + '</p>';
+                    $("#haloword-content").html(def);
+                    var audio_url = $(this).children("audio").text();
+                    if (audio_url) {
+                        $("#haloword-audio").attr("src", audio_url);
+                        $("#haloword-pron").show();
+                        $("#haloword-pron").click(function() {
+                            $("#haloword-audio")[0].play();
+                        })
+                    }
+                }
+            });
         }
     });
 

@@ -301,7 +301,6 @@ function show_def(word) {
     });
 
     $("#extradef .content").html("loading...");
-    console.log("http://dict.cn/ws.php?utf8=true&q=" + word)
     $.ajax({
         url: "http://dict.cn/ws.php?utf8=true&q=" + word,
         dataType: "xml",
@@ -330,11 +329,11 @@ function show_builtin(builtin) {
         title = $("#builtin-title").html();
         if (title) {
             $("#extradef").hide();
+            $("#wordtitle").html(title);
             if (title != "Halo Word") {
                 title = title + " ‹ Halo Word";
             }
             document.title = title;
-            $("#wordtitle").html(title);
         }
 
         if (builtin == "welcome") {

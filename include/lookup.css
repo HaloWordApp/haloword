@@ -69,52 +69,6 @@
     background: #ccc -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(245, 245, 245)), to(rgb(215, 215, 215)));
 }
 
-#haloword-content .haloword-loading,
-#haloword-content .haloword-notfound {
-    padding: 4px;
-}
-
-#haloword-content .headword > .terms > p.text:first-child {
-    display: none;
-}
-#haloword-content .example {
-    display: none;
-}
-#haloword-content .label {
-    display: none;
-}
-#haloword-content .related {
-    display: none;
-}
-#haloword-content .phonetic {
-    display: none;
-}
-#haloword-content .entries > .label[title="Part-of-Speech"] {
-    display: inline-block;
-	margin: 5px 2px 3px 2px;
-	color: #555;
-	font-weight: bold;
-	background: #f9f9f9;
-	border-radius: 3px;
-	padding: 1px 3px;
-}
-#haloword-content .entries > .label[title="Part-of-Speech"]:first-child {
-    margin-top: 2px;
-}
-#haloword-content .meaning {
-    display: list-item;
-    list-style-type: decimal;
-    margin: 2px 0 3px 26px;
-}
-#haloword-content .meaning p {
-    margin-top: 2px;
-}
-#haloword-content .meaning .text[data-language="en"] {
-    display: none;
-}
-#haloword-content .meaning .text[data-language="en"]:last-child {
-    display: block;
-}
-#haloword-content .meaning:nth-of-type(n+4) {
-    display: none;
+#haloword-content p {
+    margin: 6px;
 }
