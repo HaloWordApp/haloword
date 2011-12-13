@@ -319,7 +319,10 @@ a {
     font-family: Helvetica, Arial;
     font-size: 14px;
     line-height: 30px;
-    color: #AAAAAA;
+    display: inline-block;
+    float: right;
+    color: #ccc;
+    margin-right: 12px;
 }
 
 #main #extradef .content {
@@ -355,18 +358,26 @@ a {
 }
 
 /* word */
-#main .headword > .terms > p.text:first-child {
+/* #main .headword > .terms > p.text:first-child {
     display: none;
-}
-/* phonetic */
+} */
 #main .headword > .terms {
-    margin: 0 0 10px 12px;
+    margin: 15px 0;
+}
+#main .headword > .terms .text {
+    display: inline-block;
+    float: left;
+}
+#main .headword > .terms .phonetic {
+    display: none;
 }
 #main .pronounce {
     display: inline-block;
+    position: relative;
     height: 13px;
     width: 13px;
-    margin: 0 3px 0 5px;
+    top: 5px;
+    left: 10px;
     background: url('/img/icon-neue.svg') 0px 0px;
 }
 #main .pronounce:hover {
@@ -450,3 +461,20 @@ a {
     margin: 4px 0;
 }
 
+/* builtin */
+#main .headword.builtin > .terms {
+    margin: 0 0 10px 12px;
+}
+#main .headword.builtin > .terms .phonetic {
+    display: inline;
+}
+#main .headword.builtin .pronounce {
+    display: inline-block;
+    height: 13px;
+    width: 13px;
+    top: 1px;
+    left: 0;
+    margin-left: 5px;
+    margin-right: 3px;
+    background: url('/img/icon-neue.svg') 0px 0px;
+}

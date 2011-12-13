@@ -311,6 +311,9 @@ function show_def(word) {
                 console.log(def)
                 def = def.replace(/\n/g, '<br />');
                 $("#extradef .content").html(def);
+                var phonetic = $(this).children("pron").text();
+                phonetic = "[" + phonetic + "]";
+                $("#extradef .phonetic").html(phonetic);
             });
         }
     });
