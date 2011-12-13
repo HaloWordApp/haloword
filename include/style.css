@@ -361,8 +361,12 @@ a {
 /* #main .headword > .terms > p.text:first-child {
     display: none;
 } */
+#main .headword > .terms:first-child {
+    margin-top: 0;
+}
 #main .headword > .terms {
     margin: 15px 0;
+    padding-left: 12px;
 }
 #main .headword > .terms .text {
     display: inline-block;
@@ -464,6 +468,7 @@ a {
 /* builtin */
 #main .headword.builtin > .terms {
     margin: 0 0 10px 12px;
+    padding: 0;
 }
 #main .headword.builtin > .terms .phonetic {
     display: inline;
