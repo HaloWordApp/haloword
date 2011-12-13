@@ -308,7 +308,8 @@ function show_def(word) {
             console.log("miao")
             $(data).find("dict").each(function(i) { 
                 var def = $(this).children("def").text();
-                def = def.replace('\n', '<br />');
+                console.log(def)
+                def = def.replace(/\n/g, '<br />');
                 $("#extradef .content").html(def);
             });
         }
