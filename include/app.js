@@ -300,6 +300,7 @@ function show_def(word) {
         dataType: "script"
     });
 
+    $("#extradef .phonetic").html("['ləudiŋ]");
     $("#extradef .content").html("loading...");
     $.ajax({
         url: "http://dict.cn/ws.php?utf8=true&q=" + word,

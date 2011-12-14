@@ -361,11 +361,11 @@ a {
 /* #main .headword > .terms > p.text:first-child {
     display: none;
 } */
-#main .headword > .terms:first-child {
+#main .headword:first-child > .terms {
     margin-top: 0;
 }
 #main .headword > .terms {
-    margin: 15px 0;
+    margin: 20px 0 15px 0;
     padding-left: 12px;
 }
 #main .headword > .terms .text {
