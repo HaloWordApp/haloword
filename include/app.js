@@ -305,15 +305,22 @@ function show_def(word) {
         url: "http://dict.cn/ws.php?utf8=true&q=" + word,
         dataType: "xml",
         success: function(data) {
-            console.log("miao")
             $(data).find("dict").each(function(i) { 
                 var def = $(this).children("def").text();
-                console.log(def)
+                if (!def) {
+                    $("#extradef").hide();
+                }
                 def = def.replace(/\n/g, '<br />');
                 $("#extradef .content").html(def);
                 var phonetic = $(this).children("pron").text();
-                phonetic = "[" + phonetic + "]";
-                $("#extradef .phonetic").html(phonetic);
+                if (phonetic) {
+                    phonetic = "[" + phonetic + "]";
+                    $("#extradef .phonetic").html(phonetic);
+                    $("#extradef .phonetic").show();
+                }
+                else {
+                    $("#extradef .phonetic").hide();
+                }
             });
         }
     });
