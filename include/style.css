@@ -354,7 +354,7 @@ a {
     padding-left: 12px;
 }
 #main p.text {
-    font: 24px/34px PTSerif, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312" serif;
+    font-family: PTSerif, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312" serif;
 }
 
 /* word */
