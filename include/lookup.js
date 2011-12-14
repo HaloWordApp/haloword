@@ -94,7 +94,7 @@ $("body").mouseup(function(e) {
                     $("#haloword-content").html("<p>I'm sorry, Dave.</p><p>I'm afraid I can't find that.</p>");
                 }
                 else {
-                    def = def.replace('\n', '</p><p>');
+                    def = def.replace(/\n/g, '</p><p>');
                     def = '<p>' + def + '</p>';
                     $("#haloword-content").html(def);
                     var audio_url = $(this).children("audio").text();
