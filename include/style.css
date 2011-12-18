@@ -365,8 +365,17 @@ a {
     margin-top: 0;
 }
 #main .headword > .terms {
-    margin: 20px 0 15px 0;
+    margin: 20px 0 8px 0;
     padding-left: 12px;
+}
+/* clearfix */
+#main .headword > .terms:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
 }
 #main .headword > .terms .text {
     display: inline-block;
@@ -382,6 +391,7 @@ a {
     width: 13px;
     top: 5px;
     left: 10px;
+    margin-right: 5px;
     background: url('/img/icon-neue.svg') 0px 0px;
 }
 #main .pronounce:hover {
