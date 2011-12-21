@@ -4,10 +4,10 @@
 	border: 2px solid #95CBF9;
 	padding: 3px 3px 5px 3px;
 	width: 240px;
-	background-color: #fff;
 	font-family: "Helvetica Neue", Helvetica, "Liberation Sans", Arial, "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
 
 	/* avoid affections */
+	background-color: #fff;
 	text-align: left;
 	z-index: 10000;
 }
@@ -53,6 +53,9 @@
 	color: #000;
 	font-size: 13px;
 	line-height: 17px;
+	
+	/* avoid affections */
+    background-color: #fff;
 }
 #haloword-content::-webkit-scrollbar {
     width: 8px;
