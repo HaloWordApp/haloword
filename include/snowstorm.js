@@ -1305,7 +1305,7 @@ var snowStorm = (function(window, document) {
   }
 
   // hooks for starting the snow
-  s.events.add(window, 'load', doStart, false);
+  //s.events.add(window, 'load', doStart, false);
 
   return this;
 
