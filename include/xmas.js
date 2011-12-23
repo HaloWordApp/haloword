@@ -11,7 +11,9 @@ $(document).ready(function() {
         date in {'23':true, '24':true, '25':true, '26':true} ) {
         /* Happy Xmas :) */
         $("li#title").html("Happy Xmas");
-        snowStorm.start();
+        if (date == 24 || date == 25) {
+            snowStorm.start();
+        }
     }
     
     if　(month == 12 &&
