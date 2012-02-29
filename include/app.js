@@ -374,5 +374,5 @@ function process_json(data) {
         return;
     }
 
-    $("#worddef").append('<p class="credits">Content provided by <a href="http://www.google.com/dictionary" target="_blank">Google Dictionary</a></p>');
+    $("#worddef").append('<p class="credits">Content provided by <a href="http://www.google.com/" target="_blank">Google Dictionary</a></p>');
 }
