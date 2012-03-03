@@ -1,6 +1,6 @@
 {
   "name": "Halo Word Dictionary",
-  "version": "0.3.3.6",
+  "version": "0.3.3.7",
 
   "description": "精巧易用的英汉字典，界面简洁舒适。包含单词表、划词查询、右键查询等功能。Enjoy!",
   "icons": {
@@ -21,14 +21,13 @@
   "content_scripts": [ {
     "js": [ "include/jquery.min.js", "include/jquery-ui.min.js", "include/meaning.js", "include/lookup.js" ],
     "css": [ "include/lookup.css" ],
-    "matches": [ "http://*/*", "https://*/*" ]
+    "matches": [ "<all_urls>" ],
+    "all_frames": true
   } ],
   "minimum_chrome_version": "9",
   "omnibox": { "keyword" : "halo" },
   "permissions": [
-    "http://*/*",
-    "https://*/*",
-    "http://www.gstatic.com/*",
+    "<all_urls>",
     "unlimitedStorage",
     "contextMenus",
     "tabs"
