@@ -37,16 +37,17 @@ haloword_html = '<div id="haloword-lookup" class="ui-widget-content">\
 </div><div id="haloword-content"></div></div>';
 $("body").append(haloword_html);
 
+// deal with Clearly
 document.addEventListener("DOMNodeInserted", function(event) {
     var element = event.target;
-    var tag = element.tagName;
-    if (tag && tag.toLowerCase() == "iframe") {
+    if ($(element).attr("id") == "readable_iframe") {
         // HACK: wait for iframe ready
         setTimeout(function() {
             $("body", element.contentDocument).mouseup(event_mouseup);
             $("body", element.contentDocument).click(event_click);
             if ($(element).css('z-index') >= 2147483647) {
-                $(element).attr('style', 'z-index: 2147483646 !important');
+                var style = $(element).attr('style') + ' z-index: 2147483646 !important';
+                $(element).attr('style', style);
             }
         }, 1000);
     }
@@ -89,7 +90,9 @@ function event_mouseup(e) {
     selection = $.trim(window.getSelection());
     if (!selection) {
         $("iframe").each(function() {
-            selection = $.trim(this.contentDocument.getSelection());
+            if (this.contentDocument) {
+                selection = $.trim(this.contentDocument.getSelection());
+            }    
             if (selection) {
                 return false;
             }
