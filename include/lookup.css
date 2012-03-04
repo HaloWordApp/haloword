@@ -26,6 +26,9 @@
 	line-height: 16px;
 	padding: 2px 3px 2px 5px;
 	cursor: move;
+	
+	/* avoid affections */
+	width: 232px;
 }
 #haloword-word {
 	float: left;
