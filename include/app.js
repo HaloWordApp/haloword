@@ -38,16 +38,16 @@ $(document).ready(function() {
     });
 
     /* Update notification */
-    cur_version = 6;
-    if (!localStorage['prev_version']) {
-        localStorage['prev_version'] = 0;
+    cur_version = 7;
+    if (!localStorage.prev_version) {
+        localStorage.prev_version = 0;
     }
-    if (cur_version > localStorage['prev_version']) {
-        $("#bubble").html('<p>恭喜！您的 Halo Word 已更新至最新版本，支持在本地网页、Gmail 等所有页面进行取词。</p><p style="margin-top: 4px;">如果您喜欢这个应用，不妨考虑<a href="https://chrome.google.com/webstore/detail/bhkcehpnnlgncpnefpanachijmhikocj" target="_blank">打个五星</a>或者<a href="https://me.alipay.com/xhacker" target="_blank">捐赠</a>。</p><p class="align-right"><button  id="button-go-version">查看版本信息</button><button id="button-close-bubble">关闭</button></p>');
+    if (cur_version > localStorage.prev_version) {
+        $("#bubble").html('<p>恭喜！Halo Word 已更新至最新版本，支持在本地网页等所有页面进行取词（请在 <a href="chrome://settings/extensions">设置 → 扩展程序</a> 中展开 Halo Word 并勾选「允许访问文件网址」）。</p><p style="margin-top: 4px;">如果您喜欢这个应用，不妨考虑<a href="https://chrome.google.com/webstore/detail/bhkcehpnnlgncpnefpanachijmhikocj" target="_blank">打个五星</a>或者<a href="https://me.alipay.com/xhacker" target="_blank">捐赠</a>。</p><p class="align-right"><button  id="button-go-version">查看版本信息</button><button id="button-close-bubble">关闭</button></p>');
         $("#bubble").show();
     }
     $("#button-close-bubble").click(function() {
-        localStorage['prev_version'] = cur_version;
+        localStorage.prev_version = cur_version;
         $("#bubble").hide();
     });
     $("#button-go-version").click(function() {

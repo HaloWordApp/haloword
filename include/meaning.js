@@ -10,11 +10,11 @@ function process_primary(node) {
         html += "</div>";
     }
     else if (typeof(primary) == "object") {
-        if (primary.type != undefined) {
+        if (primary.type !== undefined) {
             html += process_labels(primary.labels);
 
             html += '<div class="'+ primary.type + '">' + process_terms(primary.terms, primary.type);
-            if (primary.entries != undefined) {
+            if (primary.entries !== undefined) {
                 html += process_primary(primary.entries);
             }
 
@@ -51,13 +51,13 @@ function process_terms(terms, type) {
         if (terms.type == "sound") {
             html += "<a class='pronounce' onclick='$(\"audio\", this)[0].play();'><audio src='" + terms.text + "'></audio></a>"
         }
-        else if (terms.type != undefined) {
+        else if (terms.type !== undefined) {
             var lang_str = "";
-            if (terms.language != undefined) {
+            if (terms.language !== undefined) {
                 lang_str = ' data-language="' + terms.language + '"';
             }
             html += '<p class="'+ terms.type + '"' + lang_str + '>';
-           	html += terms.text;
+            html += terms.text;
             html += process_labels(terms.labels);
             html += "</p>";
         }

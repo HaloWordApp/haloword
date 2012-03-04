@@ -9,7 +9,7 @@
 	/* avoid affections */
 	background-color: #fff;
 	text-align: left;
-	z-index: 10000;
+	z-index: 2147483647 !important;
 }
 #haloword-lookup * {
 	/* avoid affections */

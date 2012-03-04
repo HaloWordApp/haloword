@@ -1,5 +1,5 @@
 chrome_getJSON = function(url, args, callback) {
-  chrome.extension.sendRequest({action: 'getJSON', url: url, args: args }, callback);
+    chrome.extension.sendRequest({action: 'getJSON', url: url, args: args }, callback);
 }
 
 function is_chinese(word) {
@@ -11,7 +11,7 @@ function is_english(word) {
 }
 
 function valid_word(word) {
-    if (word.length == 0 || word.length > 20) {
+    if (word.length === 0 || word.length > 20) {
         return false;
     }
     if (is_chinese(word)) {
@@ -24,7 +24,7 @@ function valid_word(word) {
 }
 
 haloword_opened = false;
-$("body").append('<div id="haloword-lookup" class="ui-widget-content">\
+haloword_html = '<div id="haloword-lookup" class="ui-widget-content">\
 <div id="haloword-title">\
 <span id="haloword-word"></span>\
 <a herf="#" id="haloword-pron" class="haloword-button" title="发音"></a>\
@@ -34,8 +34,28 @@ $("body").append('<div id="haloword-lookup" class="ui-widget-content">\
 <a herf="#" id="haloword-close" class="haloword-button" title="关闭查询窗"></a>\
 </div>\
 <br style="clear: both;" />\
-</div><div id="haloword-content"></div></div>');
-$("html").click(function(event) {
+</div><div id="haloword-content"></div></div>';
+$("body").append(haloword_html);
+
+document.addEventListener("DOMNodeInserted", function(event) {
+    var element = event.target;
+    var tag = element.tagName;
+    if (tag && tag.toLowerCase() == "iframe") {
+        // HACK: wait for iframe ready
+        setTimeout(function() {
+            $("body", element.contentDocument).mouseup(event_mouseup);
+            $("body", element.contentDocument).click(event_click);
+            if ($(element).css('z-index') >= 2147483647) {
+                $(element).attr('style', 'z-index: 2147483646 !important');
+            }
+        }, 1000);
+    }
+});
+
+$("body").mouseup(event_mouseup);
+$("body").click(event_click);
+
+function event_click(event) {
     if (haloword_opened) {
         var target = $(event.target);
         if (target.attr("id") != "haloword-lookup" && !target.parents("#haloword-lookup")[0]) {
@@ -43,7 +63,7 @@ $("html").click(function(event) {
             haloword_opened = false;
         }
     }
-});
+}
 
 icon_url = chrome.extension.getURL("img/icon.svg");
 style_content = "<style>\
@@ -62,15 +82,24 @@ else {
 
 $("#haloword-lookup").draggable({ handle: "#haloword-title" });
 
-$("body").mouseup(function(e) {
+function event_mouseup(e) {
     if (!e.ctrlKey && !e.metaKey) {
         return;
     }
     selection = $.trim(window.getSelection());
+    if (!selection) {
+        $("iframe").each(function() {
+            selection = $.trim(this.contentDocument.getSelection());
+            if (selection) {
+                return false;
+            }
+        });
+    }
     lang = valid_word(selection);
     if (!lang) {
         return;
     }
+
     $("#haloword-word").html(selection);
     $("#haloword-lookup").attr("style", "left: " + e.pageX + "px;" + "top: " + e.pageY + "px;");
     $("#haloword-open").attr("href", chrome.extension.getURL("main.html#" + selection));
@@ -110,5 +139,8 @@ $("body").mouseup(function(e) {
         }
     });
 
-    setTimeout(function() { haloword_opened = true; }, 100); // HACK: fix dict window not openable
-});
+    // HACK: fix dict window not openable
+    setTimeout(function() {
+        haloword_opened = true;
+    }, 100);
+}

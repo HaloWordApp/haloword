@@ -7,8 +7,8 @@ $(document).ready(function() {
 
     //console.log(month + "." + date);
 
-    if　(month == 12 &&
-        date in {'23':true, '24':true, '25':true, '26':true} ) {
+    if (month == 12 &&
+    date in {'23':true, '24':true, '25':true, '26':true} ) {
         /* Happy Xmas :) */
         $("li#title").html("Happy Xmas");
         if (date == 24 || date == 25) {
@@ -16,13 +16,13 @@ $(document).ready(function() {
         }
     }
     
-    if　(month == 12 &&
+    if (month == 12 &&
         date in {'30':true, '31':true} ) {
         /* Bye :) */
         $("li#title").html("Bye " + year);
     }
 
-    if　(month == 1 &&
+    if (month == 1 &&
         date in {'1':true, '2':true, '3':true} ) {
         /* Hello :) */
         $("li#title").html("Hello " + year);
