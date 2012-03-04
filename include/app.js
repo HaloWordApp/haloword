@@ -259,12 +259,12 @@ function query(word) {
     location.hash = word;
 }
 
-$(window).hashchange(function() {
+window.onhashchange = function() {
     show_def(location.hash.substring(1));
-});
+}
 
 function show_def(word) {
-    if (!word) { word = "halo:welcome" };
+    if (!word) { word = "halo:welcome" }
 
     /* fixing a refresh issue. */
     window.word = word;
