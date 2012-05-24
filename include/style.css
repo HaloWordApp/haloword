@@ -310,6 +310,21 @@ a {
     padding: 10px;
 }
 
+#main #extradef .phonetic span {
+    font-size: 15px;
+    margin-right: 10px;
+    padding: 3px 8px 2px 8px;
+    border-radius: 2px;
+    background-color: #fdfdfd;
+    box-shadow: 1px 1px 1px #f0f0f0;
+}
+#main #extradef .phonetic span[onclick] {
+    cursor: pointer;
+}
+#main #extradef .phonetic span[onclick]:hover {
+    background-color: #fcfcfc;
+}
+
 #main #extradef p {
     margin: 0px;
     font-family: DroidSans, 'Hiragino Sans GB', 'WenQuanYi Micro Hei', 'Microsoft YaHei', sans-serif;
@@ -326,8 +341,19 @@ a {
 }
 
 #main #extradef .content {
-    font-size: 16px;
-    line-height: 30px;
+    font-size: 15px;
+    line-height: 24px;
+    margin-top: 6px;    
+}
+
+#main #extradef .content p {
+    padding-left: 0;
+}
+
+#main #extradef .content p.pos {
+    font-family: DroidSansBold;
+    margin-top: 4px;
+    margin-bottom: 3px;
 }
 
 #main #worddef {

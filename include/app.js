@@ -2,7 +2,7 @@ $(document).ready(function() {
     init_db();
 
     $("#search_form").submit(function() {
-        word = $("#search_field").val();
+        var word = $("#search_field").val();
         $("#search_field").select();
         query(word);
         return false;
@@ -13,7 +13,7 @@ $(document).ready(function() {
     });
 
     $("#button_add").click(function() {
-        word = location.hash.substring(1);
+        var word = location.hash.substring(1);
         storage_word(word);
         wordlist_add(word);
         $("li.current").removeClass("current");
@@ -24,7 +24,7 @@ $(document).ready(function() {
     });
 
     $("#button_remove").click(function() {
-        word = location.hash.substring(1);
+        var word = location.hash.substring(1);
         remove_word(word);
         $("#wordlist_" + escape4id(word)).remove();
         $("#button_remove").hide();
@@ -38,7 +38,7 @@ $(document).ready(function() {
     });
 
     /* Update notification */
-    cur_version = 7;
+    var cur_version = 7;
     if (!localStorage.prev_version) {
         localStorage.prev_version = 0;
     }
@@ -65,15 +65,14 @@ $(document).ready(function() {
 
 function get_OS() {
     var ua = navigator.userAgent;
+    var os;
     if (ua.indexOf("Windows") > 0) {
-        return "Windows";
+        os = "Windows";
     }
     else if (ua.indexOf("Mac OS X") > 0) {
-        return "Mac OS X";
+        os = "Mac OS X";
     }
-    else {
-        return "miaow~";
-    }
+    return os;
 }
 
 function refresh_wordlist_trigger() {
@@ -82,13 +81,13 @@ function refresh_wordlist_trigger() {
         $(this).addClass("current");
     });
     $("#wordlist li").click(function() {
-        word = $(this).text();
+        var word = $(this).text();
         $("li.current").removeClass("current");
         $(this).addClass("current");
         query(word);
     });
     $("#wordlist .delete").click(function() {
-        word = $(this).parent().text();
+        var word = $(this).parent().text();
         remove_word(word);
         $(this).parent().remove();
         if (word == location.hash.substring(1)) {
@@ -101,7 +100,7 @@ function refresh_wordlist_trigger() {
 
 /* VERSION */
 
-VERSION = get_version();
+var VERSION = get_version();
 
 function get_version() {
     var xhr = new XMLHttpRequest();
@@ -130,6 +129,7 @@ $(window).resize(on_resize);
 /* word list: newest on top */
 var default_words = ["喵", "miaow", "caesium", "love", "dysprosium", "turf", "Iridium", "daisy", "Chrome", "Capella"];
 
+var db;
 function init_db() {
     db = openDatabase("HaloWord", "0.1", "Database for Halo Word", 200000);
     db.transaction(function (tx) {
@@ -286,7 +286,7 @@ function show_def(word) {
     db.transaction(function (tx) {
         tx.executeSql("SELECT COUNT(*) AS `exist` FROM `Word` WHERE `word` = ?", [word],
         function(tx, result) {
-            if (result.rows.item(0)['exist']) {
+            if (result.rows.item(0).exist) {
                 $("#button_remove").show();
             }
             else {
@@ -300,8 +300,50 @@ function show_def(word) {
         dataType: "script"
     });
 
-    $("#extradef .phonetic").html("['ləudiŋ]");
-    $("#extradef .content").html("loading...");
+    $("#extradef .phonetic").html("<span>ˈləʊdɪŋ</span>");
+    $("#extradef .content").html("<p>loading...</p>");
+
+    $.ajax({
+        url: "http://dict-co.iciba.com/api/dictionary.php?w=" + word,
+        dataType: "xml",
+        success: function(data) {
+            var dict = $("dict", data)[0];
+            
+            if ($("acceptation", dict).length) {
+                if ($("ps", dict).length) {
+                    var phonetic = "";
+                    $("ps", dict).each(function(i) {
+                        var phonetic_text = $(this).text();
+                        if ($("pron", dict)[i]) {
+                            var audio_addr = $($("pron", dict)[i]).text();
+                            var audio_text = '<audio src="' + audio_addr + '"></audio>';
+                            phonetic += '<span onclick="$(\'audio\', this)[0].play();">' + audio_text + phonetic_text + '</span>';
+                        }
+                        else {
+                            phonetic += '<span>' + phonetic_text + '</span>';
+                        }
+                    });
+                    $("#extradef .phonetic").html(phonetic);
+                    $("#extradef .phonetic").show();
+                }
+                else {
+                    $("#extradef .phonetic").hide();
+                }
+                
+                var def = "";
+                $("pos, acceptation", dict).each(function(item) {
+                    def += '<p class="' + this.tagName + '">' + $(this).text() + "</p>";
+                });
+                $("#extradef .content").html(def);
+            }
+            else {
+                // no definition
+                $("#extradef").hide();
+            }
+        }
+    });
+
+/* unfortunately, dict.cn no longer provides API.
     $.ajax({
         url: "http://dict.cn/ws.php?utf8=true&q=" + word,
         dataType: "xml",
@@ -325,6 +367,7 @@ function show_def(word) {
             });
         }
     });
+*/
 }
 
 function is_builtin(word) {
@@ -338,7 +381,7 @@ function show_builtin(builtin) {
     $.get("builtin/" + builtin + ".html", function(data) {
         $("#worddef").html(process_builtin(data));
 
-        title = $("#builtin-title").html();
+        var title = $("#builtin-title").html();
         if (title) {
             $("#extradef").hide();
             $("#wordtitle").html(title);
@@ -365,7 +408,7 @@ function process_json(data) {
         return;
     }
 
-    meaning = process_primary(data.primaries);
+    var meaning = process_primary(data.primaries);
     if (meaning) {
         $("#worddef").html(meaning);
     }

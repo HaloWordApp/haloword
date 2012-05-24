@@ -116,6 +116,7 @@ function event_mouseup(e) {
     $("#haloword-content").html("<p>Loading definitions...</p>");
     $("#haloword-lookup").show();
 
+/* bye, dict.cn.
     $.ajax({
         url: "http://dict.cn/ws.php?utf8=true&q=" + selection,
         dataType: "xml",
@@ -141,6 +142,7 @@ function event_mouseup(e) {
             });
         }
     });
+*/
 
     // HACK: fix dict window not openable
     setTimeout(function() {
