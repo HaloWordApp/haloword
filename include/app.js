@@ -311,12 +311,12 @@ function show_def(word) {
             
             if ($("acceptation", dict).length) {
                 if ($("ps", dict).length) {
-                    var phonetic = "";
+                    var phonetic = '';
                     $("ps", dict).each(function(i) {
                         var phonetic_text = $(this).text();
                         if ($("pron", dict)[i]) {
-                            var audio_addr = $($("pron", dict)[i]).text();
-                            var audio_text = '<audio src="' + audio_addr + '"></audio>';
+                            var audio_url = $($("pron", dict)[i]).text();
+                            var audio_text = '<audio src="' + audio_url + '"></audio>';
                             phonetic += '<span onclick="$(\'audio\', this)[0].play();">' + audio_text + phonetic_text + '</span>';
                         }
                         else {
@@ -330,7 +330,7 @@ function show_def(word) {
                     $("#extradef .phonetic").hide();
                 }
                 
-                var def = "";
+                var def = '';
                 $("pos, acceptation", dict).each(function(item) {
                     def += '<p class="' + this.tagName + '">' + $(this).text() + "</p>";
                 });
@@ -340,6 +340,9 @@ function show_def(word) {
                 // no definition
                 $("#extradef").hide();
             }
+        },
+        error: function(data) {
+            $("#extradef .content").html("Unable to parse XML file.");
         }
     });
 

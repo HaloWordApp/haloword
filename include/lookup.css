@@ -3,7 +3,7 @@
 	position: absolute;
 	border: 2px solid #95CBF9;
 	padding: 3px 3px 5px 3px;
-	width: 240px;
+	width: 260px;
 	font-family: "Helvetica Neue", Helvetica, "Liberation Sans", Arial, "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
 
 	/* avoid affections */
@@ -28,7 +28,7 @@
 	cursor: move;
 	
 	/* avoid affections */
-	width: 232px;
+	width: 252px;
 }
 #haloword-word {
 	float: left;
@@ -55,7 +55,7 @@
 	overflow: auto;
 	color: #000;
 	font-size: 13px;
-	line-height: 19px;
+	line-height: 20px;
 	
 	/* avoid affections */
     background-color: #fff;
@@ -76,5 +76,12 @@
 }
 
 #haloword-content p {
-    margin: 6px;
+    margin: 2px;
+}
+#haloword-content p.pos {
+    margin-top: 3px;
+    font-weight: bold;
+}
+#haloword-content p.pos:first-child {
+    margin-top: 0;
 }

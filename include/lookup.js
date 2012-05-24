@@ -14,17 +14,19 @@ function valid_word(word) {
     if (word.length === 0 || word.length > 20) {
         return false;
     }
+    /* iciba API has no CE dict.
     if (is_chinese(word)) {
         return "Chinese";
     }
-    else if (is_english(word)) {
+    */
+    if (is_english(word)) {
         return "English";
     }
     return false;
 }
 
-haloword_opened = false;
-haloword_html = '<div id="haloword-lookup" class="ui-widget-content">\
+var haloword_opened = false;
+var haloword_html = '<div id="haloword-lookup" class="ui-widget-content">\
 <div id="haloword-title">\
 <span id="haloword-word"></span>\
 <a herf="#" id="haloword-pron" class="haloword-button" title="发音"></a>\
@@ -66,8 +68,8 @@ function event_click(event) {
     }
 }
 
-icon_url = chrome.extension.getURL("img/icon.svg");
-style_content = "<style>\
+var icon_url = chrome.extension.getURL("img/icon.svg");
+var style_content = "<style>\
 #haloword-pron { background: url(" + icon_url + ") -94px -32px; }\
 #haloword-pron:hover { background: url(" + icon_url + ") -110px -32px; }\
 #haloword-open { background: url(" + icon_url + ") -94px -16px; }\
@@ -87,7 +89,7 @@ function event_mouseup(e) {
     if (!e.ctrlKey && !e.metaKey) {
         return;
     }
-    selection = $.trim(window.getSelection());
+    var selection = $.trim(window.getSelection());
     if (!selection) {
         $("iframe").each(function() {
             if (this.contentDocument) {
@@ -98,7 +100,7 @@ function event_mouseup(e) {
             }
         });
     }
-    lang = valid_word(selection);
+    var lang = valid_word(selection);
     if (!lang) {
         return;
     }
@@ -115,6 +117,37 @@ function event_mouseup(e) {
     $("#haloword-pron").hide();
     $("#haloword-content").html("<p>Loading definitions...</p>");
     $("#haloword-lookup").show();
+
+    $.ajax({
+        url: "http://dict-co.iciba.com/api/dictionary.php?w=" + selection,
+        dataType: "xml",
+        success: function(data) {
+            var dict = $("dict", data)[0];
+            
+            if ($("acceptation", dict).length) {
+                var def = '';
+                $("pos, acceptation", dict).each(function(item) {
+                    def += '<p class="' + this.tagName + '">' + $(this).text() + "</p>";
+                });
+                $("#haloword-content").html(def);
+                
+                var audio_url = $($("pron", dict)[0]).text();
+                if (audio_url) {
+                    $("#haloword-audio").attr("src", audio_url);
+                    $("#haloword-pron").show();
+                    $("#haloword-pron").click(function() {
+                        $("#haloword-audio")[0].play();
+                    })
+                }
+            }
+            else {
+                $("#haloword-content").html("<p>I'm sorry, Dave.</p><p>I'm afraid I can't find that.</p>");
+            }
+        },
+        error: function(data) {
+            $("#haloword-content").html("<p>Unable to parse XML file.</p>");
+        }
+    });
 
 /* bye, dict.cn.
     $.ajax({
