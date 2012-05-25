@@ -394,21 +394,27 @@ a {
 #main p.text {
     font-family: PTSerif, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312", serif;
 }
+
+#main p.text b,
+#main p.text strong,
+#main p.text em,
+#main p.text i {
+    font-style: normal;
+}
+
 #main p.text b,
 #main p.text strong {
     font-family: PTSerifBold, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312", serif;
-    font-style: normal;
 }
-#main p.text em {
+#main p.text em,
+#main p.text i {
     font-family: PTSerifItalic, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312", serif;
-    font-style: normal;
 }
 #main p.text em b,
 #main p.text em strong,
 #main p.text b em,
-#main p.text b strong {
+#main p.text strong em {
     font-family: PTSerifBoldItalic, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312", serif;
-    font-style: normal;
 }
 
 /* word */
