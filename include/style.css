@@ -136,7 +136,6 @@ a {
 
 #side li.current {
     font-family: DroidSansBold, 'Hiragino Sans GB', 'WenQuanYi Micro Hei', 'Microsoft YaHei', sans-serif;
-    font-weight: bold;
     border-right-color: #AABEDC;
     background: -webkit-linear-gradient(left, #BBCEE9, #BBCEE9 97%, #AABEDC);
 }
@@ -159,12 +158,11 @@ a {
 
 #side #title {
     margin-top: 18px;
-    font: 29px/54px DroidSans, 'Hiragino Sans GB', 'WenQuanYi Micro Hei', 'Microsoft YaHei', sans-serif;
+    font: 29px/54px DroidSans;
 }
 
 #side #title.current {
-    font-family: DroidSansBold, 'Hiragino Sans GB', 'WenQuanYi Micro Hei', 'Microsoft YaHei', sans-serif;
-    font-weight: bold;
+    font-family: DroidSansBold;
 }
 
 #side #search {
