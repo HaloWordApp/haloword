@@ -304,7 +304,7 @@ function show_def(word) {
     $("#extradef .content").html("<p>loading...</p>");
 
     $.ajax({
-        url: "http://dict-co.iciba.com/api/dictionary.php?w=" + word,
+        url: "http://dict-co.iciba.com/api/dictionary.php?w=" + word.toLowerCase(),
         dataType: "xml",
         success: function(data) {
             var dict = $("dict", data)[0];
