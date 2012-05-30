@@ -303,46 +303,43 @@ function show_def(word) {
     $("#extradef .phonetic").html("<span>ˈləʊdɪŋ</span>");
     $("#extradef .content").html("<p>loading...</p>");
 
+    const YOUDAO_API_KEYFROM = "HaloWordDictionary";
+    const YOUDAO_API_KEY = "1311342268";
+    var youdao_url = "http://fanyi.youdao.com/fanyiapi.do?keyfrom=" + YOUDAO_API_KEYFROM + "&key=" + YOUDAO_API_KEY + "&type=data&doctype=json&version=1.1&q=";
+
     $.ajax({
-        url: "http://dict-co.iciba.com/api/dictionary.php?w=" + word.toLowerCase(),
-        dataType: "xml",
+        url: youdao_url + word,
+        dataType: "json",
         success: function(data) {
-            var dict = $("dict", data)[0];
-            
-            if ($("acceptation", dict).length) {
-                if ($("ps", dict).length) {
-                    var phonetic = '';
-                    $("ps", dict).each(function(i) {
-                        var phonetic_text = $(this).text();
-                        if ($("pron", dict)[i]) {
-                            var audio_url = $($("pron", dict)[i]).text();
-                            var audio_text = '<audio src="' + audio_url + '"></audio>';
-                            phonetic += '<span onclick="$(\'audio\', this)[0].play();">' + audio_text + phonetic_text + '</span>';
-                        }
-                        else {
-                            phonetic += '<span>' + phonetic_text + '</span>';
-                        }
-                    });
-                    $("#extradef .phonetic").html(phonetic);
-                    $("#extradef .phonetic").show();
+            if (data.errorCode == 0) {
+                $("#extradef .from").html("Youdao");
+                $("#extradef .from").attr("href", "http://dict.youdao.com/");
+                if (data.basic) {
+                    if (data.basic.phonetic) {
+                        $("#extradef .phonetic").html("<span>" + data.basic.phonetic + "</span>");
+                        $("#extradef .phonetic").show();
+                    }
+                    else {
+                        $("#extradef .phonetic").hide();
+                    }
+                    
+                    var def = "";
+                    for (var i in data.basic.explains) {
+                        def += "<p>" + data.basic.explains[i] + "</p>";
+                    }
+                    $("#extradef .content").html(def);
                 }
                 else {
-                    $("#extradef .phonetic").hide();
+                    // no definition
+                    $("#extradef").hide();
                 }
-                
-                var def = '';
-                $("pos, acceptation", dict).each(function(item) {
-                    def += '<p class="' + this.tagName + '">' + $(this).text() + "</p>";
-                });
-                $("#extradef .content").html(def);
             }
             else {
-                // no definition
-                $("#extradef").hide();
+                get_iciba();
             }
         },
         error: function(data) {
-            $("#extradef .content").html("Unable to parse XML file.");
+            get_iciba();
         }
     });
 
@@ -421,4 +418,52 @@ function process_json(data) {
     }
 
     $("#worddef").append('<p class="credits">Content provided by <a href="http://www.google.com/" target="_blank">Google Dictionary</a></p>');
+}
+
+function get_iciba() {
+    $.ajax({
+        url: "http://dict-co.iciba.com/api/dictionary.php?w=" + word.toLowerCase(),
+        dataType: "xml",
+        success: function(data) {
+            $("#extradef .from").html("iciba.com");
+            $("#extradef .from").attr("href", "http://www.iciba.com/");
+            
+            var dict = $("dict", data)[0];
+            
+            if ($("acceptation", dict).length) {
+                if ($("ps", dict).length) {
+                    var phonetic = '';
+                    $("ps", dict).each(function(i) {
+                        var phonetic_text = $(this).text();
+                        if ($("pron", dict)[i]) {
+                            var audio_url = $($("pron", dict)[i]).text();
+                            var audio_text = '<audio src="' + audio_url + '"></audio>';
+                            phonetic += '<span onclick="$(\'audio\', this)[0].play();">' + audio_text + phonetic_text + '</span>';
+                        }
+                        else {
+                            phonetic += '<span>' + phonetic_text + '</span>';
+                        }
+                    });
+                    $("#extradef .phonetic").html(phonetic);
+                    $("#extradef .phonetic").show();
+                }
+                else {
+                    $("#extradef .phonetic").hide();
+                }
+                
+                var def = '';
+                $("pos, acceptation", dict).each(function(item) {
+                    def += '<p class="' + this.tagName + '">' + $(this).text() + "</p>";
+                });
+                $("#extradef .content").html(def);
+            }
+            else {
+                // no definition
+                $("#extradef").hide();
+            }
+        },
+        error: function(data) {
+            $("#extradef .content").html("Unable to parse XML file.");
+        }
+    });
 }
