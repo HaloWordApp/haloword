@@ -173,6 +173,29 @@ input[type='submit'][disabled]:hover {
   border-color: #aaa;
   color: #888;
 }
+.toolbar button {
+  float: left;
+  margin: 0;
+  padding: 5px 14px;
+  font-size: 12px;
+}
+.toolbar .first {
+  border-right: 1px solid #ddd;
+  border-radius: 4px 0 0 4px;
+  padding-right: 10px;
+}
+.toolbar .middle {
+  border-left: 0;
+  border-right: 1px solid #ddd;
+  border-radius: 0;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.toolbar .last {
+  border-left: 0;
+  border-radius: 0 4px 4px 0;
+  padding-left: 10px;
+}
 /* Universal */
 html {
   height: 100%;
@@ -317,6 +340,7 @@ a {
   padding: 10px;
   font-size: 14px;
   line-height: 20px;
+  font-family: DroidSans, 'Hiragino Sans GB', 'WenQuanYi Micro Hei', 'Microsoft YaHei', sans-serif;
   color: #555;
 }
 #bubble a {
@@ -325,10 +349,6 @@ a {
   padding: 1px 5px;
   margin: 0 2px;
   border-bottom: 1px solid #ccc;
-}
-#bubble strong {
-  font-family: DroidSans, 'Hiragino Sans GB', 'WenQuanYi Micro Hei', 'Microsoft YaHei', sans-serif;
-  font-weight: bold;
 }
 #main {
   width: 619px;
@@ -342,37 +362,12 @@ a {
   font: 36px/40px PTSerif, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312", serif;
   color: #53637D;
 }
-#toolbar {
+#main header #toolbar {
   display: none;
   float: right;
   padding: 8px 0 0 0;
   line-height: 0;
   margin: 0px 0 0 0;
-}
-#toolbar button {
-  padding: 5px 12px;
-  font-size: 12px;
-}
-.toolbar button {
-  float: left;
-  margin: 0;
-}
-.toolbar .first {
-  border-right: 1px solid #ddd;
-  border-radius: 4px 0 0 4px;
-  padding-right: 8px;
-}
-.toolbar .middle {
-  border-left: 0;
-  border-right: 1px solid #ddd;
-  border-radius: 0;
-  padding-left: 8px;
-  padding-right: 8px;
-}
-.toolbar .last {
-  border-left: 0;
-  border-radius: 0 4px 4px 0;
-  padding-left: 8px;
 }
 #main header #wordtitle {
   float: left;

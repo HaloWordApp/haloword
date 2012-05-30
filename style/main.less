@@ -162,22 +162,18 @@ a {
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     background-color: #fff;
-
     padding: 10px;
     font-size: 14px;
     line-height: 20px;
-    color: #555;
-}
-#bubble a {
-    background-color: #f3f3f3;
-    border-radius: 3px;
-    padding: 1px 5px;
-    margin: 0 2px;
-    border-bottom: 1px solid #ccc;
-}
-#bubble strong {
     font-family: @DroidFontFamily;
-    font-weight: bold;
+    color: #555;
+    a {
+        background-color: #f3f3f3;
+        border-radius: 3px;
+        padding: 1px 5px;
+        margin: 0 2px;
+        border-bottom: 1px solid #ccc;
+    }
 }
 
 #main {
@@ -192,70 +188,41 @@ a {
     margin-top: 26px;
     font: 36px/40px @SerifFontFamily;
     color: #53637D;
-}
-
-#toolbar {
-    display: none;
-    float: right;
-    padding: 8px 0 0 0;
-    line-height: 0;
-    margin: 0px 0 0 0;
-}
-#toolbar button {
-    padding: 5px 12px;
-    font-size: 12px;
-}
-
-.toolbar button {
-    float: left;
-    margin: 0;
-}
-.toolbar .first {
-    border-right: 1px solid #ddd;
-    border-radius: 4px 0 0 4px;
-    padding-right: 8px;
-}
-.toolbar .middle {
-    border-left: 0;
-    border-right: 1px solid #ddd;
-    border-radius: 0;
-    padding-left: 8px;
-    padding-right: 8px;
-}
-.toolbar .last {
-    border-left: 0;
-    border-radius: 0 4px 4px 0;
-    padding-left: 8px;
-}
-
-#main header #wordtitle {
-    float: left;
-}
-
-#main header .button {
-    display: none;
-    width: 30px;
-    height: 30px;
-    margin-top: 10px;
-    float: right;
-    cursor: pointer;
-}
-
-#main header #button_add {
-    background: url('/img/icon.svg') 0 0;
-}
-
-#main header #button_add:hover {
-    background: url('/img/icon.svg') -30px 0;
-}
-
-#main header #button_remove {
-    background: url('/img/icon.svg') 0 -30px;
-}
-
-#main header #button_remove:hover {
-    background: url('/img/icon.svg') -30px -30px;
-}
+    
+    #toolbar {
+        display: none;
+        float: right;
+        padding: 8px 0 0 0;
+        line-height: 0;
+        margin: 0px 0 0 0;
+    }
+    
+    #wordtitle {
+        float: left;
+    }
+    
+    .button {
+        display: none;
+        width: 30px;
+        height: 30px;
+        margin-top: 10px;
+        float: right;
+        cursor: pointer;
+    }
+    
+    #button_add {
+        background: url('/img/icon.svg') 0 0;
+    }
+    #button_add:hover {
+        background: url('/img/icon.svg') -30px 0;
+    }
+    #button_remove {
+        background: url('/img/icon.svg') 0 -30px;
+    }
+    #button_remove:hover {
+        background: url('/img/icon.svg') -30px -30px;
+    }
+} 
 
 #main #extradef {
     background-color: #fafafa;
