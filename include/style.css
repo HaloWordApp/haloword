@@ -33,26 +33,38 @@ table {
 @font-face {
     font-family: PTSerif;
     src: url("/include/font/PTSerif.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
 }
 @font-face {
-    font-family: PTSerifBold;
+    font-family: PTSerif;
     src: url("/include/font/PTSerifBold.ttf") format("truetype");
+    font-weight: bold;
+    font-style: normal;
 }
 @font-face {
-    font-family: PTSerifItalic;
+    font-family: PTSerif;
     src: url("/include/font/PTSerifItalic.ttf") format("truetype");
+    font-weight: normal;
+    font-style: italic;
 }
 @font-face {
-    font-family: PTSerifBoldItalic;
+    font-family: PTSerif;
     src: url("/include/font/PTSerifBoldItalic.ttf") format("truetype");
+    font-weight: bold;
+    font-style: italic;
 }
 @font-face {
     font-family: DroidSans;
     src: url("/include/font/DroidSans.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
 }
 @font-face {
-    font-family: DroidSansBold;
+    font-family: DroidSans;
     src: url("/include/font/DroidSans-Bold.ttf") format("truetype");
+    font-weight: bold;
+    font-style: normal;
 }
 
 /* Universal */
@@ -135,9 +147,10 @@ a {
 }
 
 #side li.current {
-    font-family: DroidSansBold, 'Hiragino Sans GB', 'WenQuanYi Micro Hei', 'Microsoft YaHei', sans-serif;
+    font-family: DroidSans, 'Hiragino Sans GB', 'WenQuanYi Micro Hei', 'Microsoft YaHei', sans-serif;
     border-right-color: #AABEDC;
     background: -webkit-linear-gradient(left, #BBCEE9, #BBCEE9 97%, #AABEDC);
+    font-weight: bold;
 }
 
 #side li:hover {
@@ -162,7 +175,8 @@ a {
 }
 
 #side #title.current {
-    font-family: DroidSansBold;
+    font-family: DroidSans;
+    font-weight: bold;
 }
 
 #side #search {
@@ -231,7 +245,7 @@ a {
     border-bottom: 1px solid #ccc;
 }
 #bubble strong {
-    font-family: DroidSansBold, 'Hiragino Sans GB', 'WenQuanYi Micro Hei', 'Microsoft YaHei', sans-serif;
+    font-family: DroidSans, 'Hiragino Sans GB', 'WenQuanYi Micro Hei', 'Microsoft YaHei', sans-serif;
     font-weight: bold;
 }
 
@@ -361,9 +375,10 @@ a {
 }
 
 #main #extradef .content p.pos {
-    font-family: DroidSansBold;
+    font-family: DroidSans;
     margin-top: 4px;
     margin-bottom: 3px;
+    font-weight: bold;
 }
 
 #main #worddef {
@@ -379,7 +394,8 @@ a {
 
 #main #worddef .credits a {
     color: #bbb;
-    font-family: DroidSansBold;
+    font-family: DroidSans;
+    font-weight: bold;
 }
 #main #worddef .credits a:hover {
     color: #aaa;
@@ -391,29 +407,6 @@ a {
 }
 #main p.text {
     font-family: PTSerif, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312", serif;
-}
-
-#main p.text b,
-#main p.text strong,
-#main p.text em,
-#main p.text i {
-    font-style: normal;
-    font-weight: normal;
-}
-
-#main p.text b,
-#main p.text strong {
-    font-family: PTSerifBold, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312", serif;
-}
-#main p.text em,
-#main p.text i {
-    font-family: PTSerifItalic, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312", serif;
-}
-#main p.text em b,
-#main p.text em strong,
-#main p.text b em,
-#main p.text strong em {
-    font-family: PTSerifBoldItalic, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312", serif;
 }
 
 /* word */
