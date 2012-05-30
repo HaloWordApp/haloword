@@ -38,12 +38,12 @@ $(document).ready(function() {
     });
 
     /* Update notification */
-    var cur_version = 8;
+    var cur_version = 9;
     if (!localStorage.prev_version) {
-        localStorage.prev_version = 8;
+        localStorage.prev_version = cur_version;
     }
-    if (cur_version > localStorage.prev_version) {
-        $("#bubble").html('<p>恭喜！Halo Word 已更新至最新版本，转为使用 iciba 提供的中文释义。</p><p style="margin-top: 4px;">如果您喜欢这个应用，不妨考虑<a href="https://chrome.google.com/webstore/detail/bhkcehpnnlgncpnefpanachijmhikocj/reviews" target="_blank">打个五星</a>或者<a href="https://me.alipay.com/xhacker" target="_blank">捐赠</a>。</p><p class="align-right"><button  id="button-go-version">查看版本信息</button><button id="button-close-bubble">关闭</button></p>');
+    if (!localStorage.prev_version || cur_version > localStorage.prev_version) {
+        $("#bubble").html('<p>Halo Word 已经开始支持长句翻译啦！现在就在查询框输入「Halo Word now supports full text translation」试试吧，也可以在网页上划取整句进行翻译哦。</p><p style="margin-top: 4px;">如果您喜欢这个应用，不妨考虑<a href="https://chrome.google.com/webstore/detail/bhkcehpnnlgncpnefpanachijmhikocj/reviews" target="_blank">打个五星</a>或者<a href="https://me.alipay.com/xhacker" target="_blank">捐赠</a>。</p><p class="align-right"><button  id="button-go-version">查看版本信息</button><button id="button-close-bubble">关闭</button></p>');
         $("#bubble").show();
     }
     $("#button-close-bubble").click(function() {
@@ -303,14 +303,11 @@ function show_def(word) {
     $("#extradef .phonetic").html("<span>ˈləʊdɪŋ</span>");
     $("#extradef .content").html("<p>loading...</p>");
 
-    const YOUDAO_API_KEYFROM = "HaloWordDictionary";
-    const YOUDAO_API_KEY = "1311342268";
-    var youdao_url = "http://fanyi.youdao.com/fanyiapi.do?keyfrom=" + YOUDAO_API_KEYFROM + "&key=" + YOUDAO_API_KEY + "&type=data&doctype=json&version=1.1&q=";
-
     $.ajax({
         url: youdao_url + word,
         dataType: "json",
         success: function(data) {
+            var def = "", i;
             if (data.errorCode === 0) {
                 $("#extradef .from").html("Youdao");
                 $("#extradef .from").attr("href", "http://dict.youdao.com/");
@@ -323,14 +320,20 @@ function show_def(word) {
                         $("#extradef .phonetic").hide();
                     }
                     
-                    var def = "";
-                    for (var i in data.basic.explains) {
+                    for (i in data.basic.explains) {
                         def += "<p>" + data.basic.explains[i] + "</p>";
                     }
                     $("#extradef .content").html(def);
                 }
+                else if (data.translation) {
+                    for (i in data.translation) {
+                        def += "<p>" + data.translation[i] + "</p>";
+                    }
+                    $("#extradef .phonetic").hide();
+                    $("#extradef .content").html(def);
+                }
                 else {
-                    // no definition
+                    // no definition and translation
                     $("#extradef").hide();
                 }
             }

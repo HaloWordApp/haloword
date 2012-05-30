@@ -11,18 +11,16 @@ function is_english(word) {
 }
 
 function valid_word(word) {
-    if (word.length === 0 || word.length > 20) {
+    if (word.length === 0 || word.length > 190) {
         return false;
     }
-    /* iciba API has no CE dict.
     if (is_chinese(word)) {
         return "Chinese";
     }
-    */
     if (is_english(word)) {
         return "English";
     }
-    return false;
+    return "Mixed";
 }
 
 var haloword_opened = false;
@@ -85,6 +83,35 @@ else {
 
 $("#haloword-lookup").draggable({ handle: "#haloword-title" });
 
+$("#haloword-pron").click(function() {
+    // HACK: fix Chrome won't play second time
+    $("#haloword-audio").attr("src", $("#haloword-audio").attr("src"));
+    $("#haloword-audio")[0].play();
+});
+
+function pron_exist(word, is_upper) {
+    var pron_url = "http://www.gstatic.com/dictionary/static/sounds/de/0/" + word + ".mp3";
+    if (is_english(word) || is_upper) {
+        $.ajax({
+            url: pron_url,
+            timeout: 3000,
+            success: function() {
+                var current_word = $("#haloword-word").html().toLowerCase();
+                if (word == current_word || word.substring(1).toLowerCase() == current_word) {
+                    $("#haloword-audio").attr("src", pron_url);
+                    $("#haloword-audio")[0].play();
+                    $("#haloword-pron").show();
+                }
+            },
+            error: function(xhr, d, e) {
+                if (!is_upper) {
+                    pron_exist('!' + word[0].toUpperCase() + word.substring(1), true);
+                }
+            }
+        });
+    }
+}
+
 function event_mouseup(e) {
     if (!e.ctrlKey && !e.metaKey) {
         return;
@@ -119,6 +146,46 @@ function event_mouseup(e) {
     $("#haloword-lookup").show();
 
     $.ajax({
+        url: youdao_url + selection,
+        dataType: "json",
+        success: function(data) {
+            var def = "", i;
+            if (data.errorCode === 0) {
+                if (data.basic) {
+                    if (data.basic.phonetic) {
+                        def += '<p class="phonetic"><span>' + data.basic.phonetic + '</span></p>';
+                    }
+                    
+                    for (i in data.basic.explains) {
+                        def += "<p>" + data.basic.explains[i] + "</p>";
+                    }
+                    
+                    $("#haloword-content").html(def);
+                    
+                    pron_exist(selection.toLowerCase(), false);
+                }
+                else if (data.translation) {
+                    for (i in data.translation) {
+                        def += "<p>" + data.translation[i] + "</p>";
+                    }
+                    $("#haloword-content").html(def);
+                }
+                else {
+                    // no definition and translation
+                    $("#haloword-content").html("<p>I'm sorry, Dave.</p><p>I'm afraid I can't find that.</p>");
+                }
+            }
+            else {
+                $("#haloword-content").html("<p>I'm sorry, Dave.</p><p>I'm afraid I can't find that.</p>");
+            }
+        },
+        error: function(data) {
+            $("#extradef").hide();
+        }
+    });
+
+/* bye, iciba.
+    $.ajax({
         url: "http://dict-co.iciba.com/api/dictionary.php?w=" + selection.toLowerCase(),
         dataType: "xml",
         success: function(data) {
@@ -148,6 +215,7 @@ function event_mouseup(e) {
             $("#haloword-content").html("<p>Unable to parse XML file.</p>");
         }
     });
+*/
 
 /* bye, dict.cn.
     $.ajax({

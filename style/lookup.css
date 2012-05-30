@@ -36,6 +36,9 @@
 	/* avoid affections */
 	line-height: 16px;
 }
+#haloword-pron {
+    margin-left: 3px;
+}
 #haloword-control-container {
 	float: right;
 }
@@ -76,12 +79,12 @@
 }
 
 #haloword-content p {
-    margin: 2px;
+    margin: 6px 0 3px 5px;
 }
-#haloword-content p.pos {
-    margin-top: 3px;
-    font-weight: bold;
-}
-#haloword-content p.pos:first-child {
-    margin-top: 0;
+#haloword-content p.phonetic span {
+    margin: 3px 0 3px -3px;
+    padding: 3px 8px 2px 8px;
+    border-radius: 2px;
+    background-color: #fdfdfd;
+    box-shadow: 1px 1px 1px #f0f0f0;
 }
