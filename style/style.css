@@ -58,37 +58,37 @@ table {
 }
 @font-face {
   font-family: PTSerif;
-  src: url("/include/font/PTSerif.ttf") format("truetype");
+  src: url("../include/font/PTSerif.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: PTSerif;
-  src: url("/include/font/PTSerifBold.ttf") format("truetype");
+  src: url("../include/font/PTSerifBold.ttf") format("truetype");
   font-weight: bold;
   font-style: normal;
 }
 @font-face {
   font-family: PTSerif;
-  src: url("/include/font/PTSerifItalic.ttf") format("truetype");
+  src: url("../include/font/PTSerifItalic.ttf") format("truetype");
   font-weight: normal;
   font-style: italic;
 }
 @font-face {
   font-family: PTSerif;
-  src: url("/include/font/PTSerifBoldItalic.ttf") format("truetype");
+  src: url("../include/font/PTSerifBoldItalic.ttf") format("truetype");
   font-weight: bold;
   font-style: italic;
 }
 @font-face {
   font-family: DroidSans;
-  src: url("/include/font/DroidSans.ttf") format("truetype");
+  src: url("../include/font/DroidSans.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: DroidSans;
-  src: url("/include/font/DroidSans-Bold.ttf") format("truetype");
+  src: url("../include/font/DroidSans-Bold.ttf") format("truetype");
   font-weight: bold;
   font-style: normal;
 }
@@ -313,10 +313,10 @@ a {
   margin-left: 24px;
   width: 20px;
   height: 20px;
-  background: url('/img/icon.svg') -90px -60px;
+  background: url('../img/icon.svg') -90px -60px;
 }
 #side #wordlist .delete:hover {
-  background: url('/img/icon.svg') -90px -82px;
+  background: url('../img/icon.svg') -90px -82px;
 }
 #bubble:before {
   content: "";
@@ -325,7 +325,7 @@ a {
   left: 40px;
   height: 15px;
   width: 30px;
-  background: url('/img/icon.svg') -95px -105px;
+  background: url('../img/icon.svg') -95px -105px;
 }
 #bubble {
   display: none;
@@ -381,16 +381,16 @@ a {
   cursor: pointer;
 }
 #main header #button_add {
-  background: url('/img/icon.svg') 0 0;
+  background: url('../img/icon.svg') 0 0;
 }
 #main header #button_add:hover {
-  background: url('/img/icon.svg') -30px 0;
+  background: url('../img/icon.svg') -30px 0;
 }
 #main header #button_remove {
-  background: url('/img/icon.svg') 0 -30px;
+  background: url('../img/icon.svg') 0 -30px;
 }
 #main header #button_remove:hover {
-  background: url('/img/icon.svg') -30px -30px;
+  background: url('../img/icon.svg') -30px -30px;
 }
 #main #extradef {
   background-color: #fafafa;
@@ -493,10 +493,10 @@ a {
   top: 5px;
   left: 10px;
   margin-right: 5px;
-  background: url('/img/icon-neue.svg') 0px 0px;
+  background: url('../img/icon-neue.svg') 0px 0px;
 }
 #main .pronounce:hover {
-  background: url('/img/icon-neue.svg') 0px -13px;
+  background: url('../img/icon-neue.svg') 0px -13px;
   cursor: pointer;
 }
 #main .phonetic {
@@ -542,7 +542,7 @@ a {
 #main .meaning > .entries .example {
   font: 20px/30px PTSerif, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312", serif;
   display: list-item;
-  list-style-image: url('/img/bullet.svg');
+  list-style-image: url('../img/bullet.svg');
 }
 #main .related {
   margin-bottom: 14px;
@@ -568,7 +568,7 @@ a {
 #main ul {
   font: 20px/30px PTSerif, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312", serif;
   padding-left: 60px;
-  list-style-image: url('/img/bullet.svg');
+  list-style-image: url('../img/bullet.svg');
 }
 #main ul li {
   margin: 4px 0;
@@ -589,5 +589,5 @@ a {
   left: 0;
   margin-left: 5px;
   margin-right: 3px;
-  background: url('/img/icon-neue.svg') 0px 0px;
+  background: url('../img/icon-neue.svg') 0px 0px;
 }
