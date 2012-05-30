@@ -398,6 +398,7 @@ a {
 #main p.text em,
 #main p.text i {
     font-style: normal;
+    font-weight: normal;
 }
 
 #main p.text b,
