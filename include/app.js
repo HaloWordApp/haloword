@@ -143,7 +143,7 @@ function init_db() {
         function(tx, error) {
             tx.executeSql("CREATE TABLE `Word` (`id` REAL UNIQUE, `word` TEXT, `timestamp` REAL, `sequence` REAL, `status` REAL)", [],
             function() {
-                localStorage['db_version'] = 2;
+                localStorage.db_version = 2;
                 storage_words(default_words);
                 init_wordlist();
             },
@@ -153,12 +153,12 @@ function init_db() {
 }
 
 function update_db() {
-    if (!localStorage['db_version']) {
-        localStorage['db_version'] = 1;
+    if (!localStorage.db_version) {
+        localStorage.db_version = 1;
     }
     console.log("Checking db version...");
-    console.log("Current db version: " + localStorage['db_version'] + ".");
-    if (localStorage['db_version'] < 2) {
+    console.log("Current db version: " + localStorage.db_version + ".");
+    if (localStorage.db_version < 2) {
         /* DB v2: table `word` - add column `sequence` */
         /*        table `word` - add column `status`   */
         console.log("Updating db to version 2...");
@@ -166,7 +166,7 @@ function update_db() {
             tx.executeSql("ALTER TABLE `Word` ADD COLUMN `sequence` REAL", [], null, null);
             tx.executeSql("ALTER TABLE `Word` ADD COLUMN `status` REAL", [], null, null);
         });
-        localStorage['db_version'] = 2;
+        localStorage.db_version = 2;
     }
 }
 
@@ -236,7 +236,7 @@ function init_wordlist() {
 function process_wordlist(result) {
     $("#wordlist").html("");
     for (var i = 0; i < result.rows.length; i++) {
-        wordlist_add(result.rows.item(i)['word']);
+        wordlist_add(result.rows.item(i).word);
     }
     refresh_wordlist_trigger();
 }
