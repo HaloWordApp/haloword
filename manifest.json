@@ -20,7 +20,7 @@
   "background_page": "background.html",
   "content_scripts": [ {
     "js": [ "include/jquery.min.js", "include/jquery-ui.min.js", "include/meaning.js", "include/lookup.js" ],
-    "css": [ "include/lookup.css" ],
+    "css": [ "style/lookup.css" ],
     "matches": [ "<all_urls>" ],
     "all_frames": true
   } ],
