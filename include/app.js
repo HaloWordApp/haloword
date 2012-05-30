@@ -311,7 +311,7 @@ function show_def(word) {
         url: youdao_url + word,
         dataType: "json",
         success: function(data) {
-            if (data.errorCode == 0) {
+            if (data.errorCode === 0) {
                 $("#extradef .from").html("Youdao");
                 $("#extradef .from").attr("href", "http://dict.youdao.com/");
                 if (data.basic) {
@@ -335,11 +335,11 @@ function show_def(word) {
                 }
             }
             else {
-                get_iciba();
+                $("#extradef").hide();
             }
         },
         error: function(data) {
-            get_iciba();
+            $("#extradef").hide();
         }
     });
 
@@ -420,6 +420,7 @@ function process_json(data) {
     $("#worddef").append('<p class="credits">Content provided by <a href="http://www.google.com/" target="_blank">Google Dictionary</a></p>');
 }
 
+/* iciba's API has very low quality, using youdao instead.
 function get_iciba() {
     $.ajax({
         url: "http://dict-co.iciba.com/api/dictionary.php?w=" + word.toLowerCase(),
@@ -467,3 +468,4 @@ function get_iciba() {
         }
     });
 }
+*/
