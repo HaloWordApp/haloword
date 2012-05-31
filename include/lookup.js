@@ -85,11 +85,15 @@ $("#haloword-lookup").draggable({ handle: "#haloword-title" });
 
 $("#haloword-pron").click(function() {
     // HACK: fix Chrome won't play second time
-    $("#haloword-audio").attr("src", $("#haloword-audio").attr("src"));
+    $("#haloword-audio")[0].load();
     $("#haloword-audio")[0].play();
 });
 
 function pron_exist(word, is_upper) {
+    /* two URLs:
+    http://www.gstatic.com/dictionary/static/sounds/de/0/halo.mp3
+    http://www.gstatic.com/dictionary/static/sounds/de/0/!Capella.mp3
+    */
     var pron_url = "http://www.gstatic.com/dictionary/static/sounds/de/0/" + word + ".mp3";
     if (is_english(word) || is_upper) {
         $.ajax({
@@ -99,7 +103,6 @@ function pron_exist(word, is_upper) {
                 var current_word = $("#haloword-word").html().toLowerCase();
                 if (word == current_word || word.substring(1).toLowerCase() == current_word) {
                     $("#haloword-audio").attr("src", pron_url);
-                    $("#haloword-audio")[0].play();
                     $("#haloword-pron").show();
                 }
             },

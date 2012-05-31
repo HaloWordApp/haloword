@@ -255,8 +255,8 @@ a {
   float: left;
 }
 #side li {
-  padding: 0px 26px 0px 0;
-  font: 24px/48px DroidSans, 'Hiragino Sans GB', 'WenQuanYi Micro Hei', 'Microsoft YaHei', sans-serif;
+  padding: 6px 26px 6px 0;
+  font: 24px/36px DroidSans, 'Hiragino Sans GB', 'WenQuanYi Micro Hei', 'Microsoft YaHei', sans-serif;
   color: #3D65BB;
   border: 1px solid transparent;
   vertical-align: middle;
@@ -283,7 +283,7 @@ a {
 }
 #side #title {
   margin-top: 18px;
-  font: 29px/54px DroidSans;
+  font: 29px/42px DroidSans;
 }
 #side #title.current {
   font-family: DroidSans;
@@ -309,7 +309,7 @@ a {
 }
 #side #wordlist .delete {
   float: left;
-  margin-top: 14px;
+  margin-top: 8px;
   margin-left: 24px;
   width: 20px;
   height: 20px;
