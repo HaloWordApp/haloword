@@ -85,7 +85,8 @@ $("#haloword-lookup").draggable({ handle: "#haloword-title" });
 
 $("#haloword-pron").click(function() {
     // HACK: fix Chrome won't play second time
-    $("#haloword-audio")[0].load();
+    // unfortunately this doesn't work properly. more: crbug.com/129165.
+    //$("#haloword-audio")[0].load();
     $("#haloword-audio")[0].play();
 });
 
