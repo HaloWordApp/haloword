@@ -296,7 +296,7 @@ function show_def(word) {
     });
 
     $.ajax({
-        url: "http://www.google.com/dictionary/json?callback=process_json&q=" + word + "&sl=en&tl=zh-cn",
+        url: "https://www.google.com/dictionary/json?callback=process_json&q=" + word + "&sl=en&tl=zh-cn",
         dataType: "script"
     });
 
@@ -414,6 +414,9 @@ function process_json(data) {
     var meaning = process_primary(data.primaries);
     if (meaning) {
         $("#worddef").html(meaning);
+        $(".pronounce").click(function() {
+            $("audio", this)[0].play();
+        });
     }
     else {
         show_builtin("notfound");

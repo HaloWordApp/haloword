@@ -49,7 +49,7 @@ function process_terms(terms, type) {
     }
     else if (typeof(terms) == "object") {
         if (terms.type == "sound") {
-            html += "<a class='pronounce' onclick='$(\"audio\", this)[0].play();'><audio src='" + terms.text + "'></audio></a>"
+            html += '<a class="pronounce"><audio src="' + terms.text + '"></audio></a>';
         }
         else if (terms.type !== undefined) {
             var lang_str = "";
