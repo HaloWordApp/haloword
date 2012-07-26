@@ -280,7 +280,7 @@ function show_def(word) {
     show_builtin("loading");
 
     $("#extradef").show();
-    document.title = word + " ‹ Halo Word";
+    document.title = word + " \u2039 Halo Word";
     $("#wordtitle").html(word);
 
     db.transaction(function (tx) {
@@ -296,8 +296,24 @@ function show_def(word) {
     });
 
     $.ajax({
-        url: "https://www.google.com/dictionary/json?callback=process_json&q=" + word + "&sl=en&tl=zh-cn",
-        dataType: "script"
+        url: "http://www.google.com/dictionary/json?callback=fake&q=" + word + "&sl=en&tl=zh-cn",
+        dataType: "text",
+        success: function(data) {
+            var start = data.indexOf('{');
+            var end = 0;
+            for (var i = data.length - 1; i >= 0; i--){
+                if (data[i] == '}') {
+                    end = i + 1;
+                    break;
+                }
+            }
+            data = data.substring(start, end);
+            // convert \xNN to \u00NN
+            data = data.replace(/\\x/g, "\\u00");
+
+            var obj = JSON.parse(data);
+            process_json(obj);
+        }
     });
 
     $("#extradef .phonetic").html("<span>ˈləʊdɪŋ</span>");
@@ -363,7 +379,7 @@ function show_builtin(builtin) {
             $("#extradef").hide();
             $("#wordtitle").html(title);
             if (title != "Halo Word") {
-                title = title + " ‹ Halo Word";
+                title = title + " \u2039 Halo Word";
             }
             document.title = title;
         }
