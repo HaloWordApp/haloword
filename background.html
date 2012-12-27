@@ -1,14 +1,3 @@
 <meta charset="UTF-8">
-<script src="include/jquery.min.js"></script>
 <script src="include/context_menu.js"></script>
 <script src="include/omnibox.js"></script>
-
-<script>
-function onRequest(request, sender, callback) {
-	if (request.action == 'getJSON') {
-		$.getJSON(request.url, request.args, callback);
-	}
-};
-
-chrome.extension.onRequest.addListener(onRequest);
-</script>

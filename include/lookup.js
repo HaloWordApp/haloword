@@ -1,13 +1,9 @@
-chrome_getJSON = function(url, args, callback) {
-    chrome.extension.sendRequest({action: 'getJSON', url: url, args: args }, callback);
-}
-
 function is_chinese(word) {
-    return /^[\u4e00-\u9fa5]+$/g.test(word); 
+    return (/^[\u4e00-\u9fa5]+$/g).test(word); 
 }
 
 function is_english(word) {
-    return /^[a-z\sA-Z]+$/g.test(word); 
+    return (/^[a-z\sA-Z]+$/g).test(word); 
 }
 
 function valid_word(word) {
@@ -117,140 +113,84 @@ function pron_exist(word, is_upper) {
 }
 
 function event_mouseup(e) {
-    if (!e.ctrlKey && !e.metaKey) {
-        return;
-    }
-    var selection = $.trim(window.getSelection());
-    if (!selection) {
-        $("iframe").each(function() {
-            if (this.contentDocument) {
-                selection = $.trim(this.contentDocument.getSelection());
-            }    
-            if (selection) {
-                return false;
+    // chrome.storage.local.set({'disable_querybox': true})
+    chrome.storage.local.get('disable_querybox', function(ret) {
+        if (!ret.disable_querybox) {
+            if (!e.ctrlKey && !e.metaKey) {
+                return;
             }
-        });
-    }
-    var lang = valid_word(selection);
-    if (!lang) {
-        return;
-    }
-
-    $("#haloword-word").html(selection);
-    $("#haloword-lookup").attr("style", "left: " + e.pageX + "px;" + "top: " + e.pageY + "px;");
-    $("#haloword-open").attr("href", chrome.extension.getURL("main.html#" + selection));
-    $("#haloword-close").click(function() {
-        $("#haloword-lookup").hide();
-        haloword_opened = false;
-        return false;
-    });
-
-    $("#haloword-pron").hide();
-    $("#haloword-content").html("<p>Loading definitions...</p>");
-    $("#haloword-lookup").show();
-
-    $.ajax({
-        url: youdao_url + selection,
-        dataType: "json",
-        success: function(data) {
-            var def = "", i;
-            if (data.errorCode === 0) {
-                if (data.basic) {
-                    if (data.basic.phonetic) {
-                        def += '<p class="phonetic"><span>' + data.basic.phonetic + '</span></p>';
+            var selection = $.trim(window.getSelection());
+            if (!selection) {
+                $("iframe").each(function() {
+                    if (this.contentDocument) {
+                        selection = $.trim(this.contentDocument.getSelection());
+                    }    
+                    if (selection) {
+                        return false;
                     }
-                    
-                    for (i in data.basic.explains) {
-                        def += "<p>" + data.basic.explains[i] + "</p>";
-                    }
-                    
-                    $("#haloword-content").html(def);
-                    
-                    pron_exist(selection.toLowerCase(), false);
-                }
-                else if (data.translation) {
-                    for (i in data.translation) {
-                        def += "<p>" + data.translation[i] + "</p>";
-                    }
-                    $("#haloword-content").html(def);
-                }
-                else {
-                    // no definition and translation
-                    $("#haloword-content").html("<p>I'm sorry, Dave.</p><p>I'm afraid I can't find that.</p>");
-                }
-            }
-            else {
-                $("#haloword-content").html("<p>I'm sorry, Dave.</p><p>I'm afraid I can't find that.</p>");
-            }
-        },
-        error: function(data) {
-            $("#extradef").hide();
-        }
-    });
-
-/* bye, iciba.
-    $.ajax({
-        url: "http://dict-co.iciba.com/api/dictionary.php?w=" + selection.toLowerCase(),
-        dataType: "xml",
-        success: function(data) {
-            var dict = $("dict", data)[0];
-            
-            if ($("acceptation", dict).length) {
-                var def = '';
-                $("pos, acceptation", dict).each(function(item) {
-                    def += '<p class="' + this.tagName + '">' + $(this).text() + "</p>";
                 });
-                $("#haloword-content").html(def);
-                
-                var audio_url = $($("pron", dict)[0]).text();
-                if (audio_url) {
-                    $("#haloword-audio").attr("src", audio_url);
-                    $("#haloword-pron").show();
-                    $("#haloword-pron").click(function() {
-                        $("#haloword-audio")[0].play();
-                    })
-                }
             }
-            else {
-                $("#haloword-content").html("<p>I'm sorry, Dave.</p><p>I'm afraid I can't find that.</p>");
+            var lang = valid_word(selection);
+            if (!lang) {
+                return;
             }
-        },
-        error: function(data) {
-            $("#haloword-content").html("<p>Unable to parse XML file.</p>");
-        }
-    });
-*/
-
-/* bye, dict.cn.
-    $.ajax({
-        url: "http://dict.cn/ws.php?utf8=true&q=" + selection,
-        dataType: "xml",
-        success: function(data) {
-            $(data).find("dict").each(function(i) { 
-                var def = $(this).children("def").text();
-                if (!def) {
-                    $("#haloword-content").html("<p>I'm sorry, Dave.</p><p>I'm afraid I can't find that.</p>");
-                }
-                else {
-                    def = def.replace(/\n/g, '</p><p>');
-                    def = '<p>' + def + '</p>';
-                    $("#haloword-content").html(def);
-                    var audio_url = $(this).children("audio").text();
-                    if (audio_url) {
-                        $("#haloword-audio").attr("src", audio_url);
-                        $("#haloword-pron").show();
-                        $("#haloword-pron").click(function() {
-                            $("#haloword-audio")[0].play();
-                        })
+        
+            $("#haloword-word").html(selection);
+            $("#haloword-lookup").attr("style", "left: " + e.pageX + "px;" + "top: " + e.pageY + "px;");
+            $("#haloword-open").attr("href", chrome.extension.getURL("main.html#" + selection));
+            $("#haloword-close").click(function() {
+                $("#haloword-lookup").hide();
+                haloword_opened = false;
+                return false;
+            });
+        
+            $("#haloword-pron").hide();
+            $("#haloword-content").html("<p>Loading definitions...</p>");
+            $("#haloword-lookup").show();
+        
+            $.ajax({
+                url: youdao_url + selection,
+                dataType: "json",
+                success: function(data) {
+                    var def = "", i;
+                    if (data.errorCode === 0) {
+                        if (data.basic) {
+                            if (data.basic.phonetic) {
+                                def += '<p class="phonetic"><span>' + data.basic.phonetic + '</span></p>';
+                            }
+        
+                            for (i in data.basic.explains) {
+                                def += "<p>" + data.basic.explains[i] + "</p>";
+                            }
+        
+                            $("#haloword-content").html(def);
+        
+                            pron_exist(selection.toLowerCase(), false);
+                        }
+                        else if (data.translation) {
+                            for (i in data.translation) {
+                                def += "<p>" + data.translation[i] + "</p>";
+                            }
+                            $("#haloword-content").html(def);
+                        }
+                        else {
+                            // no definition and translation
+                            $("#haloword-content").html("<p>I'm sorry, Dave.</p><p>I'm afraid I can't find that.</p>");
+                        }
                     }
+                    else {
+                        $("#haloword-content").html("<p>I'm sorry, Dave.</p><p>I'm afraid I can't find that.</p>");
+                    }
+                },
+                error: function(data) {
+                    $("#extradef").hide();
                 }
             });
+            
+            // HACK: fix dict window not openable
+            setTimeout(function() {
+                haloword_opened = true;
+            }, 100);
         }
-    });
-*/
-
-    // HACK: fix dict window not openable
-    setTimeout(function() {
-        haloword_opened = true;
-    }, 100);
+    })
 }
