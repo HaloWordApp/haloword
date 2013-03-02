@@ -166,7 +166,7 @@ function event_mouseup(e) {
             $("#haloword-remove").click(function() {
                 $("#haloword-remove").hide();
                 $("#haloword-add").show();
-                chrome.extension.sendMessage({method: "add", word: selection}, function(response) {
+                chrome.extension.sendMessage({method: "remove", word: selection}, function(response) {
                 
                 });
             });
