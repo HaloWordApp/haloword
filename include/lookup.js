@@ -26,6 +26,8 @@ var haloword_html = '<div id="haloword-lookup" class="ui-widget-content">\
 <a herf="#" id="haloword-pron" class="haloword-button" title="发音"></a>\
 <audio id="haloword-audio"></audio>\
 <div id="haloword-control-container">\
+<a herf="#" id="haloword-add" class="haloword-button" title="加入单词列表"></a>\
+<a herf="#" id="haloword-remove" class="haloword-button" title="移出单词列表"></a>\
 <a href="#" id="haloword-open" class="haloword-button" title="查看单词详细释义" target="_blank"></a>\
 <a herf="#" id="haloword-close" class="haloword-button" title="关闭查询窗"></a>\
 </div>\
@@ -57,6 +59,8 @@ function event_click(event) {
         var target = $(event.target);
         if (target.attr("id") != "haloword-lookup" && !target.parents("#haloword-lookup")[0]) {
             $("#haloword-lookup").hide();
+            $("#haloword-remove").hide();
+            $("#haloword-add").show();
             haloword_opened = false;
         }
     }
@@ -69,7 +73,11 @@ var style_content = "<style>\
 #haloword-open { background: url(" + icon_url + ") -94px -16px; }\
 #haloword-open:hover { background: url(" + icon_url + ") -110px -16px; }\
 #haloword-close { background: url(" + icon_url + ") -94px 0; }\
-#haloword-close:hover { background: url(" + icon_url + ") -110px 0; }</style>";
+#haloword-close:hover { background: url(" + icon_url + ") -110px 0; }\
+#haloword-add { background: url(" + icon_url + ") -94px -48px; }\
+#haloword-add:hover { background: url(" + icon_url + ") -110px -48px; }\
+#haloword-remove { background: url(" + icon_url + ") -94px -64px; }\
+#haloword-remove:hover { background: url(" + icon_url + ") -110px -64px; }</style>";
 if ($("head")[0]) {
     $($("head")[0]).append(style_content);
 }
@@ -140,10 +148,36 @@ function event_mouseup(e) {
             $("#haloword-open").attr("href", chrome.extension.getURL("main.html#" + selection));
             $("#haloword-close").click(function() {
                 $("#haloword-lookup").hide();
+                $("#haloword-remove").hide();
+                $("#haloword-add").show();
                 haloword_opened = false;
                 return false;
             });
-        
+
+            $("#haloword-remove").hide();
+            
+            chrome.extension.sendMessage({method: "find", word: selection}, function(response) {
+                if (response.exist) {
+                    $("#haloword-add").hide();
+                    $("#haloword-remove").show();
+                }
+                else {
+                    $("#haloword-remove").hide();
+                    $("#haloword-add").show();                    
+                }
+            });
+            
+            $("#haloword-add").click(function() {
+                $("#haloword-add").hide();
+                $("#haloword-remove").show();
+                chrome.extension.sendMessage({method: "add", word: selection});
+            });
+            $("#haloword-remove").click(function() {
+                $("#haloword-remove").hide();
+                $("#haloword-add").show();
+                chrome.extension.sendMessage({method: "remove", word: selection});
+            });
+
             $("#haloword-pron").hide();
             $("#haloword-content").html("<p>Loading definitions...</p>");
             $("#haloword-lookup").show();
