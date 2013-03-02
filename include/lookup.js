@@ -73,9 +73,9 @@ var style_content = "<style>\
 #haloword-open { background: url(" + icon_url + ") -94px -16px; }\
 #haloword-open:hover { background: url(" + icon_url + ") -110px -16px; }\
 #haloword-close { background: url(" + icon_url + ") -94px 0; }\
-#haloword-close:hover { background: url(" + icon_url + ") -110px 0; }</style>\
+#haloword-close:hover { background: url(" + icon_url + ") -110px 0; }\
 #haloword-add { background: url(" + icon_url + ") -94px -48px; }\
-#haloword-add:hover { background: url(" + icon_url + ") -110px -48px; }</style>\
+#haloword-add:hover { background: url(" + icon_url + ") -110px -48px; }\
 #haloword-remove { background: url(" + icon_url + ") -94px -64px; }\
 #haloword-remove:hover { background: url(" + icon_url + ") -110px -64px; }</style>";
 if ($("head")[0]) {
