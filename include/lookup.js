@@ -26,6 +26,7 @@ var haloword_html = '<div id="haloword-lookup" class="ui-widget-content">\
 <a herf="#" id="haloword-pron" class="haloword-button" title="发音"></a>\
 <audio id="haloword-audio"></audio>\
 <div id="haloword-control-container">\
+<a herf="#" id="haloword-add" class="haloword-button" title="加入单词列表"></a>\
 <a href="#" id="haloword-open" class="haloword-button" title="查看单词详细释义" target="_blank"></a>\
 <a herf="#" id="haloword-close" class="haloword-button" title="关闭查询窗"></a>\
 </div>\
@@ -69,7 +70,9 @@ var style_content = "<style>\
 #haloword-open { background: url(" + icon_url + ") -94px -16px; }\
 #haloword-open:hover { background: url(" + icon_url + ") -110px -16px; }\
 #haloword-close { background: url(" + icon_url + ") -94px 0; }\
-#haloword-close:hover { background: url(" + icon_url + ") -110px 0; }</style>";
+#haloword-close:hover { background: url(" + icon_url + ") -110px 0; }</style>\
+#haloword-add { background: url(" + icon_url + ") -94px -48px; }\
+#haloword-add:hover { background: url(" + icon_url + ") -110px -48px; }</style>";
 if ($("head")[0]) {
     $($("head")[0]).append(style_content);
 }
@@ -143,7 +146,16 @@ function event_mouseup(e) {
                 haloword_opened = false;
                 return false;
             });
-        
+
+            $("#haloword-add").click(function() {
+                chrome.extension.sendMessage({method: "add", word: selection}, function(response) {
+                    if(response.done) {
+                        $("#haloword-add").hide();
+                        $("#haloword-remove").show();
+                    }
+                });
+            });
+
             $("#haloword-pron").hide();
             $("#haloword-content").html("<p>Loading definitions...</p>");
             $("#haloword-lookup").show();

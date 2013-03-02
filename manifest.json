@@ -19,7 +19,7 @@
   },
 
   "background": {
-    "page": "background.html"
+    "scripts": ["include/context_menu.js", "include/omnibox.js", "include/add.js"]
   },
   "content_scripts": [ {
     "js": [ "include/jquery.min.js", "include/jquery-ui.min.js", "include/common.js", "include/lookup.js" ],
