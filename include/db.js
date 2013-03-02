@@ -98,10 +98,6 @@ function get_wordlist(process_func) {
     });
 }
 
-function init_wordlist() {
-    get_wordlist(process_wordlist);
-}
-
 function is_word_exist(word) {
     db.transaction(function (tx) {
         tx.executeSql("SELECT COUNT(*) AS `exist` FROM `Word` WHERE `word` = ?", [word],
