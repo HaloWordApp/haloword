@@ -157,7 +157,6 @@ function event_mouseup(e) {
             $("#haloword-remove").hide();
             
             chrome.extension.sendMessage({method: "find", word: selection}, function(response) {
-                console.log(response);
                 if (response.exist) {
                     $("#haloword-add").hide();
                     $("#haloword-remove").show();
