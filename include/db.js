@@ -97,3 +97,21 @@ function get_wordlist(process_func) {
         }, null);
     });
 }
+
+function init_wordlist() {
+    get_wordlist(process_wordlist);
+}
+
+function is_word_exist(word) {
+    db.transaction(function (tx) {
+        tx.executeSql("SELECT COUNT(*) AS `exist` FROM `Word` WHERE `word` = ?", [word],
+        function(tx, result) {
+            if (result.rows.item(0).exist) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }, null);
+    });
+}

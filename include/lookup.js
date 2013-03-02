@@ -154,8 +154,20 @@ function event_mouseup(e) {
                 return false;
             });
 
-            // TODO deal added words
             $("#haloword-remove").hide();
+            
+            chrome.extension.sendMessage({method: "find", word: selection}, function(response) {
+                console.log(response);
+                if (response.exist) {
+                    $("#haloword-add").show();
+                    $("#haloword-remove").show();                    
+                }
+                else {
+                    $("#haloword-remove").hide();
+                    $("#haloword-add").show();                    
+                }
+            });
+            
             $("#haloword-add").click(function() {
                 $("#haloword-add").hide();
                 $("#haloword-remove").show();
