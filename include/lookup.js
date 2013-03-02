@@ -59,6 +59,8 @@ function event_click(event) {
         var target = $(event.target);
         if (target.attr("id") != "haloword-lookup" && !target.parents("#haloword-lookup")[0]) {
             $("#haloword-lookup").hide();
+            $("#haloword-remove").hide();
+            $("#haloword-add").show();
             haloword_opened = false;
         }
     }
@@ -146,17 +148,25 @@ function event_mouseup(e) {
             $("#haloword-open").attr("href", chrome.extension.getURL("main.html#" + selection));
             $("#haloword-close").click(function() {
                 $("#haloword-lookup").hide();
+                $("#haloword-remove").hide();
+                $("#haloword-add").show();
                 haloword_opened = false;
                 return false;
             });
 
             $("#haloword-remove").hide();
             $("#haloword-add").click(function() {
+                $("#haloword-add").hide();
+                $("#haloword-remove").show();
                 chrome.extension.sendMessage({method: "add", word: selection}, function(response) {
-                    if(response.done) {
-                        $("#haloword-add").hide();
-                        $("#haloword-remove").show();
-                    }
+
+                });
+            });
+            $("#haloword-remove").click(function() {
+                $("#haloword-remove").hide();
+                $("#haloword-add").show();
+                chrome.extension.sendMessage({method: "add", word: selection}, function(response) {
+                
                 });
             });
 
