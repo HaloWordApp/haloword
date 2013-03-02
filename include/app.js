@@ -69,6 +69,8 @@ $(document).ready(function() {
             input.focus();
         }
     }
+    
+    refresh_wordlist_trigger();
 });
 
 function get_OS() {

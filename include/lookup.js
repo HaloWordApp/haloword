@@ -154,6 +154,7 @@ function event_mouseup(e) {
                 return false;
             });
 
+            // TODO deal added words
             $("#haloword-remove").hide();
             $("#haloword-add").click(function() {
                 $("#haloword-add").hide();
