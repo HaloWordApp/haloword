@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    init_db();
+    init_db("app");
 
     $("#search_form").submit(function() {
         var word = $("#search_field").val();

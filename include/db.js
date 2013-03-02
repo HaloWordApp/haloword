@@ -1,12 +1,14 @@
 var db;
-function init_db() {
+function init_db(caller) {
     db = openDatabase("HaloWord", "0.1", "Database for Halo Word", 200000);
     db.transaction(function (tx) {
         tx.executeSql("SELECT COUNT(*) FROM `Word`", [],
         /* success */
         function(result) {
             update_db();
-            init_wordlist();
+            if (caller == "app") {
+                init_wordlist();
+            }
         },
         /* no table, create them */
         function(tx, error) {
@@ -99,7 +101,7 @@ function get_wordlist(process_func) {
 }
 
 function is_word_exist(word) {
-    db.transaction(function (tx) {
+    db.transaction(function(tx) {
         tx.executeSql("SELECT COUNT(*) AS `exist` FROM `Word` WHERE `word` = ?", [word],
         function(tx, result) {
             if (result.rows.item(0).exist) {
