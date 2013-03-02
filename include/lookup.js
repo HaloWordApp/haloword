@@ -159,8 +159,8 @@ function event_mouseup(e) {
             chrome.extension.sendMessage({method: "find", word: selection}, function(response) {
                 console.log(response);
                 if (response.exist) {
-                    $("#haloword-add").show();
-                    $("#haloword-remove").show();                    
+                    $("#haloword-add").hide();
+                    $("#haloword-remove").show();
                 }
                 else {
                     $("#haloword-remove").hide();
@@ -171,16 +171,12 @@ function event_mouseup(e) {
             $("#haloword-add").click(function() {
                 $("#haloword-add").hide();
                 $("#haloword-remove").show();
-                chrome.extension.sendMessage({method: "add", word: selection}, function(response) {
-
-                });
+                chrome.extension.sendMessage({method: "add", word: selection});
             });
             $("#haloword-remove").click(function() {
                 $("#haloword-remove").hide();
                 $("#haloword-add").show();
-                chrome.extension.sendMessage({method: "remove", word: selection}, function(response) {
-                
-                });
+                chrome.extension.sendMessage({method: "remove", word: selection});
             });
 
             $("#haloword-pron").hide();
