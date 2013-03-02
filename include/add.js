@@ -6,7 +6,7 @@ chrome.extension.onMessage.addListener(
 			storage_word(request.word);
 	    }
 		else if (request.method == "remove") {
-			
+			remove_word(request.word);
 		}
 	}
 );
