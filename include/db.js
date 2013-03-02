@@ -100,7 +100,7 @@ function get_wordlist(process_func) {
     });
 }
 
-function is_word_exist(word) {
+function is_word_exist(word, func) {
     db.transaction(function(tx) {
         tx.executeSql("SELECT COUNT(*) AS `exist` FROM `Word` WHERE `word` = ?", [word],
         func, null);
