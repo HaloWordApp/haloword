@@ -26,7 +26,7 @@
 	line-height: 16px;
 	padding: 2px 3px 2px 5px;
 	cursor: move;
-	
+
 	/* avoid affections */
 	width: 252px;
 }
@@ -45,8 +45,8 @@
 .haloword-button {
 	float: left;
 	margin: 2px;
-	height: 16px;
-	width: 16px;
+	height: 17px;
+	width: 17px;
 	background-color: #5A86AB;
 	cursor: pointer;
 }
@@ -59,7 +59,7 @@
 	color: #000;
 	font-size: 13px;
 	line-height: 20px;
-	
+
 	/* avoid affections */
     background-color: #fff;
 }

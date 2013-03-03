@@ -1,9 +1,9 @@
 function is_chinese(word) {
-    return (/^[\u4e00-\u9fa5]+$/g).test(word); 
+    return (/^[\u4e00-\u9fa5]+$/g).test(word);
 }
 
 function is_english(word) {
-    return (/^[a-z\sA-Z]+$/g).test(word); 
+    return (/^[a-z\sA-Z]+$/g).test(word);
 }
 
 function valid_word(word) {
@@ -69,15 +69,15 @@ function event_click(event) {
 var icon_url = chrome.extension.getURL("img/icon.svg");
 var style_content = "<style>\
 #haloword-pron { background: url(" + icon_url + ") -94px -34px; }\
-#haloword-pron:hover { background: url(" + icon_url + ") -110px -34px; }\
+#haloword-pron:hover { background: url(" + icon_url + ") -111px -34px; }\
 #haloword-open { background: url(" + icon_url + ") -94px -17px; }\
-#haloword-open:hover { background: url(" + icon_url + ") -110px -17px; }\
+#haloword-open:hover { background: url(" + icon_url + ") -111px -17px; }\
 #haloword-close { background: url(" + icon_url + ") -94px 0; }\
-#haloword-close:hover { background: url(" + icon_url + ") -110px 0; }\
+#haloword-close:hover { background: url(" + icon_url + ") -111px 0; }\
 #haloword-add { background: url(" + icon_url + ") -94px -51px; }\
-#haloword-add:hover { background: url(" + icon_url + ") -110px -51px; }\
+#haloword-add:hover { background: url(" + icon_url + ") -111px -51px; }\
 #haloword-remove { background: url(" + icon_url + ") -94px -68px; }\
-#haloword-remove:hover { background: url(" + icon_url + ") -110px -68px; }</style>";
+#haloword-remove:hover { background: url(" + icon_url + ") -111px -68px; }</style>";
 if ($("head")[0]) {
     $($("head")[0]).append(style_content);
 }
@@ -132,7 +132,7 @@ function event_mouseup(e) {
                 $("iframe").each(function() {
                     if (this.contentDocument) {
                         selection = $.trim(this.contentDocument.getSelection());
-                    }    
+                    }
                     if (selection) {
                         return false;
                     }
@@ -142,7 +142,7 @@ function event_mouseup(e) {
             if (!lang) {
                 return;
             }
-        
+
             $("#haloword-word").html(selection);
             $("#haloword-lookup").attr("style", "left: " + e.pageX + "px;" + "top: " + e.pageY + "px;");
             $("#haloword-open").attr("href", chrome.extension.getURL("main.html#" + selection));
@@ -155,7 +155,7 @@ function event_mouseup(e) {
             });
 
             $("#haloword-remove").hide();
-            
+
             chrome.extension.sendMessage({method: "find", word: selection}, function(response) {
                 if (response.exist) {
                     $("#haloword-add").hide();
@@ -163,10 +163,10 @@ function event_mouseup(e) {
                 }
                 else {
                     $("#haloword-remove").hide();
-                    $("#haloword-add").show();                    
+                    $("#haloword-add").show();
                 }
             });
-            
+
             $("#haloword-add").click(function() {
                 $("#haloword-add").hide();
                 $("#haloword-remove").show();
@@ -181,7 +181,7 @@ function event_mouseup(e) {
             $("#haloword-pron").hide();
             $("#haloword-content").html("<p>Loading definitions...</p>");
             $("#haloword-lookup").show();
-        
+
             $.ajax({
                 url: youdao_url + selection,
                 dataType: "json",
@@ -192,13 +192,13 @@ function event_mouseup(e) {
                             if (data.basic.phonetic) {
                                 def += '<p class="phonetic"><span>' + data.basic.phonetic + '</span></p>';
                             }
-        
+
                             for (i in data.basic.explains) {
                                 def += "<p>" + data.basic.explains[i] + "</p>";
                             }
-        
+
                             $("#haloword-content").html(def);
-        
+
                             pron_exist(selection.toLowerCase(), false);
                         }
                         else if (data.translation) {
@@ -220,7 +220,7 @@ function event_mouseup(e) {
                     $("#extradef").hide();
                 }
             });
-            
+
             // HACK: fix dict window not openable
             setTimeout(function() {
                 haloword_opened = true;
