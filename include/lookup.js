@@ -68,16 +68,16 @@ function event_click(event) {
 
 var icon_url = chrome.extension.getURL("img/icon.svg");
 var style_content = "<style>\
-#haloword-pron { background: url(" + icon_url + ") -94px -32px; }\
-#haloword-pron:hover { background: url(" + icon_url + ") -110px -32px; }\
-#haloword-open { background: url(" + icon_url + ") -94px -16px; }\
-#haloword-open:hover { background: url(" + icon_url + ") -110px -16px; }\
+#haloword-pron { background: url(" + icon_url + ") -94px -34px; }\
+#haloword-pron:hover { background: url(" + icon_url + ") -110px -34px; }\
+#haloword-open { background: url(" + icon_url + ") -94px -17px; }\
+#haloword-open:hover { background: url(" + icon_url + ") -110px -17px; }\
 #haloword-close { background: url(" + icon_url + ") -94px 0; }\
 #haloword-close:hover { background: url(" + icon_url + ") -110px 0; }\
-#haloword-add { background: url(" + icon_url + ") -94px -48px; }\
-#haloword-add:hover { background: url(" + icon_url + ") -110px -48px; }\
-#haloword-remove { background: url(" + icon_url + ") -94px -64px; }\
-#haloword-remove:hover { background: url(" + icon_url + ") -110px -64px; }</style>";
+#haloword-add { background: url(" + icon_url + ") -94px -51px; }\
+#haloword-add:hover { background: url(" + icon_url + ") -110px -51px; }\
+#haloword-remove { background: url(" + icon_url + ") -94px -68px; }\
+#haloword-remove:hover { background: url(" + icon_url + ") -110px -68px; }</style>";
 if ($("head")[0]) {
     $($("head")[0]).append(style_content);
 }
