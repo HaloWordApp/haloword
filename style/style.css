@@ -313,10 +313,10 @@ a {
   margin-left: 24px;
   width: 20px;
   height: 20px;
-  background: url('../img/icon.svg') -90px -60px;
+  background: url('../img/icon.svg') -128px 0px;
 }
 #side #wordlist .delete:hover {
-  background: url('../img/icon.svg') -90px -82px;
+  background: url('../img/icon.svg') -128px -20px;
 }
 #bubble:before {
   content: "";
