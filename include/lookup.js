@@ -26,8 +26,8 @@ var haloword_html = '<div id="haloword-lookup" class="ui-widget-content">\
 <a herf="#" id="haloword-pron" class="haloword-button" title="发音"></a>\
 <audio id="haloword-audio"></audio>\
 <div id="haloword-control-container">\
-<a herf="#" id="haloword-add" class="haloword-button" title="加入单词列表"></a>\
-<a herf="#" id="haloword-remove" class="haloword-button" title="移出单词列表"></a>\
+<a herf="#" id="haloword-add" class="haloword-button" title="加入单词表"></a>\
+<a herf="#" id="haloword-remove" class="haloword-button" title="移出单词表"></a>\
 <a href="#" id="haloword-open" class="haloword-button" title="查看单词详细释义" target="_blank"></a>\
 <a herf="#" id="haloword-close" class="haloword-button" title="关闭查询窗"></a>\
 </div>\

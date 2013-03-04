@@ -38,12 +38,13 @@ $(document).ready(function() {
     });
 
     /* Update notification */
-    var cur_version = 10;
+    var cur_version = 11;
     if (!localStorage.prev_version) {
         localStorage.prev_version = cur_version;
     }
-    if (!localStorage.prev_version || cur_version > localStorage.prev_version) {
-        $("#bubble").html('<p>Halo Word 开始支持<strong>整句翻译</strong>啦！现在就输入「people mountain people sea」试试吧，也可以在网页上划取整句进行翻译。</p><p style="margin-top: 4px;">如果您喜欢这个应用，不妨给我们<a href="https://chrome.google.com/webstore/detail/bhkcehpnnlgncpnefpanachijmhikocj/reviews" target="_blank">打个五星</a>或者<a href="https://me.alipay.com/xhacker" target="_blank">捐赠</a>。</p><p class="align-right"><button  id="button-go-version">查看版本信息</button><button id="button-close-bubble">关闭</button></p>');
+    if (cur_version > localStorage.prev_version) {
+        $("#bubble").html('<p>Halo Word 0.5 发布，现已支持划词查询时直接加入单词表，更多新功能也即将到来！</p><p>如果您喜欢这个应用，可以<a href="https://me.alipay.com/xhacker" target="_blank">捐赠</a>以支持我们的开发。</p><p class="align-right"><button  id="button-go-version">查看版本信息</button><button id="button-close-bubble">关闭</button></p>');
+        /* <p style="margin-top: 4px;">如果您喜欢这个应用，不妨给我们<a href="https://chrome.google.com/webstore/detail/bhkcehpnnlgncpnefpanachijmhikocj/reviews" target="_blank">打个五星</a>或者<a href="https://me.alipay.com/xhacker" target="_blank">捐赠</a>。</p> */
         $("#bubble").show();
     }
     $("#button-close-bubble").click(function() {
