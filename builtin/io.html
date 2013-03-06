@@ -58,7 +58,7 @@ $(document).ready(function() {
         }
 
         var text = $("#io #import textarea").val();
-        
+
         var list = text.split(separator);
         var list_final = [];
         for (var li in list) {
@@ -131,18 +131,11 @@ function fake_click(obj) {
 }
 
 function download_wordlist() {
-    if (!window.BlobBuilder) {
-        window.BlobBuilder = window.WebKitBlobBuilder;
-    }
-    var urlObject = window.URL || window.webkitURL || window;
-    var builder = new BlobBuilder(); 
-    builder.append(list); 
-    var export_blob = builder.getBlob(); 
-
-    var save_link = document.createElementNS("http://www.w3.org/1999/xhtml", "a")
-    save_link.href = urlObject.createObjectURL(export_blob);
-    save_link.download = "Halo Word dump.txt";
-    fake_click(save_link);
+    var blob = new Blob([list], {type: 'text/plain'});
+    var link = document.createElement('a');
+    link.href = window.URL.createObjectURL(blob);
+    link.download = "Halo Word dump.txt";
+    fake_click(link);
 
     $("#io #export .info").html("文件已储存至下载文件夹。");
 }
@@ -153,7 +146,7 @@ function download_wordlist() {
         <button class="first clear">清空单词表</button>
         <button class="last reset">恢复默认单词</button>
     </div>
-    
+
     <div style="clear: both"></div>
 
     <div id="import">
