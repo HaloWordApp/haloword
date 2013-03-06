@@ -64,8 +64,9 @@ $(document).ready(function() {
     show_def(location.hash.substring(1));
 
     document.onkeydown = function(key) {
-        // keys between a-z while neither ctrlkey nor metakey pressed
-        if (!key.ctrlKey && !key.metaKey && key.which >= 65 && key.which <= 90) {
+        // keys between a-z while neither ctrlkey nor metakey pressed, v's keyboard code is 86
+        if ( (!key.ctrlKey && !key.metaKey && key.which >= 65 && key.which <= 90) 
+             || ( (key.ctrlKey || key.metaKey) && key.which == 86) ) {
             var input = $("#search_field");
             input.focus();
         }
