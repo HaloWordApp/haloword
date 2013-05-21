@@ -120,6 +120,34 @@ function pron_exist(word, is_upper) {
     }
 }
 
+function get_selection() {
+    var selection = $.trim(window.getSelection());
+    if (!selection) {
+        $("iframe").each(function() {
+            if (this.contentDocument) {
+                selection = $.trim(this.contentDocument.getSelection());
+            }
+            if (selection) {
+                return false;
+            }
+        });
+    }
+    return selection;
+}
+
+$("#haloword-add").click(function() {
+    $("#haloword-add").hide();
+    $("#haloword-remove").show();
+    var selection = get_selection();
+    chrome.extension.sendMessage({method: "add", word: selection});
+});
+$("#haloword-remove").click(function() {
+    $("#haloword-remove").hide();
+    $("#haloword-add").show();
+    var selection = get_selection();
+    chrome.extension.sendMessage({method: "remove", word: selection});
+});
+
 function event_mouseup(e) {
     // chrome.storage.local.set({'disable_querybox': true})
     chrome.storage.local.get('disable_querybox', function(ret) {
@@ -127,17 +155,7 @@ function event_mouseup(e) {
             if (!e.ctrlKey && !e.metaKey) {
                 return;
             }
-            var selection = $.trim(window.getSelection());
-            if (!selection) {
-                $("iframe").each(function() {
-                    if (this.contentDocument) {
-                        selection = $.trim(this.contentDocument.getSelection());
-                    }
-                    if (selection) {
-                        return false;
-                    }
-                });
-            }
+            var selection = get_selection();
             var lang = valid_word(selection);
             if (!lang) {
                 return;
@@ -165,17 +183,6 @@ function event_mouseup(e) {
                     $("#haloword-remove").hide();
                     $("#haloword-add").show();
                 }
-            });
-
-            $("#haloword-add").click(function() {
-                $("#haloword-add").hide();
-                $("#haloword-remove").show();
-                chrome.extension.sendMessage({method: "add", word: selection});
-            });
-            $("#haloword-remove").click(function() {
-                $("#haloword-remove").hide();
-                $("#haloword-add").show();
-                chrome.extension.sendMessage({method: "remove", word: selection});
             });
 
             $("#haloword-pron").hide();
