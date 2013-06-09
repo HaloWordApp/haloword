@@ -138,9 +138,6 @@ $(window).resize(on_resize);
 
 /* STORAGE */
 
-/* word list: newest on top */
-var default_words = ["喵", "miaow", "caesium", "love", "dysprosium", "turf", "Iridium", "daisy", "Chrome", "Capella"];
-
 function init_wordlist() {
     get_wordlist(process_wordlist);
 }

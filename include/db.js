@@ -1,3 +1,6 @@
+/* word list: newest on top */
+var default_words = ["喵", "miaow", "caesium", "love", "dysprosium", "turf", "Iridium", "daisy", "Chrome", "Capella"];
+
 var db;
 function init_db(caller) {
     db = openDatabase("HaloWord", "0.1", "Database for Halo Word", 200000);
