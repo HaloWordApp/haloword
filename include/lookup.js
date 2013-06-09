@@ -142,9 +142,13 @@ function event_mouseup(e) {
             if (!lang) {
                 return;
             }
+            
+            var windowWidth = $(window).width(),
+                halowordWidth = $('#haloword-lookup').outerWidth(),
+                left = Math.min(windowWidth + scrollX - halowordWidth, e.pageX);            
 
             $("#haloword-word").html(selection);
-            $("#haloword-lookup").attr("style", "left: " + e.pageX + "px;" + "top: " + e.pageY + "px;");
+            $("#haloword-lookup").attr("style", "left: " + left + "px;" + "top: " + e.pageY + "px;");
             $("#haloword-open").attr("href", chrome.extension.getURL("main.html#" + selection));
             $("#haloword-close").click(function() {
                 $("#haloword-lookup").hide();
