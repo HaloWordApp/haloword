@@ -91,7 +91,12 @@ $("#haloword-pron").click(function() {
     // HACK: fix Chrome won't play second time
     // unfortunately this doesn't work properly. more: crbug.com/129165.
     //$("#haloword-audio")[0].load();
-    $("#haloword-audio")[0].play();
+    var audio = $("#haloword-audio")[0],
+        src = audio.currentSrc;
+    audio.src = "http://www.google.com/404";
+    audio.play();
+    audio.src = src;
+    audio.play();
 });
 
 function pron_exist(word, is_upper) {
