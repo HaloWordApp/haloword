@@ -55,10 +55,9 @@ $(document).ready(function() {
         query("halo:version");
     });
 
-    /* Special fixes */
+    /* Special fixes for Windows */
     if (get_OS() == "Windows") {
-        /* Special fixes for Windows */
-        $("#search_field").css("-webkit-appearance", "none");
+        $('html').addClass('windows');
     }
 
     show_def(location.hash.substring(1));
