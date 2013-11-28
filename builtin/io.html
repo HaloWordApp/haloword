@@ -19,12 +19,12 @@
 }
 #io #import {
     float: left;
-    padding: 0 30px;
+    padding: 0 26px;
     border-right: 1px dashed #eee;
 }
 #io #export {
     float: left;
-    padding: 0 30px;
+    padding: 0 26px;
 }
 #io button {
 }
@@ -32,6 +32,30 @@
     margin: 6px 0 30px 0;
     font-size: 14px;
     color: #666;
+}
+#io #import #imp{
+    display: inline-block;
+}
+#io #import #import-select{
+    padding-top: 8px;
+    padding-left: 5px;
+    margin-right:5px;
+    float: left;
+}
+#io #import #import-submit{
+    float: right;
+}
+#io #export #exp{
+    display: inline-block;
+}
+#io #export #export-select{
+    padding-top: 8px;
+    padding-left: 5px;
+    margin-right:5px;
+    float: left;
+}
+#io #export #export-submit{
+    float: right;
 }
 </style>
 <script>
@@ -152,28 +176,36 @@ function download_wordlist() {
     <div id="import">
         <h2>Import Word List</h2>
         <p><textarea></textarea></p>
-        <p>
-            <select class="separate-method">
-                <option value="line">每词一行</option>
-                <option value="comma">逗号分隔</option>
-                <option value="space">空格分隔</option>
-            </select>
-            <button class="import">导入</button>
-        </p>
+        <div id="imp">
+            <div id="import-select">
+                <select class="separate-method">
+                    <option value="line">每词一行</option>
+                    <option value="comma">逗号分隔</option>
+                    <option value="space">空格分隔</option>
+                </select>
+            </div>
+            <div id="import-submit">
+                <button class="import">导入</button>
+            </div>
+        </div>
         <p class="info"></p>
     </div>
 
     <div id="export">
         <h2>Export Word List</h2>
         <p><textarea readonly></textarea></p>
-        <p>
-            <select class="separate-method">
-                <option value="line">每词一行</option>
-                <option value="comma">逗号分隔</option>
-                <option value="space">空格分隔</option>
-            </select>
-            <button class="download">下载</button>
-        </p>
+        <div id="exp">
+            <div id="export-select">
+                <select class="separate-method">
+                    <option value="line">每词一行</option>
+                    <option value="comma">逗号分隔</option>
+                    <option value="space">空格分隔</option>
+                </select>
+            </div>
+            <div id="export-submit">
+                <button class="download">下载</button>
+            </div>
+        </div>
         <p class="info"></p>
     </div>
 
