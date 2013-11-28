@@ -321,5 +321,5 @@ function process_json(data) {
         return;
     }
 
-    $("#worddef").append('<p class="credits">Content provided by <a href="https://chrome.google.com/webstore/detail/google-dictionary-by-goog/mgijmajocgfcbeboacabfgobmjgjcoja?hl=zh-CN" target="_blank">Google Dictionary</a></p>');
+    $("#worddef").append('<p class="credits">Content provided by <a href="https://chrome.google.com/webstore/detail/google-dictionary-by-goog/mgijmajocgfcbeboacabfgobmjgjcoja" target="_blank">Google Dictionary</a></p>');
 }
