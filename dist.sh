@@ -14,3 +14,5 @@ rm TODO.txt
 rm .DS_Store
 cd /tmp
 zip -r $APP_NAME.zip `basename $PACKAGED_PATH`
+rm -rf $APP_NAME
+mv $APP_NAME.zip ~/Desktop
