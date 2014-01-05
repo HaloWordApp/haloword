@@ -1,6 +1,10 @@
 $(document).ready(function() {
     init_db("app");
 
+    window.onhashchange = function() {
+        show_def(location.hash.substring(1));
+    }
+
     $("#search_form").submit(function() {
         var word = $("#search_field").val();
         $("#search_field").select();
@@ -65,7 +69,7 @@ $(document).ready(function() {
     document.onkeydown = function(key) {
         if (document.activeElement.tagName != "TEXTAREA" && document.activeElement.tagName != "INPUT") {
             // keys between a-z while neither ctrlkey nor metakey pressed, v's keyboard code is 86
-            if ( (!key.ctrlKey && !key.metaKey && key.which >= 65 && key.which <= 90) 
+            if ( (!key.ctrlKey && !key.metaKey && key.which >= 65 && key.which <= 90)
                  || ( (key.ctrlKey || key.metaKey) && key.which == 86) ) {
                 var input = $("#search_field");
                 input.focus();
@@ -165,10 +169,6 @@ function wordlist_append(word) {
 
 function query(word) {
     location.hash = word;
-}
-
-window.onhashchange = function() {
-    show_def(location.hash.substring(1));
 }
 
 function show_def(word) {
