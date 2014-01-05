@@ -1,0 +1,42 @@
+body {
+    width: 100%;
+}
+
+#side {
+    width: 210px;
+    position: relative;
+}
+
+#side #title {
+    margin: 0;
+    font-size: 25px;
+}
+
+#side #search {
+    padding: 5px 18px;
+    line-height: 0;
+    margin: 16px 0 4px 0;
+}
+
+#side li {
+    padding: 2px 22px 2px 0;
+    font-size: 20px;
+}
+
+#main {
+    width: auto;
+    float: none;
+}
+
+#main header {
+    margin-top: 16px;
+    font-size: 30px;
+}
+
+#main header #toolbar {
+    padding-top: 6px;
+}
+
+#main hr {
+    margin: 4px 0;
+}

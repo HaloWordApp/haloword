@@ -4,6 +4,8 @@ $(document).ready(function() {
     window.onhashchange = function() {
         show_def(location.hash.substring(1));
     }
+    $(window).load(on_resize);
+    $(window).resize(on_resize);
 
     $("#search_form").submit(function() {
         var word = $("#search_field").val();
@@ -81,7 +83,10 @@ $(document).ready(function() {
 function get_OS() {
     var ua = navigator.userAgent;
     var os;
-    if (ua.indexOf("Windows") > 0) {
+    if (typeof process == "object") {
+        os = "node-webkit"
+    }
+    else if (ua.indexOf("Windows") > 0) {
         os = "Windows";
     }
     else if (ua.indexOf("Mac OS X") > 0) {
@@ -128,16 +133,17 @@ function get_version() {
 /* UI */
 
 function on_resize() {
-    if (get_OS() == "Mac OS X") {
+    var OS = get_OS();
+    if (OS == "Mac OS X") {
         $("#wordlist").height($(window).height() - 146);
+    }
+    else if (OS == "node-webkit") {
+        $("#wordlist").height($(window).height() - 102);
     }
     else {
         $("#wordlist").height($(window).height() - 156);
     }
 }
-
-$(window).load(on_resize);
-$(window).resize(on_resize);
 
 /* STORAGE */
 
