@@ -44,12 +44,12 @@ $(document).ready(function() {
     });
 
     /* Update notification */
-    var cur_version = 12;
+    var cur_version = 13;
     if (!localStorage.prev_version) {
         localStorage.prev_version = cur_version;
     }
     if (cur_version > localStorage.prev_version) {
-        $("#bubble").html('<p>Halo Word 现已在<a href="https://github.com/xhacker/haloword" target="_blank">GitHub</a>上开源。欢迎 star，欢迎<a href="https://github.com/xhacker" target="_blank">follow</a>，欢迎 pull request，欢迎<a href="https://me.alipay.com/xhacker" target="_blank">捐赠</a>。:)</p><p class="align-right"><button id="button-close-bubble">关闭</button></p>');
+        $("#bubble").html('由于 Google Dictionary API 已无法使用，近期 Halo Word 将无法显示英英释义。我们已发现并正在解决这个问题，请稍安勿躁。如果您是一名 web 开发者，也欢迎通过<a href="https://github.com/xhacker/haloword" target="_blank">GitHub</a>参与开发。<p class="align-right"><button id="button-close-bubble">关闭</button></p>');
         /* <button id="button-go-version">查看版本信息</button><p style="margin-top: 4px;">如果您喜欢这个应用，不妨给我们<a href="https://chrome.google.com/webstore/detail/bhkcehpnnlgncpnefpanachijmhikocj/reviews" target="_blank">打个五星</a>或者<a href="https://me.alipay.com/xhacker" target="_blank">捐赠</a>。</p> */
         $("#bubble").show();
     }
