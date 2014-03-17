@@ -209,6 +209,7 @@ function show_def(word) {
         }, null);
     });
 
+/* Google Dictionary API no longer works
     $.ajax({
         url: "http://www.google.com/dictionary/json?callback=fake&q=" + word + "&sl=en&tl=zh-cn",
         dataType: "text",
@@ -229,6 +230,41 @@ function show_def(word) {
             process_json(obj);
         }
     });
+*/
+
+    $.ajax({
+        url: "http://www.dictionaryapi.com/api/v1/references/collegiate/xml/" + word + "?key=" + WEBSTER_KEY,
+        dataType: "xml",
+        success: function(data) {
+            var entry_list = $(data).find("entry_list")
+            var entries = entry_list.find("entry")
+
+            console.log(entries)
+
+            if (entries.length === 0) {
+                show_builtin("notfound")
+                return
+            }
+
+            var html = ""
+
+            entries.each(function() {
+                var sound = $(this).find("sound")[0]
+                if (sound) {
+                    var wav = $(sound).children('wav')
+                    html += '<a class="pronounce"><audio src="http://media.merriam-webster.com/soundc11/h/' + wav.text() + '"></audio></a>'
+                }
+            })
+
+            $("#worddef").html(html)
+
+            $(".pronounce").click(function() {
+                $("audio", this)[0].play()
+            })
+
+            $("#worddef").append('<p class="credits">Content provided by <a href="http://www.merriam-webster.com" target="_blank">Merriam-Webster</a></p>')
+        }
+    })
 
     $("#extradef .phonetic").html("<span>ˈləʊdɪŋ</span>");
     $("#extradef .content").html("<p>loading...</p>");
@@ -307,25 +343,4 @@ function show_builtin(builtin) {
 function process_builtin(data) {
     data = data.replace(/__VERSION__/g, '<a href="#halo:version">' + VERSION + '</a>');
     return data;
-}
-
-function process_json(data) {
-    if (!data.primaries) {
-        show_builtin("notfound");
-        return;
-    }
-
-    var meaning = process_primary(data.primaries);
-    if (meaning) {
-        $("#worddef").html(meaning);
-        $(".pronounce").click(function() {
-            $("audio", this)[0].play();
-        });
-    }
-    else {
-        show_builtin("notfound");
-        return;
-    }
-
-    $("#worddef").append('<p class="credits">Content provided by <a href="https://chrome.google.com/webstore/detail/google-dictionary-by-goog/mgijmajocgfcbeboacabfgobmjgjcoja" target="_blank">Google Dictionary</a></p>');
 }
