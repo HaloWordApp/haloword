@@ -239,8 +239,6 @@ function show_def(word) {
             var entry_list = $(data).find("entry_list")
             var entries = entry_list.find("entry")
 
-            console.log(entries)
-
             if (entries.length === 0) {
                 show_builtin("notfound")
                 return
@@ -256,20 +254,61 @@ function show_def(word) {
                     html += '<a class="pronounce"><audio src="http://media.merriam-webster.com/soundc11/h/' + wav.text() + '"></audio></a>'
                 }
                 */
+
+                var def_list = []
+                var sub_list = []
+                var in_sub_list = false
+                $($(this).children("def")[0]).children().each(function() {
+                    if ($(this).prop("tagName") == "sn") {
+                        var sn = $(this).text()
+                        if (isNaN(sn)) {
+                            in_sub_list = true
+                        }
+                        else {
+                            in_sub_list = false
+                            if (sub_list.length > 0) {
+                                def_list[def_list.length-1]["sub"] = sub_list
+                                sub_list = []
+                            }
+                        }
+                    }
+                    else if ($(this).prop("tagName") == "dt") {
+                        var content = $(this).text().trim()
+                        if (content[0] = ":") {
+                            content = content.substr(1)
+                        }
+
+                        if (in_sub_list) {
+                            sub_list.push({"content": content})
+                        }
+                        else {
+                            def_list.push({"content": content})
+                        }
+                    }
+                })
+
                 var view = {
-                    hw: $(this).children("hw").text().replace(/\*/g, "·"),
-                    hwindex: $(this).children("hw").attr("hindex"),
-                    pr: $(this).children("pr").text(),
-                    fl: $(this).children("fl").text()
+                    "hw": $(this).children("hw").text().replace(/\*/g, "·"),
+                    "hwindex": $(this).children("hw").attr("hindex"),
+                    "pr": $(this).children("pr").text(),
+                    "fl": $(this).children("fl").text(),
+                    "def": def_list
                 }
                 html += Mustache.render('<div class="mw-item">\
                     <div class="mw-meta">\
-                    <span class="mw-headword">\
-                    {{#hwindex}}<sup>{{hwindex}}</sup>{{/hwindex}}{{hw}}\
-                    </span>\
-                    <span class="mw-part-of-speech">{{fl}}</span>\
-                    {{#pr}}<span class="mw-pr">\\{{pr}}\\</span>{{/pr}}\
+                        <span class="mw-headword">\
+                        {{#hwindex}}<sup>{{hwindex}}</sup>{{/hwindex}}{{hw}}\
+                        </span>\
+                        <span class="mw-part-of-speech">{{fl}}</span>\
+                        {{#pr}}<span class="mw-pr">\\{{pr}}\\</span>{{/pr}}\
                     </div>\
+                    <ol>{{#def}}\
+                        <li>{{content}}\
+                        {{#sub.length}}\
+                            <ol>{{#sub}}<li>{{content}}</li>{{/sub}}</ol>\
+                        {{/sub.length}}\
+                        </li>\
+                    {{/def}}</ol>\
                     </div>', view)
             })
 

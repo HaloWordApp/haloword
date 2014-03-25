@@ -529,6 +529,7 @@ a {
 .mw-item {
   padding-left: 10px;
   margin-top: 6px;
+  margin-bottom: 20px;
 }
 .mw-item .mw-headword {
   font: 24px/32px PTSerif, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312", serif;
@@ -547,6 +548,21 @@ a {
   font: 17px/18px Helvetica, Arial, 'Hiragino Sans GB', 'WenQuanYi Micro Hei', 'Microsoft YaHei', sans-serif;
   margin-left: 5px;
   color: #444;
+}
+.mw-item > ol {
+  font: 22px/31px PTSerif, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312", serif;
+  padding-left: 46px;
+}
+.mw-item > ol > li {
+  margin-top: 8px;
+}
+.mw-item > ol > li > ol {
+  font: 18px/26px PTSerif, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312", serif;
+  padding-left: 12px;
+  list-style-type: lower-alpha;
+}
+.mw-item > ol > li > ol li {
+  margin-top: 5px;
 }
 #main .headword > .entries {
   font: 24px/34px PTSerif, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312", serif;

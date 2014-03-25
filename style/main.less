@@ -370,6 +370,7 @@ a {
 .mw-item {
     padding-left: 10px;
     margin-top: 6px;
+    margin-bottom: 20px;
 
     .mw-headword {
         font: 24px/32px @SerifFontFamily;
@@ -388,6 +389,24 @@ a {
         font: 17px/18px @HelveticaFontFamily;
         margin-left: 5px;
         color: #444;
+    }
+
+    &> ol {
+        font: 22px/31px @SerifFontFamily;
+        padding-left: 46px;
+        &> li {
+            margin-top: 8px;
+
+            &> ol {
+                font: 18px/26px @SerifFontFamily;
+                padding-left: 12px;
+                list-style-type: lower-alpha;
+
+                li {
+                    margin-top: 5px;
+                }
+            }
+        }
     }
 }
 
