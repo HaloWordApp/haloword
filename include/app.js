@@ -233,7 +233,7 @@ function show_def(word) {
 */
 
     $.ajax({
-        url: "http://www.dictionaryapi.com/api/v1/references/collegiate/xml/" + word + "?key=" + WEBSTER_KEY,
+        url: "http://halo.xhacker.im/webster/query/" + word,
         dataType: "xml",
         success: function(data) {
             var entry_list = $(data).find("entry_list")
@@ -249,11 +249,28 @@ function show_def(word) {
             var html = ""
 
             entries.each(function() {
+                /* Some of them are always 404.
                 var sound = $(this).find("sound")[0]
                 if (sound) {
                     var wav = $(sound).children('wav')
                     html += '<a class="pronounce"><audio src="http://media.merriam-webster.com/soundc11/h/' + wav.text() + '"></audio></a>'
                 }
+                */
+                var view = {
+                    hw: $(this).children("hw").text().replace(/\*/g, "·"),
+                    hwindex: $(this).children("hw").attr("hindex"),
+                    pr: $(this).children("pr").text(),
+                    fl: $(this).children("fl").text()
+                }
+                html += Mustache.render('<div class="mw-item">\
+                    <div class="mw-meta">\
+                    <span class="mw-headword">\
+                    {{#hwindex}}<sup>{{hwindex}}</sup>{{/hwindex}}{{hw}}\
+                    </span>\
+                    <span class="mw-part-of-speech">{{fl}}</span>\
+                    {{#pr}}<span class="mw-pr">\\{{pr}}\\</span>{{/pr}}\
+                    </div>\
+                    </div>', view)
             })
 
             $("#worddef").html(html)

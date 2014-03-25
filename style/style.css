@@ -525,6 +525,29 @@ a {
 #main .entries > .label[title^="Part-of"] + .label[title^="Part-of"] {
   margin-left: 8px;
 }
+/* Style for Webster */
+.mw-item {
+  padding-left: 10px;
+  margin-top: 6px;
+}
+.mw-item .mw-headword {
+  font: 24px/32px PTSerif, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312", serif;
+}
+.mw-item .mw-headword sup {
+  font-size: 14px;
+  margin-right: 2px;
+}
+.mw-item .mw-part-of-speech {
+  font: 16px/16px Helvetica, Arial, 'Hiragino Sans GB', 'WenQuanYi Micro Hei', 'Microsoft YaHei', sans-serif;
+  color: #777;
+  margin-left: 2px;
+}
+.mw-item .mw-pr {
+  display: inline-block;
+  font: 17px/18px Helvetica, Arial, 'Hiragino Sans GB', 'WenQuanYi Micro Hei', 'Microsoft YaHei', sans-serif;
+  margin-left: 5px;
+  color: #444;
+}
 #main .headword > .entries {
   font: 24px/34px PTSerif, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312", serif;
   padding-left: 46px;

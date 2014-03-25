@@ -362,8 +362,33 @@ a {
     color: #000;
     margin: 24px 0 10px -32px;
 }
-#main .entries > .label[title^="Part-of"] + .label[title^="Part-of"]{
+#main .entries > .label[title^="Part-of"] + .label[title^="Part-of"] {
     margin-left: 8px;
+}
+
+/* Style for Webster */
+.mw-item {
+    padding-left: 10px;
+    margin-top: 6px;
+
+    .mw-headword {
+        font: 24px/32px @SerifFontFamily;
+        sup {
+            font-size: 14px;
+            margin-right: 2px;
+        }
+    }
+    .mw-part-of-speech {
+        font: 16px/16px @HelveticaFontFamily;
+        color: #777;
+        margin-left: 2px;
+    }
+    .mw-pr {
+        display: inline-block;
+        font: 17px/18px @HelveticaFontFamily;
+        margin-left: 5px;
+        color: #444;
+    }
 }
 
 #main .headword > .entries {
