@@ -525,6 +525,9 @@ a {
   margin-left: 5px;
   color: #444;
 }
+.mw-item .pronounce {
+  top: 0px !important;
+}
 .mw-item > ol {
   font: 22px/31px Georgia, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312", serif;
   padding-left: 46px;

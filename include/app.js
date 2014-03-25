@@ -247,14 +247,6 @@ function show_def(word) {
             var html = ""
 
             entries.each(function() {
-                /* Some of them are always 404.
-                var sound = $(this).find("sound")[0]
-                if (sound) {
-                    var wav = $(sound).children('wav')
-                    html += '<a class="pronounce"><audio src="http://media.merriam-webster.com/soundc11/h/' + wav.text() + '"></audio></a>'
-                }
-                */
-
                 var def_list = []
                 var sub_list = []
                 var in_sub_list = false
@@ -328,10 +320,22 @@ function show_def(word) {
                     def_list[def_list.length-1]["sub"] = sub_list
                 }
 
+                var sound_html = ""
+                var sound = $(this).children("sound")[0]
+                if (sound) {
+                    $(sound).children('wav').each(function() {
+                        var filename = $(this).text()
+                        sound_html += '<a class="pronounce"><audio src="http://media.merriam-webster.com/soundc11/' + filename[0] + '/' + filename + '"></audio></a>'
+                    })
+                    var wav = $(sound).children('wav').text()
+
+                }
+
                 var view = {
                     "hw": $(this).children("hw").text().replace(/\*/g, "·"),
                     "hwindex": $(this).children("hw").attr("hindex"),
-                    "pr": $(this).children("pr").text(),
+                    "pr": $(this).children("pr").text().trim(),
+                    "sound": sound_html,
                     "fl": $(this).children("fl").text(),
                     "def": def_list
                 }
@@ -341,7 +345,7 @@ function show_def(word) {
                         {{#hwindex}}<sup>{{hwindex}}</sup>{{/hwindex}}{{hw}}\
                         </span>\
                         <span class="mw-part-of-speech">{{fl}}</span>\
-                        {{#pr}}<span class="mw-pr">\\{{pr}}\\</span>{{/pr}}\
+                        {{#pr}}<span class="mw-pr">\\{{pr}}\\</span>{{/pr}}{{{sound}}}\
                     </div>\
                     <ol>{{#def}}\
                         <li>{{{content}}}\
