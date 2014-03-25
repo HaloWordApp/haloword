@@ -540,6 +540,23 @@ a {
 .mw-item > ol > li > ol li {
   margin-top: 6px;
 }
+.mw-item .mw-sxn {
+  color: #999;
+}
+.mw-item .mw-vi {
+  display: block;
+  font-size: 0.8em;
+  font-style: italic;
+}
+.mw-item .mw-vi > .mw-it {
+  font-weight: bold;
+}
+.mw-item .mw-vi .mw-aq {
+  font-style: normal;
+}
+.mw-item .mw-vi .mw-aq::before {
+  content: " — ";
+}
 #main .headword > .entries {
   font: 24px/34px Georgia, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312", serif;
   padding-left: 46px;

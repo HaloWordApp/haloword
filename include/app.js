@@ -313,10 +313,8 @@ function show_def(word) {
                         }
 
                         var content = xml_to_html(this)
-                        content = $(content).html()
-                        if (content[0] = ":") {
-                            content = content.substr(1)
-                        }
+                        content = $(content).html().trim()
+                        content = content.replace(/^:/, "")
 
                         if (in_sub_list) {
                             sub_list.push({"content": content})

@@ -408,6 +408,24 @@ a {
             }
         }
     }
+
+    .mw-sxn {
+        color: #999;
+    }
+    .mw-vi {
+        display: block;
+        font-size: 0.8em;
+        font-style: italic;
+        &> .mw-it {
+            font-weight: bold;
+        }
+        .mw-aq {
+            font-style: normal;
+        }
+        .mw-aq::before {
+          content: " — ";
+        }
+    }
 }
 
 #main .headword > .entries {
