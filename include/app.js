@@ -425,6 +425,10 @@ function show_builtin(builtin) {
     $.get("builtin/" + builtin + ".html", function(data) {
         $("#worddef").html(process_builtin(data));
 
+        $(".pronounce").click(function() {
+            $("audio", this)[0].play()
+        })
+
         var title = $("#builtin-title").html();
         if (title) {
             $("#extradef").hide();
