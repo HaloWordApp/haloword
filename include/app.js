@@ -259,21 +259,61 @@ function show_def(word) {
                 var sub_list = []
                 var in_sub_list = false
                 $($(this).children("def")[0]).children().each(function() {
-                    if ($(this).prop("tagName") == "sn") {
+                    if ($(this).is("sn")) {
                         var sn = $(this).text()
-                        if (isNaN(sn)) {
+                        if (/^[a-zA-Z]+$/.test(sn)) {
+                            // a
                             in_sub_list = true
                         }
-                        else {
+                        else if (!isNaN(sn)) {
+                            // 1
                             in_sub_list = false
                             if (sub_list.length > 0) {
                                 def_list[def_list.length-1]["sub"] = sub_list
                                 sub_list = []
                             }
                         }
+                        else {
+                            var segments = sn.split(" ")
+                            if (segments.length > 1 && !isNaN(segments[0]) && /^[a-zA-Z]+$/.test(segments[1])) {
+                                // 1 a
+                                if (sub_list.length > 0) {
+                                    def_list[def_list.length-1]["sub"] = sub_list
+                                    sub_list = []
+                                }
+
+                                def_list.push({})
+                                in_sub_list = true
+                            }
+                        }
                     }
-                    else if ($(this).prop("tagName") == "dt") {
-                        var content = $(this).text().trim()
+                    else if ($(this).is("dt")) {
+                        function xml_to_html(xml) {
+                            var html = ""
+
+                            var tagName = $(xml).prop("tagName")
+                            if (tagName) {
+                                html += '<span class="mw-' + tagName + '">'
+                            }
+
+                            if ($(xml).contents().length == 0) {
+                                html += $(xml).text()
+                            }
+                            else {
+                                $(xml).contents().each(function() {
+                                    html += xml_to_html(this)
+                                })
+                            }
+
+                            if (tagName) {
+                                html += '</span>'
+                            }
+
+                            return html
+                        }
+
+                        var content = xml_to_html(this)
+                        content = $(content).html()
                         if (content[0] = ":") {
                             content = content.substr(1)
                         }
@@ -286,6 +326,9 @@ function show_def(word) {
                         }
                     }
                 })
+                if (sub_list.length > 0) {
+                    def_list[def_list.length-1]["sub"] = sub_list
+                }
 
                 var view = {
                     "hw": $(this).children("hw").text().replace(/\*/g, "·"),
@@ -303,9 +346,9 @@ function show_def(word) {
                         {{#pr}}<span class="mw-pr">\\{{pr}}\\</span>{{/pr}}\
                     </div>\
                     <ol>{{#def}}\
-                        <li>{{content}}\
+                        <li>{{{content}}}\
                         {{#sub.length}}\
-                            <ol>{{#sub}}<li>{{content}}</li>{{/sub}}</ol>\
+                            <ol>{{#sub}}<li>{{{content}}}</li>{{/sub}}</ol>\
                         {{/sub.length}}\
                         </li>\
                     {{/def}}</ol>\
