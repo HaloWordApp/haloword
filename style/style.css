@@ -57,30 +57,6 @@ table {
   border-spacing: 0;
 }
 @font-face {
-  font-family: PTSerif;
-  src: url("../include/font/PTSerif.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: PTSerif;
-  src: url("../include/font/PTSerifBold.ttf") format("truetype");
-  font-weight: bold;
-  font-style: normal;
-}
-@font-face {
-  font-family: PTSerif;
-  src: url("../include/font/PTSerifItalic.ttf") format("truetype");
-  font-weight: normal;
-  font-style: italic;
-}
-@font-face {
-  font-family: PTSerif;
-  src: url("../include/font/PTSerifBoldItalic.ttf") format("truetype");
-  font-weight: bold;
-  font-style: italic;
-}
-@font-face {
   font-family: DroidSans;
   src: url("../include/font/DroidSans.ttf") format("truetype");
   font-weight: normal;
@@ -364,7 +340,7 @@ a {
 }
 #main header {
   margin-top: 26px;
-  font: 36px/40px PTSerif, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312", serif;
+  font: 36px/40px Georgia, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312", serif;
   color: #53637D;
 }
 #main header #toolbar {
@@ -458,7 +434,7 @@ a {
   padding-left: 12px;
 }
 #main p.text {
-  font-family: PTSerif, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312", serif;
+  font-family: Georgia, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312", serif;
 }
 /* word */
 /* #main .headword > .terms > p.text:first-child {
@@ -532,7 +508,7 @@ a {
   margin-bottom: 20px;
 }
 .mw-item .mw-headword {
-  font: 24px/32px PTSerif, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312", serif;
+  font: 24px/32px Georgia, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312", serif;
 }
 .mw-item .mw-headword sup {
   font-size: 14px;
@@ -550,22 +526,22 @@ a {
   color: #444;
 }
 .mw-item > ol {
-  font: 22px/31px PTSerif, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312", serif;
+  font: 22px/31px Georgia, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312", serif;
   padding-left: 46px;
 }
 .mw-item > ol > li {
   margin-top: 8px;
 }
 .mw-item > ol > li > ol {
-  font: 18px/26px PTSerif, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312", serif;
+  font: 20px/28px Georgia, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312", serif;
   padding-left: 12px;
   list-style-type: lower-alpha;
 }
 .mw-item > ol > li > ol li {
-  margin-top: 5px;
+  margin-top: 6px;
 }
 #main .headword > .entries {
-  font: 24px/34px PTSerif, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312", serif;
+  font: 24px/34px Georgia, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312", serif;
   padding-left: 46px;
 }
 #main .headword p {
@@ -581,7 +557,7 @@ a {
   padding-left: 30px;
 }
 #main .meaning > .entries .example {
-  font: 20px/30px PTSerif, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312", serif;
+  font: 20px/30px Georgia, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312", serif;
   display: list-item;
   list-style-image: url('../img/bullet.svg');
 }
@@ -589,11 +565,11 @@ a {
   margin-bottom: 14px;
 }
 #main .related .text {
-  font: 19px/24px PTSerif, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312", serif;
+  font: 19px/24px Georgia, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312", serif;
   color: #222;
 }
 #main .related .meaning {
-  font: 19px/24px PTSerif, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312", serif;
+  font: 19px/24px Georgia, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312", serif;
   margin-left: 24px;
 }
 #main p.version {
@@ -607,7 +583,7 @@ a {
   margin-left: 5px;
 }
 #main ul {
-  font: 20px/30px PTSerif, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312", serif;
+  font: 20px/30px Georgia, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312", serif;
   padding-left: 60px;
   list-style-image: url('../img/bullet.svg');
 }
