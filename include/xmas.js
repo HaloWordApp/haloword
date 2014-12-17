@@ -5,14 +5,15 @@ $(document).ready(function() {
     var date = today.getDate();
     var year = today.getFullYear();
 
-    //console.log(month + "." + date);
-
     if (month == 12 &&
     date in {'23':true, '24':true, '25':true, '26':true} ) {
         /* Happy Xmas :) */
         $("li#title").html("Happy Xmas");
         if (date == 24 || date == 25) {
-            snowStorm.start();
+            $().jSnow({
+                vSize:'100',
+                fadeAway:true
+            });
         }
     }
     
