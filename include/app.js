@@ -377,7 +377,8 @@ function show_def(word) {
             var def = "", i;
             if (data.errorCode === 0) {
                 $("#extradef .from").html("Youdao");
-                $("#extradef .from").attr("href", "http://dict.youdao.com/");
+                dict_url = "http://dict.youdao.com/search?q=" + word + "&keyfrom=dict.index"
+                $("#extradef .from").attr("href", dict_url);
                 if (data.basic) {
                     if (data.basic.phonetic) {
                         $("#extradef .phonetic").html("<span>" + data.basic.phonetic + "</span>");
