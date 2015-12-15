@@ -184,11 +184,11 @@ body {
   width: 960px;
   height: 100%;
   margin: 0 auto;
-  font: 24px/36px "SF UI Text", DroidSans, "Hiragino Sans GB", "Noto Sans CJK CN", "Source Han Sans CN", "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
+  font: 24px/36px "SF UI Text", DroidSans, "Hiragino Sans GB", "Noto Sans CJK SC", "Source Han Sans CN", "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
 }
 button,
 select {
-  font-family: "SF UI Text", DroidSans, "Hiragino Sans GB", "Noto Sans CJK CN", "Source Han Sans CN", "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
+  font-family: "SF UI Text", DroidSans, "Hiragino Sans GB", "Noto Sans CJK SC", "Source Han Sans CN", "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
 }
 hr {
   background-color: #dbdbdb;
@@ -234,13 +234,13 @@ a {
 }
 #side li {
   padding: 6px 26px 6px 0;
-  font: 24px/36px "SF UI Text", DroidSans, "Hiragino Sans GB", "Noto Sans CJK CN", "Source Han Sans CN", "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
+  font: 24px/36px "SF UI Text", DroidSans, "Hiragino Sans GB", "Noto Sans CJK SC", "Source Han Sans CN", "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
   color: #3D65BB;
   border: 1px solid transparent;
   vertical-align: middle;
 }
 #side li.current {
-  font-family: "SF UI Text", DroidSans, "Hiragino Sans GB", "Noto Sans CJK CN", "Source Han Sans CN", "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
+  font-family: "SF UI Text", DroidSans, "Hiragino Sans GB", "Noto Sans CJK SC", "Source Han Sans CN", "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
   border-right-color: #AABEDC;
   background: -webkit-linear-gradient(left, #BBCEE9, #BBCEE9 97%, #AABEDC);
   font-weight: bold;
@@ -261,10 +261,10 @@ a {
 }
 #side #title {
   margin-top: 18px;
-  font: 29px/42px "SF UI Text", DroidSans, "Hiragino Sans GB", "Noto Sans CJK CN", "Source Han Sans CN", "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
+  font: 29px/42px "SF UI Text", DroidSans, "Hiragino Sans GB", "Noto Sans CJK SC", "Source Han Sans CN", "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
 }
 #side #title.current {
-  font-family: "SF UI Text", DroidSans, "Hiragino Sans GB", "Noto Sans CJK CN", "Source Han Sans CN", "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
+  font-family: "SF UI Text", DroidSans, "Hiragino Sans GB", "Noto Sans CJK SC", "Source Han Sans CN", "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
   font-weight: bold;
 }
 #side #search {
@@ -277,7 +277,7 @@ a {
   outline: none;
   padding: 6px 10px;
   font-size: 16px;
-  font-family: "SF UI Text", DroidSans, "Hiragino Sans GB", "Noto Sans CJK CN", "Source Han Sans CN", "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
+  font-family: "SF UI Text", DroidSans, "Hiragino Sans GB", "Noto Sans CJK SC", "Source Han Sans CN", "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
 }
 .windows #side #search_field {
   border: 0;
@@ -321,7 +321,7 @@ a {
   padding: 10px;
   font-size: 14px;
   line-height: 20px;
-  font-family: "SF UI Text", DroidSans, "Hiragino Sans GB", "Noto Sans CJK CN", "Source Han Sans CN", "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
+  font-family: "SF UI Text", DroidSans, "Hiragino Sans GB", "Noto Sans CJK SC", "Source Han Sans CN", "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
   color: #555;
 }
 #bubble a {
@@ -340,7 +340,7 @@ a {
 }
 #main header {
   margin-top: 26px;
-  font: 36px/40px Athelas, "Century Schoolbook L", Georgia, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312", "Noto Sans CJK CN", "Source Han Sans CN", serif;
+  font: 36px/40px Athelas, "Century Schoolbook L", Georgia, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312", "Noto Sans CJK SC", "Source Han Sans CN", serif;
   color: #53637D;
 }
 #main header #toolbar {
@@ -393,10 +393,10 @@ a {
 }
 #main #extradef p {
   margin: 0 0 2px 0;
-  font-family: Helvetica, Arial, "Hiragino Sans GB", "Source Han Sans CN", "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
+  font-family: Helvetica, Arial, "Hiragino Sans GB", "Noto Sans CJK SC", "Source Han Sans CN", "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
 }
 #main #extradef .from {
-  font-family: Helvetica, Arial, "Hiragino Sans GB", "Source Han Sans CN", "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
+  font-family: Helvetica, Arial, "Hiragino Sans GB", "Noto Sans CJK SC", "Source Han Sans CN", "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
   font-size: 14px;
   line-height: 30px;
   display: inline-block;
@@ -423,7 +423,7 @@ a {
 }
 #main #worddef .credits a {
   color: #bbb;
-  font-family: "SF UI Text", DroidSans, "Hiragino Sans GB", "Noto Sans CJK CN", "Source Han Sans CN", "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
+  font-family: "SF UI Text", DroidSans, "Hiragino Sans GB", "Noto Sans CJK SC", "Source Han Sans CN", "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
   font-weight: bold;
 }
 #main #worddef .credits a:hover {
@@ -434,7 +434,7 @@ a {
   padding-left: 12px;
 }
 #main p.text {
-  font-family: Athelas, "Century Schoolbook L", Georgia, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312", "Noto Sans CJK CN", "Source Han Sans CN", serif;
+  font-family: Athelas, "Century Schoolbook L", Georgia, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312", "Noto Sans CJK SC", "Source Han Sans CN", serif;
 }
 /* word */
 /* #main .headword > .terms > p.text:first-child {
@@ -479,22 +479,22 @@ a {
 }
 #main .phonetic {
   display: inline-block;
-  font: 17px/18px Helvetica, Arial, "Hiragino Sans GB", "Source Han Sans CN", "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
+  font: 17px/18px Helvetica, Arial, "Hiragino Sans GB", "Noto Sans CJK SC", "Source Han Sans CN", "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
   margin-right: 12px;
   color: #3a3a3a;
 }
 #main .label {
-  font: 16px/16px Helvetica, Arial, "Hiragino Sans GB", "Source Han Sans CN", "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
+  font: 16px/16px Helvetica, Arial, "Hiragino Sans GB", "Noto Sans CJK SC", "Source Han Sans CN", "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
   color: #666;
 }
 #main .label[title^="Phonetic"],
 #main .phonetic .label {
-  font-family: Helvetica, Arial, "Hiragino Sans GB", "Source Han Sans CN", "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
+  font-family: Helvetica, Arial, "Hiragino Sans GB", "Noto Sans CJK SC", "Source Han Sans CN", "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
   font-size: 12px;
   color: #AAAAAA;
 }
 #main .entries > .label[title^="Part-of"] {
-  font: 20px/20px "SF UI Text", DroidSans, "Hiragino Sans GB", "Noto Sans CJK CN", "Source Han Sans CN", "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
+  font: 20px/20px "SF UI Text", DroidSans, "Hiragino Sans GB", "Noto Sans CJK SC", "Source Han Sans CN", "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
   color: #000;
   margin: 24px 0 10px -32px;
 }
@@ -508,20 +508,20 @@ a {
   margin-bottom: 26px;
 }
 .mw-item .mw-headword {
-  font: 24px/32px Athelas, "Century Schoolbook L", Georgia, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312", "Noto Sans CJK CN", "Source Han Sans CN", serif;
+  font: 24px/32px Athelas, "Century Schoolbook L", Georgia, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312", "Noto Sans CJK SC", "Source Han Sans CN", serif;
 }
 .mw-item .mw-headword sup {
   font-size: 14px;
   margin-right: 2px;
 }
 .mw-item .mw-part-of-speech {
-  font: 16px/16px Helvetica, Arial, "Hiragino Sans GB", "Source Han Sans CN", "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
+  font: 16px/16px Helvetica, Arial, "Hiragino Sans GB", "Noto Sans CJK SC", "Source Han Sans CN", "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
   color: #777;
   margin-left: 2px;
 }
 .mw-item .mw-pr {
   display: inline-block;
-  font: 17px/18px Helvetica, Arial, "Hiragino Sans GB", "Source Han Sans CN", "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
+  font: 17px/18px Helvetica, Arial, "Hiragino Sans GB", "Noto Sans CJK SC", "Source Han Sans CN", "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
   margin-left: 5px;
   color: #444;
 }
@@ -529,14 +529,14 @@ a {
   top: 0px !important;
 }
 .mw-item > ol {
-  font: 22px/31px Athelas, "Century Schoolbook L", Georgia, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312", "Noto Sans CJK CN", "Source Han Sans CN", serif;
+  font: 22px/31px Athelas, "Century Schoolbook L", Georgia, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312", "Noto Sans CJK SC", "Source Han Sans CN", serif;
   padding-left: 46px;
 }
 .mw-item > ol > li {
   margin-top: 8px;
 }
 .mw-item > ol > li > ol {
-  font: 20px/28px Athelas, "Century Schoolbook L", Georgia, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312", "Noto Sans CJK CN", "Source Han Sans CN", serif;
+  font: 20px/28px Athelas, "Century Schoolbook L", Georgia, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312", "Noto Sans CJK SC", "Source Han Sans CN", serif;
   padding-left: 18px;
   list-style-type: lower-alpha;
 }
@@ -561,7 +561,7 @@ a {
   content: " — ";
 }
 #main .headword > .entries {
-  font: 24px/34px Athelas, "Century Schoolbook L", Georgia, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312", "Noto Sans CJK CN", "Source Han Sans CN", serif;
+  font: 24px/34px Athelas, "Century Schoolbook L", Georgia, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312", "Noto Sans CJK SC", "Source Han Sans CN", serif;
   padding-left: 46px;
 }
 #main .headword p {
@@ -577,7 +577,7 @@ a {
   padding-left: 30px;
 }
 #main .meaning > .entries .example {
-  font: 20px/30px Athelas, "Century Schoolbook L", Georgia, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312", "Noto Sans CJK CN", "Source Han Sans CN", serif;
+  font: 20px/30px Athelas, "Century Schoolbook L", Georgia, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312", "Noto Sans CJK SC", "Source Han Sans CN", serif;
   display: list-item;
   list-style-image: url('../img/bullet.svg');
 }
@@ -585,11 +585,11 @@ a {
   margin-bottom: 14px;
 }
 #main .related .text {
-  font: 19px/24px Athelas, "Century Schoolbook L", Georgia, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312", "Noto Sans CJK CN", "Source Han Sans CN", serif;
+  font: 19px/24px Athelas, "Century Schoolbook L", Georgia, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312", "Noto Sans CJK SC", "Source Han Sans CN", serif;
   color: #222;
 }
 #main .related .meaning {
-  font: 19px/24px Athelas, "Century Schoolbook L", Georgia, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312", "Noto Sans CJK CN", "Source Han Sans CN", serif;
+  font: 19px/24px Athelas, "Century Schoolbook L", Georgia, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312", "Noto Sans CJK SC", "Source Han Sans CN", serif;
   margin-left: 24px;
 }
 #main p.version {
@@ -603,7 +603,7 @@ a {
   margin-left: 5px;
 }
 #main ul {
-  font: 20px/30px Athelas, "Century Schoolbook L", Georgia, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312", "Noto Sans CJK CN", "Source Han Sans CN", serif;
+  font: 20px/30px Athelas, "Century Schoolbook L", Georgia, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312", "Noto Sans CJK SC", "Source Han Sans CN", serif;
   padding-left: 60px;
   list-style-image: url('../img/bullet.svg');
 }
