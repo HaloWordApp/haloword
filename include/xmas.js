@@ -6,9 +6,9 @@ $(document).ready(function() {
     var year = today.getFullYear();
 
     if (month == 12 &&
-    date in {'23':true, '24':true, '25':true, '26':true} ) {
+    date in {'23': true, '24': true, '25': true, '26': true} ) {
         /* Happy Xmas :) */
-        $("li#title").html("Happy Xmas");
+        $("li#title").html("Happy Holidays");
         if (date == 24 || date == 25) {
             $().jSnow({
                 vSize:'100',
@@ -18,13 +18,13 @@ $(document).ready(function() {
     }
     
     if (month == 12 &&
-        date in {'30':true, '31':true} ) {
+        date in {'30': true, '31': true} ) {
         /* Bye :) */
         $("li#title").html("Bye " + year);
     }
 
     if (month == 1 &&
-        date in {'1':true, '2':true, '3':true} ) {
+        date in {'1': true, '2': true, '3': true} ) {
         /* Hello :) */
         $("li#title").html("Hello " + year);
     }
