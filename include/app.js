@@ -3,7 +3,7 @@ $(document).ready(function() {
 
     window.onhashchange = function() {
         show_def(location.hash.substring(1));
-    }
+    };
     $(window).load(on_resize);
     $(window).resize(on_resize);
 
@@ -77,14 +77,14 @@ $(document).ready(function() {
                 input.focus();
             }
         }
-    }
+    };
 });
 
 function get_OS() {
     var ua = navigator.userAgent;
     var os;
     if (typeof process == "object") {
-        os = "node-webkit"
+        os = "node-webkit";
     }
     else if (ua.indexOf("Windows") > 0) {
         os = "Windows";
@@ -371,7 +371,7 @@ function show_def(word) {
     $("#extradef .content").html("<p>loading...</p>");
 
     $.ajax({
-        url: youdao_url + word,
+        url: "http://halo.xhacker.im/youdao/query/" + word,
         dataType: "json",
         success: function(data) {
             var def = "", i;
@@ -402,15 +402,15 @@ function show_def(word) {
                 }
                 else {
                     // no definition and translation
-                    $("#extradef").hide();
+                    $("#extradef .content").html("<p>抱歉，未找到中文释义。</p>");
                 }
             }
             else {
-                $("#extradef").hide();
+                $("#extradef .content").html("<p>中文释义载入失败，请<a href=\"mailto:liu.dongyuan+halo@gmail.com\">联系开发者</a>。</p>");
             }
         },
         error: function(data) {
-            $("#extradef").hide();
+            $("#extradef .content").html("<p>中文释义载入失败，请<a href=\"mailto:liu.dongyuan+halo@gmail.com\">联系开发者</a>。</p>");
         }
     });
 }
