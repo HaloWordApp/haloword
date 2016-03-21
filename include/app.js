@@ -371,7 +371,7 @@ function show_def(word) {
     $("#extradef .content").html("<p>loading...</p>");
 
     $.ajax({
-        url: "http://halo.xhacker.im/youdao/query/" + word,
+        url: youdao_url + word,
         dataType: "json",
         success: function(data) {
             var def = "", i;
