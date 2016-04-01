@@ -233,7 +233,7 @@ function show_def(word) {
 */
 
     $.ajax({
-        url: "http://halo.xhacker.im/webster/query/" + word,
+        url: webster_url + word,
         dataType: "xml",
         success: function(data) {
             var entry_list = $(data).find("entry_list")
