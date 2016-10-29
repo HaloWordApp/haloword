@@ -628,3 +628,7 @@ a {
   margin-right: 3px;
   background: url('../img/icon-neue.svg') 0px 0px;
 }
+#main .headword.builtin .pronounce:hover {
+  background: url('../img/icon-neue.svg') 0px -13px;
+  cursor: pointer;
+}
