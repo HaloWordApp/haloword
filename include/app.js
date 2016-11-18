@@ -2,14 +2,18 @@ $(document).ready(function() {
     init_db("app");
 
     window.onhashchange = function() {
-        show_def(location.hash.substring(1));
+        var word = location.hash.substring(1);
+        $("#search_field").val(word);
+        $("#search_field").select();
+
+        show_def(word);
     };
     $(window).load(on_resize);
     $(window).resize(on_resize);
 
     $("#search_form").submit(function() {
         var word = $("#search_field").val();
-        $("#search_field").select();
+
         query(word);
         return false;
     });
