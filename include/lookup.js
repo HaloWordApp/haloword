@@ -10,6 +10,9 @@ function valid_word(word) {
     if (word.length === 0 || word.length > 190) {
         return false;
     }
+    if (word.startsWith("https://") || word.startsWith("http://")) {
+        return false;
+    }
     if (is_chinese(word)) {
         return "Chinese";
     }
