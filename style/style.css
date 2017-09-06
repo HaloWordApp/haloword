@@ -154,25 +154,23 @@ input[type='submit'][disabled]:hover {
 .toolbar button {
   float: left;
   margin: 0;
-  padding: 5px 14px;
+  padding: 5px 10px;
   font-size: 12px;
 }
 .toolbar .first {
   border-right: 1px solid #ddd;
   border-radius: 4px 0 0 4px;
-  padding-right: 10px;
+  padding-left: 11px;
 }
 .toolbar .middle {
   border-left: 0;
   border-right: 1px solid #ddd;
   border-radius: 0;
-  padding-left: 10px;
-  padding-right: 10px;
 }
 .toolbar .last {
   border-left: 0;
   border-radius: 0 4px 4px 0;
-  padding-left: 10px;
+  padding-right: 11px;
 }
 /* Universal */
 html {
@@ -198,8 +196,12 @@ hr {
   clear: both;
 }
 a {
-  color: #1F3C77;
+  color: #2864a0;
+  border-bottom: 2px solid rgba(40, 100, 160, 0.15);
   text-decoration: none;
+}
+a:hover {
+  border-color: rgba(40, 100, 160, 0.4);
 }
 ::-webkit-scrollbar {
   width: 8px;
@@ -472,6 +474,7 @@ a {
   left: 10px;
   margin-right: 5px;
   background: url('../img/icon-neue.svg') 0px 0px;
+  border: 0;
 }
 #main .pronounce:hover {
   background: url('../img/icon-neue.svg') 0px -13px;
