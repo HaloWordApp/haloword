@@ -102,10 +102,7 @@ $("#haloword-pron").click(function() {
 });
 
 function pron_exist(word, is_upper) {
-    /* two URLs:
-    http://www.gstatic.com/dictionary/static/sounds/de/0/halo.mp3
-    http://www.gstatic.com/dictionary/static/sounds/de/0/!Capella.mp3
-    */
+    /* URL: http://www.gstatic.com/dictionary/static/sounds/oxford/iridium--_us_1.mp3 */
     var pron_url = (window.location.protocol === "https:" ? "https://ssl" : "http://www") + ".gstatic.com/dictionary/static/sounds/oxford/" + word + "--_us_1.mp3";
     if (is_english(word) || is_upper) {
         $.ajax({
