@@ -204,7 +204,7 @@
 		},
 	"\/include\/app.js": {
 		"fileType": 64,
-		"ignore": 0,
+		"ignore": 1,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/include\/app.js",
 		"outputAbbreviatedPath": "\/include\/min\/app-min.js",
@@ -215,7 +215,7 @@
 		},
 	"\/include\/common.js": {
 		"fileType": 64,
-		"ignore": 0,
+		"ignore": 1,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/include\/common.js",
 		"outputAbbreviatedPath": "\/include\/min\/common-min.js",
@@ -226,7 +226,7 @@
 		},
 	"\/include\/context_menu.js": {
 		"fileType": 64,
-		"ignore": 0,
+		"ignore": 1,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/include\/context_menu.js",
 		"outputAbbreviatedPath": "\/include\/min\/context_menu-min.js",
@@ -237,7 +237,7 @@
 		},
 	"\/include\/db.js": {
 		"fileType": 64,
-		"ignore": 0,
+		"ignore": 1,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/include\/db.js",
 		"outputAbbreviatedPath": "\/include\/min\/db-min.js",
@@ -248,7 +248,7 @@
 		},
 	"\/include\/desktop.js": {
 		"fileType": 64,
-		"ignore": 0,
+		"ignore": 1,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/include\/desktop.js",
 		"outputAbbreviatedPath": "\/include\/min\/desktop-min.js",
@@ -259,7 +259,7 @@
 		},
 	"\/include\/jquery-ui.min.js": {
 		"fileType": 64,
-		"ignore": 0,
+		"ignore": 1,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/include\/jquery-ui.min.js",
 		"outputAbbreviatedPath": "\/include\/min\/jquery-ui.min-min.js",
@@ -270,7 +270,7 @@
 		},
 	"\/include\/jquery.min.js": {
 		"fileType": 64,
-		"ignore": 0,
+		"ignore": 1,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/include\/jquery.min.js",
 		"outputAbbreviatedPath": "\/include\/min\/jquery.min-min.js",
@@ -281,7 +281,7 @@
 		},
 	"\/include\/jsnow.js": {
 		"fileType": 64,
-		"ignore": 0,
+		"ignore": 1,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/include\/jsnow.js",
 		"outputAbbreviatedPath": "\/include\/min\/jsnow-min.js",
@@ -292,7 +292,7 @@
 		},
 	"\/include\/lookup.js": {
 		"fileType": 64,
-		"ignore": 0,
+		"ignore": 1,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/include\/lookup.js",
 		"outputAbbreviatedPath": "\/include\/min\/lookup-min.js",
@@ -303,7 +303,7 @@
 		},
 	"\/include\/meaning.js": {
 		"fileType": 64,
-		"ignore": 0,
+		"ignore": 1,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/include\/meaning.js",
 		"outputAbbreviatedPath": "\/include\/min\/meaning-min.js",
@@ -314,7 +314,7 @@
 		},
 	"\/include\/mustache.min.js": {
 		"fileType": 64,
-		"ignore": 0,
+		"ignore": 1,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/include\/mustache.min.js",
 		"outputAbbreviatedPath": "\/include\/min\/mustache.min-min.js",
@@ -325,7 +325,7 @@
 		},
 	"\/include\/omnibox.js": {
 		"fileType": 64,
-		"ignore": 0,
+		"ignore": 1,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/include\/omnibox.js",
 		"outputAbbreviatedPath": "\/include\/min\/omnibox-min.js",
@@ -336,7 +336,7 @@
 		},
 	"\/include\/proxy.js": {
 		"fileType": 64,
-		"ignore": 0,
+		"ignore": 1,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/include\/proxy.js",
 		"outputAbbreviatedPath": "\/include\/min\/proxy-min.js",
@@ -347,7 +347,7 @@
 		},
 	"\/include\/xmas.js": {
 		"fileType": 64,
-		"ignore": 0,
+		"ignore": 1,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/include\/xmas.js",
 		"outputAbbreviatedPath": "\/include\/min\/xmas-min.js",
@@ -755,7 +755,7 @@
 	"jadeAutoOutputPathStyle": 0,
 	"jadeCompileDebug": 1,
 	"jadeOutputStyle": 0,
-	"javascriptAutoOutputPathEnabled": 1,
+	"javascriptAutoOutputPathEnabled": 0,
 	"javascriptAutoOutputPathFilenamePattern": "*-min.js",
 	"javascriptAutoOutputPathRelativePath": "\/min",
 	"javascriptAutoOutputPathReplace1": "",
