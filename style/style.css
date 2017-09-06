@@ -182,11 +182,11 @@ body {
   width: 960px;
   height: 100%;
   margin: 0 auto;
-  font: 24px/36px "SF UI Text", DroidSans, "Hiragino Sans GB", "Noto Sans CJK SC", "Source Han Sans CN", "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
+  font: 24px/36px ".SFNSText", BlinkMacSystemFont, DroidSans, "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", "Source Han Sans CN", "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
 }
 button,
 select {
-  font-family: "SF UI Text", DroidSans, "Hiragino Sans GB", "Noto Sans CJK SC", "Source Han Sans CN", "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
+  font-family: ".SFNSText", BlinkMacSystemFont, DroidSans, "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", "Source Han Sans CN", "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
 }
 hr {
   background-color: #dbdbdb;
@@ -236,13 +236,13 @@ a:hover {
 }
 #side li {
   padding: 6px 26px 6px 0;
-  font: 24px/36px "SF UI Text", DroidSans, "Hiragino Sans GB", "Noto Sans CJK SC", "Source Han Sans CN", "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
+  font: 24px/36px ".SFNSText", BlinkMacSystemFont, DroidSans, "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", "Source Han Sans CN", "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
   color: #3D65BB;
   border: 1px solid transparent;
   vertical-align: middle;
 }
 #side li.current {
-  font-family: "SF UI Text", DroidSans, "Hiragino Sans GB", "Noto Sans CJK SC", "Source Han Sans CN", "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
+  font-family: ".SFNSText", BlinkMacSystemFont, DroidSans, "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", "Source Han Sans CN", "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
   border-right-color: #AABEDC;
   background: -webkit-linear-gradient(left, #BBCEE9, #BBCEE9 97%, #AABEDC);
   font-weight: bold;
@@ -263,10 +263,10 @@ a:hover {
 }
 #side #title {
   margin-top: 18px;
-  font: 29px/42px "SF UI Text", DroidSans, "Hiragino Sans GB", "Noto Sans CJK SC", "Source Han Sans CN", "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
+  font: 29px/42px ".SFNSText", BlinkMacSystemFont, DroidSans, "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", "Source Han Sans CN", "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
 }
 #side #title.current {
-  font-family: "SF UI Text", DroidSans, "Hiragino Sans GB", "Noto Sans CJK SC", "Source Han Sans CN", "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
+  font-family: ".SFNSText", BlinkMacSystemFont, DroidSans, "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", "Source Han Sans CN", "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
   font-weight: bold;
 }
 #side #search {
@@ -279,7 +279,7 @@ a:hover {
   outline: none;
   padding: 6px 10px;
   font-size: 16px;
-  font-family: "SF UI Text", DroidSans, "Hiragino Sans GB", "Noto Sans CJK SC", "Source Han Sans CN", "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
+  font-family: ".SFNSText", BlinkMacSystemFont, DroidSans, "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", "Source Han Sans CN", "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
 }
 .windows #side #search_field {
   border: 0;
@@ -323,7 +323,7 @@ a:hover {
   padding: 10px;
   font-size: 14px;
   line-height: 20px;
-  font-family: "SF UI Text", DroidSans, "Hiragino Sans GB", "Noto Sans CJK SC", "Source Han Sans CN", "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
+  font-family: ".SFNSText", BlinkMacSystemFont, DroidSans, "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", "Source Han Sans CN", "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
   color: #555;
 }
 #bubble a {
@@ -395,16 +395,17 @@ a:hover {
 }
 #main #extradef p {
   margin: 0 0 2px 0;
-  font-family: Helvetica, Arial, "Hiragino Sans GB", "Noto Sans CJK SC", "Source Han Sans CN", "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
+  font-family: ".SFNSText", BlinkMacSystemFont, DroidSans, "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", "Source Han Sans CN", "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
 }
 #main #extradef .from {
-  font-family: Helvetica, Arial, "Hiragino Sans GB", "Noto Sans CJK SC", "Source Han Sans CN", "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
+  font-family: ".SFNSText", BlinkMacSystemFont, DroidSans, "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", "Source Han Sans CN", "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
   font-size: 14px;
   line-height: 30px;
   display: inline-block;
   float: right;
   color: #ccc;
   margin: 3px 12px 0 0;
+  border: 0;
 }
 #main #extradef .content {
   font-size: 15px;
@@ -425,8 +426,9 @@ a:hover {
 }
 #main #worddef .credits a {
   color: #bbb;
-  font-family: "SF UI Text", DroidSans, "Hiragino Sans GB", "Noto Sans CJK SC", "Source Han Sans CN", "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
+  font-family: ".SFNSText", BlinkMacSystemFont, DroidSans, "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", "Source Han Sans CN", "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
   font-weight: bold;
+  border: 0;
 }
 #main #worddef .credits a:hover {
   color: #aaa;
@@ -497,7 +499,7 @@ a:hover {
   color: #AAAAAA;
 }
 #main .entries > .label[title^="Part-of"] {
-  font: 20px/20px "SF UI Text", DroidSans, "Hiragino Sans GB", "Noto Sans CJK SC", "Source Han Sans CN", "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
+  font: 20px/20px ".SFNSText", BlinkMacSystemFont, DroidSans, "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", "Source Han Sans CN", "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
   color: #000;
   margin: 24px 0 10px -32px;
 }
