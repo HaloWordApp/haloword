@@ -1,5 +1,5 @@
 /* word list: newest on top */
-var default_words = ["喵", "meow", "caesium", "love", "dysprosium", "iridium", "daisy", "chrome", "capella"];
+var default_words = ["喵", "meow", "willow", "cryptomeria", "caesium", "love", "dysprosium", "iridium", "daisy", "capella"];
 
 var db;
 function init_db(caller) {
