@@ -197,10 +197,9 @@ function event_mouseup(e) {
             $("#haloword-content").html("<p>Loading definitions...</p>");
             $("#haloword-lookup").show();
 
-            $.ajax({
-                url: youdao_url + selection,
-                dataType: "json",
-                success: function(data) {
+            chrome.extension.sendMessage({method: "lookup", word: selection}, function(response) {
+                var data = response.data;
+                if(response.status === "success") {
                     var def = "", i;
                     if (data.errorCode === 0) {
                         if (data.basic) {
@@ -230,8 +229,8 @@ function event_mouseup(e) {
                     else {
                         $("#haloword-content").html("<p>I'm sorry, Dave.</p><p>I'm afraid I can't find that.</p>");
                     }
-                },
-                error: function(data) {
+                }
+                else {
                     $("#extradef").hide();
                 }
             });

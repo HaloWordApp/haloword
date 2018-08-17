@@ -13,5 +13,18 @@ chrome.extension.onMessage.addListener(
         else if (request.method == "remove") {
             remove_word(request.word);
         }
+        else if (request.method == "lookup") {
+            $.ajax({
+                url: youdao_url + request.word,
+                dataType: "json",
+                async: false,
+                success: function(data) {
+                    sendResponse({status: "success", data: data});
+                },
+                error: function(data) {
+                    sendResponse({status: "error", data: data});
+                }
+            });
+        }
     }
 );
