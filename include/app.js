@@ -2,7 +2,7 @@ $(document).ready(function() {
     init_db("app");
 
     window.onhashchange = function() {
-        var word = location.hash.substring(1);
+        var word = get_current_word();
         $("#search_field").val(word);
         $("#search_field").select();
 
@@ -23,7 +23,7 @@ $(document).ready(function() {
     });
 
     $("#button_add").click(function() {
-        var word = location.hash.substring(1);
+        var word = get_current_word();
         storage_word(word);
         wordlist_add(word);
         $("li.current").removeClass("current");
@@ -34,7 +34,7 @@ $(document).ready(function() {
     });
 
     $("#button_remove").click(function() {
-        var word = location.hash.substring(1);
+        var word = get_current_word();
         remove_word(word);
         $("#wordlist_" + escape4id(word)).remove();
         $("#button_remove").hide();
@@ -70,7 +70,7 @@ $(document).ready(function() {
         $('html').addClass('windows');
     }
 
-    show_def(location.hash.substring(1));
+    show_def(get_current_word());
 
     document.onkeydown = function(key) {
         if (document.activeElement.tagName != "TEXTAREA" && document.activeElement.tagName != "INPUT") {
@@ -114,7 +114,7 @@ function refresh_wordlist_trigger() {
         var word = $(this).parent().text();
         remove_word(word);
         $(this).parent().remove();
-        if (word == location.hash.substring(1)) {
+        if (word == get_current_word()) {
             $("#button_remove").hide();
             $("#button_add").show();
         }
@@ -179,6 +179,10 @@ function wordlist_append(word) {
 
 function query(word) {
     location.hash = word;
+}
+
+function get_current_word() {
+    return decodeURIComponent(location.hash.substring(1));
 }
 
 function show_def(word) {
