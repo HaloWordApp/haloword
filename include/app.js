@@ -195,22 +195,25 @@ function show_def(word) {
         return;
     }
 
-    show_builtin("loading");
+    show_builtin("loading", function () {
+        $("#extradef").show();
+        document.title = word + " \u2039 Halo Word";
+        $("#wordtitle").html(word);
 
-    $("#extradef").show();
-    document.title = word + " \u2039 Halo Word";
-    $("#wordtitle").html(word);
+        db.transaction(function (tx) {
+            tx.executeSql("SELECT COUNT(*) AS `exist` FROM `Word` WHERE `word` = ?", [word],
+            function(tx, result) {
+                if (result.rows.item(0).exist) {
+                    $("#button_remove").show();
+                }
+                else {
+                    $("#button_add").show();
+                }
+            }, null);
+        });
 
-    db.transaction(function (tx) {
-        tx.executeSql("SELECT COUNT(*) AS `exist` FROM `Word` WHERE `word` = ?", [word],
-        function(tx, result) {
-            if (result.rows.item(0).exist) {
-                $("#button_remove").show();
-            }
-            else {
-                $("#button_add").show();
-            }
-        }, null);
+        show_webster(word);
+        show_youdao(word);
     });
 
 /* Google Dictionary API no longer works
@@ -235,7 +238,9 @@ function show_def(word) {
         }
     });
 */
+}
 
+function show_webster(word) {
     $.ajax({
         url: webster_url + word,
         dataType: "xml",
@@ -370,7 +375,9 @@ function show_def(word) {
             $("#worddef").append('<p class="credits">Content provided by <a href="http://www.merriam-webster.com" target="_blank">Merriam-Webster</a></p>')
         }
     })
+}
 
+function show_youdao(word) {
     $("#extradef .phonetic").html("<span>ˈləʊdɪŋ</span>");
     $("#extradef .content").html("<p>loading...</p>");
 
@@ -426,7 +433,7 @@ function is_builtin(word) {
         return false;
 }
 
-function show_builtin(builtin) {
+function show_builtin(builtin, callback) {
     $.get("builtin/" + builtin + ".html", function(data) {
         $("#worddef").html(process_builtin(data));
 
@@ -446,6 +453,10 @@ function show_builtin(builtin) {
 
         if (builtin == "welcome") {
             $("#toolbar").show();
+        }
+
+        if (callback) {
+            callback();
         }
     });
 }
