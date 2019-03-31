@@ -53,7 +53,7 @@ $(document).ready(function() {
         localStorage.prev_version = cur_version;
     }
     if (cur_version > localStorage.prev_version) {
-        $("#bubble").html('Halo Word 0.6 现已发布，采用 Merriam-Webster 提供的 API，修复了英文释义和发音的问题。<p style="margin-top: 4px;">如果您喜欢这个应用，可以通过<a href="https://chrome.google.com/webstore/detail/bhkcehpnnlgncpnefpanachijmhikocj/reviews" target="_blank">打个五星</a>或者<a href="https://me.alipay.com/xhacker" target="_blank">捐赠</a>来支持我。:)<p class="align-right"><button id="button-go-version">查看版本信息</button><button id="button-close-bubble">关闭</button></p>');
+        $("#bubble").html('Halo Word 0.6 现已发布，采用 Merriam-Webster 提供的 API，修复了英文释义和发音的问题。<p style="margin-top: 4px;">如果您喜欢这个应用，可以通过<a href="https://chrome.google.com/webstore/detail/bhkcehpnnlgncpnefpanachijmhikocj/reviews" target="_blank">打个五星</a>或者<a href="#halo:donation">捐赠</a>来支持我。:)<p class="align-right"><button id="button-go-version">查看版本信息</button><button id="button-close-bubble">关闭</button></p>');
         /* <button id="button-go-version">查看版本信息</button><p style="margin-top: 4px;">如果您喜欢这个应用，不妨给我们<a href="https://chrome.google.com/webstore/detail/bhkcehpnnlgncpnefpanachijmhikocj/reviews" target="_blank">打个五星</a>或者<a href="https://me.alipay.com/xhacker" target="_blank">捐赠</a>。</p> */
         $("#bubble").show();
     }
