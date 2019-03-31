@@ -9,3 +9,11 @@ Halo Word is open-sourced under MIT license, pull requests are welcome!
 
 ## Icon
 The icons of this project are from [Oxygen Icons](https://github.com/KDE/oxygen-icons5) and are under LGPL license.
+
+## Build Project
+
+```sh
+npm install -g less
+cd style
+lessc styles.less styles.css
+```

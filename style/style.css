@@ -534,14 +534,14 @@ a:hover {
   top: 0px !important;
 }
 .mw-item > ol {
-  font: 22px/31px Athelas, "Century Schoolbook L", Georgia, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312", "Noto Sans CJK SC", "Source Han Sans CN", serif;
+  font: 22px/30px Athelas, "Century Schoolbook L", Georgia, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312", "Noto Sans CJK SC", "Source Han Sans CN", serif;
   padding-left: 46px;
 }
 .mw-item > ol > li {
   margin-top: 8px;
 }
 .mw-item > ol > li > ol {
-  font: 20px/28px Athelas, "Century Schoolbook L", Georgia, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312", "Noto Sans CJK SC", "Source Han Sans CN", serif;
+  font: 20px/27px Athelas, "Century Schoolbook L", Georgia, STKaiti, "AR PL Ukai CN", "文鼎ＰＬ简中楷", "楷体", "楷体_GB2312", "Noto Sans CJK SC", "Source Han Sans CN", serif;
   padding-left: 18px;
   list-style-type: lower-alpha;
 }
@@ -553,7 +553,7 @@ a:hover {
 }
 .mw-item .mw-vi {
   display: block;
-  font-size: 0.8em;
+  font-size: 0.9em;
   font-style: italic;
 }
 .mw-item .mw-vi > .mw-it {
