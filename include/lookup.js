@@ -199,7 +199,7 @@ function event_mouseup(e) {
 
             chrome.extension.sendMessage({method: "lookup", word: selection}, function(response) {
                 var data = response.data;
-                if(response.status === "success") {
+                if (response.status === "success") {
                     var def = "", i;
                     if (data.errorCode === 0) {
                         if (data.basic) {
@@ -240,5 +240,5 @@ function event_mouseup(e) {
                 haloword_opened = true;
             }, 100);
         }
-    })
+    });
 }
