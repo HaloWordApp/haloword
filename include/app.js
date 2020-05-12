@@ -3,9 +3,13 @@ $(document).ready(function() {
 
     window.onhashchange = function() {
         var word = get_current_word();
-        $("#search_field").val(word);
-        $("#search_field").select();
-
+        if (is_builtin(word)) {
+            //$("#search_field").val('');
+        } else {
+            $("#search_field").val(word);
+            $("#search_field").select();
+        }
+        
         show_def(word);
     };
     $(window).load(on_resize);
