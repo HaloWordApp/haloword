@@ -1,13 +1,23 @@
 var tabId = false;
 
 function contextMenuOnClick(info, t) {
-    if (tabId === false) {
-      chrome.tabs.create({url: "main.html#" + info.selectionText}, function(tab) {
+    var tabParam = {url: "main.html#" + encodeURIComponent(info.selectionText), active: true};
+    var createTab = function() {
+      chrome.tabs.create(tabParam, function(tab) {
         tabId = tab.id;
       });
     }
+    if (tabId === false) {
+      createTab();
+    }
     else {
-      chrome.tabs.update(tabId, {url: "main.html#" + info.selectionText, active: true});
+      chrome.tabs.get(tabId, function(tab) {
+        if (tab) {
+          chrome.tabs.update(tabId, tabParam);
+        } else {
+          createTab();
+        }
+      });
     }
 }
 
