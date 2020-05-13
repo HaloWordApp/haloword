@@ -228,7 +228,7 @@ function event_mouseup(e) {
             // HACK: fix dict window not openable
             setTimeout(function() {
                 haloword_opened = true;
-            }, 100);
+            }, 0);
         }
     });
 }
