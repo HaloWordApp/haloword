@@ -57,10 +57,14 @@ document.addEventListener("DOMNodeInserted", function(event) {
 $("body").mouseup(event_mouseup);
 $("body").click(event_click);
 
+function event_ignored(event) {
+    var target = $(event.target);
+    return target.attr("id") == "haloword-lookup" || target.parents("#haloword-lookup")[0];
+}
+
 function event_click(event) {
     if (haloword_opened) {
-        var target = $(event.target);
-        if (target.attr("id") != "haloword-lookup" && !target.parents("#haloword-lookup")[0]) {
+        if (!event_ignored(event)) {
             $("#haloword-lookup").hide();
             $("#haloword-remove").hide();
             $("#haloword-add").show();
@@ -143,12 +147,12 @@ $("#haloword-remove").click(function() {
 });
 
 function event_mouseup(e) {
+    if ((!e.ctrlKey && !e.metaKey) || event_ignored(e)) {
+        return;
+    }
     // chrome.storage.local.set({'disable_querybox': true})
     chrome.storage.local.get('disable_querybox', function(ret) {
         if (!ret.disable_querybox) {
-            if (!e.ctrlKey && !e.metaKey) {
-                return;
-            }
             var selection = get_selection();
             var lang = valid_word(selection);
             if (!lang) {
