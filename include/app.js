@@ -3,9 +3,13 @@ $(document).ready(function() {
 
     window.onhashchange = function() {
         var word = get_current_word();
-        $("#search_field").val(word);
-        $("#search_field").select();
-
+        if (is_builtin(word)) {
+            //$("#search_field").val('');
+        } else {
+            $("#search_field").val(word);
+            $("#search_field").select();
+        }
+        
         show_def(word);
     };
     $(window).load(on_resize);
@@ -246,7 +250,7 @@ function show_def(word) {
 
 function show_webster(word) {
     $.ajax({
-        url: webster_url + word,
+        url: webster_url + encodeURIComponent(word),
         dataType: "xml",
         success: function(data) {
             var entry_list = $(data).find("entry_list")
@@ -386,13 +390,13 @@ function show_youdao(word) {
     $("#extradef .content").html("<p>loading...</p>");
 
     $.ajax({
-        url: youdao_url + word,
+        url: youdao_url + encodeURIComponent(word),
         dataType: "json",
         success: function(data) {
             var def = "", i;
             if (data.errorCode === 0) {
                 $("#extradef .from").html("Youdao");
-                dict_url = "http://dict.youdao.com/search?q=" + word + "&keyfrom=dict.index"
+                dict_url = "http://dict.youdao.com/search?q=" + encodeURIComponent(word) + "&keyfrom=dict.index"
                 $("#extradef .from").attr("href", dict_url);
                 if (data.basic) {
                     if (data.basic.phonetic) {

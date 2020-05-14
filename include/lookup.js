@@ -57,10 +57,14 @@ document.addEventListener("DOMNodeInserted", function(event) {
 $("body").mouseup(event_mouseup);
 $("body").click(event_click);
 
+function event_ignored(event) {
+    var target = $(event.target);
+    return target.attr("id") == "haloword-lookup" || target.parents("#haloword-lookup")[0];
+}
+
 function event_click(event) {
     if (haloword_opened) {
-        var target = $(event.target);
-        if (target.attr("id") != "haloword-lookup" && !target.parents("#haloword-lookup")[0]) {
+        if (!event_ignored(event)) {
             $("#haloword-lookup").hide();
             $("#haloword-remove").hide();
             $("#haloword-add").show();
@@ -69,18 +73,8 @@ function event_click(event) {
     }
 }
 
-var icon_url = chrome.extension.getURL("img/icon.svg");
-var style_content = "<style>\
-#haloword-pron { background: url(" + icon_url + ") -94px -34px; }\
-#haloword-pron:hover { background: url(" + icon_url + ") -111px -34px; }\
-#haloword-open { background: url(" + icon_url + ") -94px -17px; }\
-#haloword-open:hover { background: url(" + icon_url + ") -111px -17px; }\
-#haloword-close { background: url(" + icon_url + ") -94px 0; }\
-#haloword-close:hover { background: url(" + icon_url + ") -111px 0; }\
-#haloword-add { background: url(" + icon_url + ") -94px -51px; }\
-#haloword-add:hover { background: url(" + icon_url + ") -111px -51px; }\
-#haloword-remove { background: url(" + icon_url + ") -94px -68px; }\
-#haloword-remove:hover { background: url(" + icon_url + ") -111px -68px; }</style>";
+var icon_url = chrome.extension.getURL("style/icon.css");
+var style_content = '<link rel="stylesheet" type="text/css" href="' + icon_url + '" />';
 if ($("head")[0]) {
     $($("head")[0]).append(style_content);
 }
@@ -153,12 +147,12 @@ $("#haloword-remove").click(function() {
 });
 
 function event_mouseup(e) {
+    if ((!e.ctrlKey && !e.metaKey) || event_ignored(e)) {
+        return;
+    }
     // chrome.storage.local.set({'disable_querybox': true})
     chrome.storage.local.get('disable_querybox', function(ret) {
         if (!ret.disable_querybox) {
-            if (!e.ctrlKey && !e.metaKey) {
-                return;
-            }
             var selection = get_selection();
             var lang = valid_word(selection);
             if (!lang) {
@@ -238,7 +232,7 @@ function event_mouseup(e) {
             // HACK: fix dict window not openable
             setTimeout(function() {
                 haloword_opened = true;
-            }, 100);
+            }, 0);
         }
     });
 }
